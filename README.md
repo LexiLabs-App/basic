@@ -11,7 +11,7 @@ You'll need to add your maven dependency list
 lexilabs-basic-sound = "0.1.0"
 
 [libraries]
-lexilabs-basic-sound = { module = "app.lexilabs.basic.sound", version.ref = "lexilabs-basic-sound" }
+lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref = "lexilabs-basic-sound" }
 ```
 then include the library in your gradle build
 ```kotlin
