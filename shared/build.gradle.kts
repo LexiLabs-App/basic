@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
@@ -6,11 +7,12 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinx.binary.compatibility.validator)
-    id("maven-publish")
+    `maven-publish`
+    signing
 }
 
 // THIS IS REQUIRED TO PREVENT the ":shared:testClasses" error
-task("testClasses")
+//task("testClasses")
 
 kotlin {
 
@@ -114,7 +116,7 @@ kotlin {
 
     // Android JVM target target options
     androidTarget {
-        publishLibraryVariants("release", "debug")
+//        publishLibraryVariants("release", "debug")
         compilations.all{
             compileTaskProvider.configure{
                 compilerOptions {
@@ -138,55 +140,56 @@ android {
     }
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("mavenJava") {
-
-                pom {
-                    name = "Basic-Sound"
-                    groupId = "app.lexilabs.basic"
-                    artifactId = "basic-sound"
-                    version = "0.1.0"
-                    description =
-                        "Integrate audio across all your Kotlin Multiplatform apps with a single library"
-                    url = "https://github.com/LexiLabs-Apps/basic-sound"
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            pom {
+                name = "Basic-Sound"
+                groupId = "app.lexilabs.basic"
+                artifactId = "basic-sound"
+                version = "0.1.0"
+                description =
+                    "Integrate audio across all your Kotlin Multiplatform apps with a single library"
+                url = "https://github.com/LexiLabs-Apps/basic-sound"
 //                properties = mapOf(
 //                    "myProp" to "value",
 //                    "prop.with.dots" to "anotherValue"
 //                )
-                    licenses {
-                        license {
-                            name = "MIT License"
-                            url = "https://sound.basic.lexilabs.app/LICENSE"
-                        }
+                from(components["kotlin"])
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://sound.basic.lexilabs.app/LICENSE"
                     }
-                    developers {
-                        developer {
-                            id = "robertjamison"
-                            name = "Robert Jamison"
-                            email = "dev@lexilabs.app"
-                        }
+                }
+                developers {
+                    developer {
+                        id = "robertjamison"
+                        name = "Robert Jamison"
+                        email = "dev@lexilabs.app"
                     }
-                    scm {
-                        connection = "scm:git:git://github.com/LexiLabs-Apps/basic-sound.git"
-                        developerConnection =
-                            "scm:git:ssh://github.com:LexiLabs-Apps/basic-sound.git"
-                        url = "https://github.com/LexiLabs-Apps/basic-sound"
-                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/LexiLabs-Apps/basic-sound.git"
+                    developerConnection =
+                        "scm:git:ssh://github.com:LexiLabs-Apps/basic-sound.git"
+                    url = "https://github.com/LexiLabs-Apps/basic-sound"
                 }
             }
         }
-        repositories {
-            maven {
-                url = uri(layout.buildDirectory.dir("repo"))
-                name = "basic-sound"
+    }
+    repositories {
+        maven {
+            url = uri(gradleLocalProperties(rootDir).getProperty("mavenServer"))
+            name = "maven"
+            credentials {
+                username = gradleLocalProperties(rootDir).getProperty("mavenUsername")
+                password = gradleLocalProperties(rootDir).getProperty("mavenPassword")
             }
         }
     }
 }
-
-//    signing {
-//        sign(publishing.publications)
-//    }
-//}
+signing {
+    useGpgCmd()
+    sign(publishing.publications["maven"])
+}
