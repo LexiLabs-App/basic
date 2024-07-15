@@ -1,4 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
@@ -68,10 +67,6 @@ kotlin {
             implementation(libs.kotlinx.coroutines.test)
         }
 
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-        }
-
         androidMain.dependencies {
             implementation(libs.kotlinx.coroutines.android)
         }
@@ -138,58 +133,4 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            pom {
-                name = "Basic-Sound"
-                groupId = "app.lexilabs.basic"
-                artifactId = "basic-sound"
-                version = "0.1.0"
-                description =
-                    "Integrate audio across all your Kotlin Multiplatform apps with a single library"
-                url = "https://github.com/LexiLabs-Apps/basic-sound"
-//                properties = mapOf(
-//                    "myProp" to "value",
-//                    "prop.with.dots" to "anotherValue"
-//                )
-                from(components["kotlin"])
-                licenses {
-                    license {
-                        name = "MIT License"
-                        url = "https://sound.basic.lexilabs.app/LICENSE"
-                    }
-                }
-                developers {
-                    developer {
-                        id = "robertjamison"
-                        name = "Robert Jamison"
-                        email = "dev@lexilabs.app"
-                    }
-                }
-                scm {
-                    connection = "scm:git:git://github.com/LexiLabs-Apps/basic-sound.git"
-                    developerConnection =
-                        "scm:git:ssh://github.com:LexiLabs-Apps/basic-sound.git"
-                    url = "https://github.com/LexiLabs-Apps/basic-sound"
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            url = uri(gradleLocalProperties(rootDir).getProperty("mavenServer"))
-            name = "maven"
-            credentials {
-                username = gradleLocalProperties(rootDir).getProperty("mavenUsername")
-                password = gradleLocalProperties(rootDir).getProperty("mavenPassword")
-            }
-        }
-    }
-}
-signing {
-    useGpgCmd()
-    sign(publishing.publications["maven"])
 }
