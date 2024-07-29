@@ -1,14 +1,14 @@
 # Basic-Sound
 
 A Kotlin Multiplatform library to rapidly integrate audio across all your Kotlin Multiplatform apps.
-Our current prototype, Version 0.1.0, supports Android and iOS.
+Our current prototype, Version 0.1.1, supports Android and iOS.
 
 ## Installation
 You'll need to add your maven dependency list
 ```toml
 # in your 'libs.versions.toml' file
 [versions]
-lexilabs-basic-sound = "0.1.0"
+lexilabs-basic-sound = "0.1.1"
 
 [libraries]
 lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref = "lexilabs-basic-sound" }
