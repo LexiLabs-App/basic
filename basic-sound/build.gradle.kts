@@ -43,21 +43,21 @@ kotlin {
         macosArm64() // desktop
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
+            baseName = "basic-sound"
             isStatic = true
         }
     }
 
 //    linuxX64 {
 //        binaries.staticLib {
-//            baseName = "shared"
+//            baseName = "basic-sound"
 //        }
 //    }
 //
 //
 //    mingwX64 {
 //        binaries.staticLib {
-//            baseName = "shared"
+//            baseName = "basic-sound"
 //        }
 //    }
 

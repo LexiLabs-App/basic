@@ -1,5 +1,5 @@
 rootProject.name = "Basic-Sound"
-include(":shared")
+include(":basic-sound")
 
 pluginManagement {
     repositories {
@@ -15,3 +15,4 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
