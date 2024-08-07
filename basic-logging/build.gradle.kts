@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -28,12 +29,12 @@ kotlin {
         }
         binaries.executable()
     }
-//
-//    TODO: enable when KTOR is available for WASM
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
 
     listOf(
         iosX64(), // mobile
@@ -43,21 +44,21 @@ kotlin {
         macosArm64() // desktop
     ).forEach {
         it.binaries.framework {
-            baseName = "basic-sound"
+            baseName = "basic-logging"
             isStatic = true
         }
     }
 
 //    linuxX64 {
 //        binaries.staticLib {
-//            baseName = "basic-sound"
+//            baseName = "basic-logging"
 //        }
 //    }
 //
 //
 //    mingwX64 {
 //        binaries.staticLib {
-//            baseName = "basic-sound"
+//            baseName = "basic-logging"
 //        }
 //    }
 
@@ -71,10 +72,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.android)
         }
 
-        iosMain.dependencies {
-        }
-
-        macosMain.dependencies {
+        appleMain.dependencies {
         }
 
 //        jvmMain.dependencies {
@@ -124,7 +122,7 @@ kotlin {
 }
 
 android {
-    namespace = "app.lexilabs.basic.sound"
+    namespace = "app.lexilabs.basic.logging"
     compileSdk = 34
 
     defaultConfig {

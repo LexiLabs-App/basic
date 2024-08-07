@@ -12,7 +12,7 @@ buildscript {
 
 allprojects {
     group = "app.lexilabs.basic"
-    version = "0.1.1"
+    version = "0.1.2"
 
     apply(plugin = "maven-publish")
     apply(plugin = "signing")
@@ -21,7 +21,6 @@ allprojects {
     extensions.configure<PublishingExtension> {
         repositories {
             maven {
-                // TODO: Fix issue with deploying directly to maven
                 name = "maven"
 //                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
                 url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
@@ -35,22 +34,22 @@ allprojects {
         publications {
             withType<MavenPublication> {
                 pom {
-                    name.set("Basic-Sound")
-                    description.set("Integrate audio across all your Kotlin Multiplatform apps with a single library")
+                    name.set("Basic")
+                    description.set("Integrate basic features across all your Kotlin Multiplatform apps with a single library")
                     licenses {
                         license {
                             name.set("MIT License")
-                            url.set("https://sound.basic.lexilabs.app/LICENSE")
+                            url.set("https://basic.lexilabs.app/LICENSE")
                         }
                     }
-                    url.set("https://github.com/LexiLabs-App/basic-sound")
+                    url.set("https://github.com/LexiLabs-App/basic")
                     issueManagement {
                         system.set("Github")
-                        url.set("https://github.com/LexiLabs-App/basic-sound/issues")
+                        url.set("https://github.com/LexiLabs-App/basic/issues")
                     }
                     scm {
-                        connection.set("https://github.com/LexiLabs-App/basic-sound.git")
-                        url.set("https://github.com/LexiLabs-App/basic-sound")
+                        connection.set("https://github.com/LexiLabs-App/basic.git")
+                        url.set("https://github.com/LexiLabs-App/basic")
                     }
                     developers {
                         developer {

@@ -1,5 +1,6 @@
-rootProject.name = "Basic-Sound"
+rootProject.name = "Basic"
 include(":basic-sound")
+include(":basic-logging")
 
 pluginManagement {
     repositories {
