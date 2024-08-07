@@ -1,4 +1,5 @@
-# The Basic Suite by LexiLabs
+# Basic
+<img src="docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
 A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way. Currently supports Apple devices, Android devices, and browsers using Javascript or WASM.
 
@@ -18,7 +19,7 @@ Add your dependencies from Maven
 lexilabs-basic = "0.1.2"
 
 [libraries]
-lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic-logging" }
+lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic" }
 ```
 then include the library in your gradle build
 ```kotlin
@@ -72,7 +73,7 @@ You'll need to add your maven dependency list
 lexilabs-basic = "0.1.2"
 
 [libraries]
-lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref = "lexilabs-basic-sound" }
+lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref = "lexilabs-basic" }
 ```
 then include the library in your gradle build
 ```kotlin
