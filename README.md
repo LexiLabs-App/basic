@@ -3,9 +3,20 @@
 
 A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way. Currently supports Apple devices, Android devices, and browsers using Javascript or WASM.
 
-**Current Version:** `0.1.2`
-* [Basic-Logging](#basic-logging)
-* [Basic-Sound](#basic-sound)
+[![Build](https://github.com/xxfast/KStore/actions/workflows/build.yml/badge.svg)](https://github.com/xxfast/KStore/actions/workflows/build.yml)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-purple.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
+
+![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
+![badge-mac](http://img.shields.io/badge/platform-macos-111111.svg?style=flat)
+![badge-watchos](http://img.shields.io/badge/platform-watchos-C0C0C0.svg?style=flat)
+![badge-tvos](http://img.shields.io/badge/platform-tvos-808080.svg?style=flat)
+![badge-nodejs](https://img.shields.io/badge/platform-jsNode-F8DB5D.svg?style=flat)
+![badge-jsBrowser](https://img.shields.io/badge/platform-jsBrowser-F8DB5D.svg?style=flat)
+![badge-wasmJsBrowser](https://img.shields.io/badge/platform-wasmJsBrowser-F8DB5D.svg?style=flat)
+
+* [Basic-Logging](#basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
+* [Basic-Sound](#basic-sound) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
 
 ## Basic-Logging
 A Kotlin Multiplatform library to rapidly add logging to any project.
@@ -19,7 +30,7 @@ Add your dependencies from Maven
 lexilabs-basic = "0.1.2"
 
 [libraries]
-lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic" }
+lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic"}
 ```
 then include the library in your gradle build
 ```kotlin
