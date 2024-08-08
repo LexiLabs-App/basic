@@ -1,8 +1,10 @@
 # Basic-Sound
-
-A Kotlin Multiplatform library to rapidly integrate audio across all your Kotlin Multiplatform apps.
+<img src="../docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
 [![Basic-Sound](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
+
+A Kotlin Multiplatform library to rapidly integrate audio across all your Kotlin Multiplatform apps.
+Currently, this library only ingests URLs; objects and files on the local path are not yet supported.
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -44,7 +46,7 @@ sourceSets {
 }
 ```
 
-## At a glance:
+## Usage
 
 ```kotlin
 val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"

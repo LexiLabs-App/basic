@@ -1,8 +1,9 @@
 # Basic-Logging
-
-A Kotlin Multiplatform library to rapidly add logging to any project.
+<img src="../docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
 [Basic-Logging](#basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
+
+A Kotlin Multiplatform library to rapidly add logging to any project.
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
@@ -40,7 +41,7 @@ sourceSets {
 }
 ```
 
-## At a glance:
+## Usage
 
 ```kotlin
 import app.lexilabs.basic.logging.Log
