@@ -1,7 +1,7 @@
 # Basic
 <img src="docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
-A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way. Currently supports Apple devices, Android devices, and browsers using Javascript or WASM.
+A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way.
 
 [![Build](https://github.com/xxfast/KStore/actions/workflows/build.yml/badge.svg)](https://github.com/xxfast/KStore/actions/workflows/build.yml)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.10-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
@@ -22,7 +22,7 @@ A Kotlin Multiplatform library to rapidly add basic features like logging and au
 ## Quick Start
 Add your dependencies from Maven
 ```toml
-# in your 'libs.versions.toml' file
+# in your 'gradle/libs.versions.toml' file
 [versions]
 lexilabs-basic = "0.1.3"
 
@@ -32,7 +32,7 @@ lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref 
 ```
 then include the library in your gradle build
 ```kotlin
-// in your 'shared/build.gradle.kts' file
+// in your 'shared/build.gradle.kts' or 'composeApp/build.gradle.kts' file
 sourceSets {
     commonMain.dependencies {
         implementation(libs.lexilabs.basic.logging)
