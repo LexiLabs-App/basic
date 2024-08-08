@@ -1,5 +1,5 @@
 # Basic
-<img src="docs/images/basic.png" alt="basic" style="height: 240px; float: right; "/> 
+<img src="docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
 A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way.
 
