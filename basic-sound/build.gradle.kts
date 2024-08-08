@@ -111,7 +111,6 @@ kotlin {
 
     // Android JVM target target options
     androidTarget {
-        // TODO: Verify the following line doesn't break release
         publishLibraryVariants("release", "debug")
         compilations.all{
             compileTaskProvider.configure{
