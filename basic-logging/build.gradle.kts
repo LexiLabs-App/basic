@@ -19,7 +19,7 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-//    jvm()
+    jvm()
 
     js {
         browser {
@@ -49,47 +49,26 @@ kotlin {
         }
     }
 
-//    linuxX64 {
-//        binaries.staticLib {
-//            baseName = "basic-logging"
-//        }
-//    }
-//
-//
-//    mingwX64 {
-//        binaries.staticLib {
-//            baseName = "basic-logging"
-//        }
-//    }
+    linuxX64 {
+        binaries.staticLib {
+            baseName = "basic-logging"
+        }
+    }
+
+    mingwX64 {
+        binaries.staticLib {
+            baseName = "basic-logging"
+        }
+    }
 
     sourceSets {
-        commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.coroutines.test)
-        }
-
-        androidMain.dependencies {
-            implementation(libs.kotlinx.coroutines.android)
-        }
-
-        appleMain.dependencies {
-        }
-
-//        jvmMain.dependencies {
-//            implementation(libs.kotlinx.coroutines.swing)
-//        }
-//
-        jsMain.dependencies {
-        }
-//
-//        linuxMain.dependencies {
-//            implementation(libs.ktor.client.curl)
-//        }
-//
-//        mingwMain.dependencies {
-//            implementation(libs.ktor.client.winhttp)
-//        }
-
+        commonMain.dependencies {}
+        androidMain.dependencies {}
+        appleMain.dependencies {}
+        jvmMain.dependencies {}
+        jsMain.dependencies {}
+        linuxMain.dependencies {}
+        mingwMain.dependencies {}
     }
 
     //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers
@@ -109,7 +88,6 @@ kotlin {
 
     // Android JVM target target options
     androidTarget {
-        // TODO: Verify the following line doesn't break release
         publishLibraryVariants("release", "debug")
         compilations.all{
             compileTaskProvider.configure{
