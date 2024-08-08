@@ -4,7 +4,7 @@
 A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way.
 
 ![GitHub License](https://img.shields.io/github/license/lexilabs-app/basic)
-![GitHub last commit](https://img.shields.io/github/last-commit/lexilabs-app/basic)
+![GitHub Release Date](https://img.shields.io/github/release-date/lexilabs-app/basic)
 [![Build](https://github.com/xxfast/KStore/actions/workflows/build.yml/badge.svg)](https://github.com/xxfast/KStore/actions/workflows/build.yml)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.10-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
