@@ -1,5 +1,5 @@
 # Basic-Sound
-<img src="../docs/images/basic.png" alt="basic" style="text-align:right;height:240px;"/> 
+<img src="../docs/images/basic.png" alt="basic" style="float:right; height:240px;"/> 
 
 [![Basic-Sound](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
 
