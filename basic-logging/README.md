@@ -1,5 +1,5 @@
 # Basic-Logging
-<img src="../docs/images/basic.png" alt="basic" style="float:right; height:240px;"/> 
+<img src="../docs/images/basic.png" alt="basic" height="240" align="right""/> 
 
 [Basic-Logging](#basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
 
