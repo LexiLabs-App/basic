@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.multiplatform).apply(false)
     alias(libs.plugins.android.library).apply(false)
     alias(libs.plugins.kotlinx.serialization.plugin)
+    alias(libs.plugins.dokka)
 }
 
 buildscript {
@@ -14,9 +15,16 @@ allprojects {
     group = "app.lexilabs.basic"
     version = "0.1.3"
 
+    apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "maven-publish")
     apply(plugin = "signing")
     apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
+
+//    plugins.withId("org.jetbrains.dokka") {
+//        tasks.withType<DokkaMultiModuleTask>().configureEach {
+//            notCompatibleWithConfigurationCache("https://github.com/Kotlin/dokka/issues/1217")
+//        }
+//    }
 
     extensions.configure<PublishingExtension> {
         repositories {
@@ -31,8 +39,16 @@ allprojects {
             }
         }
 
+        val javadocJar = tasks.register<Jar>("javadocJar") {
+            dependsOn(tasks.dokkaHtml)
+            archiveClassifier.set("javadoc")
+            from("${layout.buildDirectory}/dokka")
+        }
+
         publications {
             withType<MavenPublication> {
+                artifact(javadocJar)
+
                 pom {
                     name.set("Basic")
                     description.set("Integrate basic features across all your Kotlin Multiplatform apps with a single library")

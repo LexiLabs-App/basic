@@ -62,6 +62,7 @@ kotlin {
     }
 
     sourceSets {
+
         commonMain.dependencies {}
         androidMain.dependencies {}
         appleMain.dependencies {}

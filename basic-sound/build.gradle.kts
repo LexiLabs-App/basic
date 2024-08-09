@@ -29,7 +29,6 @@ kotlin {
         binaries.executable()
     }
 //
-//    TODO: enable when KTOR is available for WASM
 //    wasmJs {
 //        browser()
 //        binaries.executable()

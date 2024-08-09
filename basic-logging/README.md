@@ -1,21 +1,21 @@
 # Basic-Logging
-<img src="../docs/images/basic.png" alt="basic" height="240" align="right"/> 
+<img src="../docs/images/basic.png" alt="basic" height="240" align="right""/> 
 
 [Basic-Logging](#basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
 
 A Kotlin Multiplatform library to rapidly add logging to any project.
 
-![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat)
-![badge-mac](http://img.shields.io/badge/platform-macos-111111.svg?style=flat)
-![badge-watchos](http://img.shields.io/badge/platform-watchos-C0C0C0.svg?style=flat)
-![badge-tvos](http://img.shields.io/badge/platform-tvos-808080.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/platform-jvm-DB413D.svg?style=flat)
-![badge-linux](http://img.shields.io/badge/platform-linux-2D3F6C.svg?style=flat)
-![badge-windows](http://img.shields.io/badge/platform-windows-4D76CD.svg?style=flat)
-![badge-nodejs](https://img.shields.io/badge/platform-jsNode-F8DB5D.svg?style=flat)
-![badge-jsBrowser](https://img.shields.io/badge/platform-jsBrowser-F8DB5D.svg?style=flat)
-![badge-wasmJsBrowser](https://img.shields.io/badge/platform-wasmJsBrowser-F8DB5D.svg?style=flat)
+![badge-android](http://img.shields.io/badge/android-fully_supported-green.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/ios-fully_supported-green.svg?style=flat)
+![badge-mac](http://img.shields.io/badge/macos-fully_supported-green.svg?style=flat)
+![badge-watchos](http://img.shields.io/badge/watchos-fully_supported-green.svg?style=flat)
+![badge-tvos](http://img.shields.io/badge/tvos-fully_supported-green.svg?style=flat)
+![badge-nodejs](https://img.shields.io/badge/jsNode-fully_supported-green.svg?style=flat)
+![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-fully_supported-green.svg?style=flat)
+![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-fully_supported-green.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/jvm-fully_supported-green.svg?style=flat)
+![badge-linux](http://img.shields.io/badge/linux-fully_supported-green.svg?style=flat)
+![badge-windows](http://img.shields.io/badge/windows-fully_supported-green.svg?style=flat)
 
 ### How it works
 Basic-Logging uses platform-specific logging libraries to create console logs.
@@ -26,7 +26,7 @@ Add your dependencies from Maven
 ```toml
 # in your 'libs.versions.toml' file
 [versions]
-lexilabs-basic = "0.1.3"
+lexilabs-basic = "+" #gets the latest version
 
 [libraries]
 lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic"}
