@@ -19,8 +19,7 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-    // TODO: FIX JVM BY ADDING DOKKA IN V0.1.4
-//    jvm()
+    jvm()
 
     js {
         browser {
@@ -63,10 +62,11 @@ kotlin {
     }
 
     sourceSets {
+
         commonMain.dependencies {}
         androidMain.dependencies {}
         appleMain.dependencies {}
-//        jvmMain.dependencies {}
+        jvmMain.dependencies {}
         jsMain.dependencies {}
         linuxMain.dependencies {}
         mingwMain.dependencies {}
