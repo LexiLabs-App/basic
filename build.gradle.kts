@@ -20,17 +20,10 @@ allprojects {
     apply(plugin = "signing")
     apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
 
-//    plugins.withId("org.jetbrains.dokka") {
-//        tasks.withType<DokkaMultiModuleTask>().configureEach {
-//            notCompatibleWithConfigurationCache("https://github.com/Kotlin/dokka/issues/1217")
-//        }
-//    }
-
     extensions.configure<PublishingExtension> {
         repositories {
             maven {
                 name = "maven"
-//                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
                 url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
                 credentials {
                     username = project.findProperty("mavenUsername") as String
@@ -44,6 +37,22 @@ allprojects {
             archiveClassifier.set("javadoc")
             from("${layout.buildDirectory}/dokka")
         }
+
+        /** dokka generation **/
+        tasks.register<Delete>("clearDokkaHtml") {
+            delete("${projectDir.parent}/docs/html/${project.name}")
+        }
+        tasks.dokkaHtml {
+            dependsOn("clearDokkaHtml")
+            outputDirectory.set(file("${projectDir.parent}/docs/html/${project.name}"))
+            moduleName.set(project.name)
+            moduleVersion.set(project.version.toString())
+            failOnWarning.set(false)
+            suppressObviousFunctions.set(true)
+            suppressInheritedMembers.set(false)
+            offlineMode.set(false)
+        }
+
 
         publications {
             withType<MavenPublication> {
@@ -85,7 +94,7 @@ allprojects {
         sign(publishing.publications)
     }
 
-    // TODO: remove after https://youtrack.jetbrains.com/issue/KT-46466 is fixed
+    // remove after https://youtrack.jetbrains.com/issue/KT-46466 is fixed
     project.tasks.withType(AbstractPublishToMaven::class.java).configureEach {
         dependsOn(project.tasks.withType(Sign::class.java))
     }
