@@ -40,11 +40,11 @@ allprojects {
 
         /** dokka generation **/
         tasks.register<Delete>("clearDokkaHtml") {
-            delete("${projectDir.parent}/www/${project.name}")
+            delete("${projectDir.parent}/docs/${project.name}")
         }
         tasks.dokkaHtml {
             dependsOn("clearDokkaHtml")
-            outputDirectory.set(file("${projectDir.parent}/www/${project.name}"))
+            outputDirectory.set(file("${projectDir.parent}/docs/${project.name}"))
             moduleName.set(project.name)
             moduleVersion.set(project.version.toString())
             failOnWarning.set(false)
