@@ -40,11 +40,11 @@ allprojects {
 
         /** dokka generation **/
         tasks.register<Delete>("clearDokkaHtml") {
-            delete("${projectDir.parent}/docs/html/${project.name}")
+            delete("${projectDir.parent}/www/${project.name}")
         }
         tasks.dokkaHtml {
             dependsOn("clearDokkaHtml")
-            outputDirectory.set(file("${projectDir.parent}/docs/html/${project.name}"))
+            outputDirectory.set(file("${projectDir.parent}/www/${project.name}"))
             moduleName.set(project.name)
             moduleVersion.set(project.version.toString())
             failOnWarning.set(false)
@@ -52,7 +52,6 @@ allprojects {
             suppressInheritedMembers.set(false)
             offlineMode.set(false)
         }
-
 
         publications {
             withType<MavenPublication> {
