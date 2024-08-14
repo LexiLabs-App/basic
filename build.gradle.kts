@@ -13,7 +13,7 @@ buildscript {
 
 allprojects {
     group = "app.lexilabs.basic"
-    version = "0.1.3"
+    version = "0.1.4"
 
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "maven-publish")
