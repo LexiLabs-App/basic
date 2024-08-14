@@ -40,7 +40,15 @@ kotlin {
         iosArm64(), // mobile
         iosSimulatorArm64(), // mobile
         macosX64(), // desktop
-        macosArm64() // desktop
+        macosArm64(), // desktop
+        tvosX64(), // tv
+        tvosArm64(), // tv
+        tvosSimulatorArm64(), // tv
+        watchosX64(), // watch
+        watchosArm32(), // watch
+        watchosArm64(), // watch
+        watchosDeviceArm64(), // watch
+        watchosSimulatorArm64(), // watch
     ).forEach {
         it.binaries.framework {
             baseName = "basic-sound"
@@ -71,18 +79,13 @@ kotlin {
             implementation(libs.kotlinx.coroutines.android)
         }
 
-        iosMain.dependencies {
-        }
-
-        macosMain.dependencies {
-        }
+        appleMain.dependencies {  }
 
 //        jvmMain.dependencies {
 //            implementation(libs.kotlinx.coroutines.swing)
 //        }
 //
-        jsMain.dependencies {
-        }
+        jsMain.dependencies {}
 //
 //        linuxMain.dependencies {
 //            implementation(libs.ktor.client.curl)

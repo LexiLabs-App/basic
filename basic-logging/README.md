@@ -5,17 +5,17 @@
 
 A Kotlin Multiplatform library to rapidly add logging to any project.
 
-![badge-android](http://img.shields.io/badge/android-fully_supported-green.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/ios-fully_supported-green.svg?style=flat)
-![badge-mac](http://img.shields.io/badge/macos-fully_supported-green.svg?style=flat)
-![badge-watchos](http://img.shields.io/badge/watchos-fully_supported-green.svg?style=flat)
-![badge-tvos](http://img.shields.io/badge/tvos-fully_supported-green.svg?style=flat)
-![badge-nodejs](https://img.shields.io/badge/jsNode-fully_supported-green.svg?style=flat)
-![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-fully_supported-green.svg?style=flat)
-![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-fully_supported-green.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/jvm-fully_supported-green.svg?style=flat)
-![badge-linux](http://img.shields.io/badge/linux-fully_supported-green.svg?style=flat)
-![badge-windows](http://img.shields.io/badge/windows-fully_supported-green.svg?style=flat)
+![badge-android](http://img.shields.io/badge/android-fully_supported-65c663.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/ios-fully_supported-65c663.svg?style=flat)
+![badge-mac](http://img.shields.io/badge/macos-fully_supported-65c663.svg?style=flat)
+![badge-watchos](http://img.shields.io/badge/watchos-fully_supported-65c663.svg?style=flat)
+![badge-tvos](http://img.shields.io/badge/tvos-fully_supported-65c663.svg?style=flat)
+![badge-nodejs](https://img.shields.io/badge/jsNode-fully_supported-65c663.svg?style=flat)
+![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-fully_supported-65c663.svg?style=flat)
+![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-fully_supported-65c663.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/jvm-fully_supported-65c663.svg?style=flat)
+![badge-linux](http://img.shields.io/badge/linux-fully_supported-65c663.svg?style=flat)
+![badge-windows](http://img.shields.io/badge/windows-fully_supported-65c663.svg?style=flat)
 
 ### How it works
 Basic-Logging uses platform-specific logging libraries to create console logs.
