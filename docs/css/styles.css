@@ -1,0 +1,81 @@
+html, body{
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  font-family: 'Teachers', serif;
+  color: #819BA6;
+}
+
+body.splash {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#canvas {
+  z-index: -1;
+}
+
+a {
+  color: #eeeef0;
+}
+
+div#navBar a, p#footer a {
+  text-decoration: none;
+}
+
+#navBox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 400px;
+  background: transparent;
+}
+
+#logo {
+  width: 400px;
+  height: 400px;
+}
+
+#navBar {
+  text-align: center;
+}
+
+#footer {
+  position: absolute;
+  text-align: center;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #819BA6;
+  font-size: small;
+}
+button {
+  color: #EEEEF0;
+  background-color: #627EAD;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.button {
+  vertical-align: middle;
+}

@@ -3,6 +3,12 @@
 
 package app.lexilabs.basic.sound
 
+import app.lexilabs.basic.sound.AudioState.ERROR
+import app.lexilabs.basic.sound.AudioState.LOADING
+import app.lexilabs.basic.sound.AudioState.NONE
+import app.lexilabs.basic.sound.AudioState.PAUSED
+import app.lexilabs.basic.sound.AudioState.PLAYING
+import app.lexilabs.basic.sound.AudioState.READY
 import kotlinx.coroutines.flow.StateFlow
 
 /**
@@ -34,12 +40,13 @@ public expect class Audio {
     /**
      * Provides the state of [Audio] after initialization
      *
-     * @see AudioState.NONE
-     * @see AudioState.READY
-     * @see AudioState.PLAYING
-     * @see AudioState.PAUSED
-     * @see AudioState.ERROR
-     */
+     * @property[NONE] indicates merely an initial state where no audio has loaded
+     * @property[LOADING] an audio file is being loaded
+     * @property[READY] sound is ready to be played
+     * @property[PLAYING] player is currently playing audio, even if not audible
+     * @property[PAUSED] player has stopped but retained its progress / timecode
+     * @property[ERROR] Something unexpected occurred. Error will be printed to logs
+    */
     public val audioState: StateFlow<AudioState>
 
     /**

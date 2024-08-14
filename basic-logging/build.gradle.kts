@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinx.binary.compatibility.validator)
+    alias(libs.plugins.dokka)
     `maven-publish`
     signing
 }
@@ -41,7 +42,15 @@ kotlin {
         iosArm64(), // mobile
         iosSimulatorArm64(), // mobile
         macosX64(), // desktop
-        macosArm64() // desktop
+        macosArm64(), // desktop
+        tvosX64(), // tv
+        tvosArm64(), // tv
+        tvosSimulatorArm64(), // tv
+        watchosX64(), // watch
+        watchosArm32(), // watch
+        watchosArm64(), // watch
+        watchosDeviceArm64(), // watch
+        watchosSimulatorArm64(), // watch
     ).forEach {
         it.binaries.framework {
             baseName = "basic-logging"
