@@ -1,5 +1,11 @@
 package app.lexilabs.basic.logging
 
+/**
+ * A common interface to enable multiplatform logging.
+ *
+ * Requires override of [v], [d], [i], [w], [e], and [wtf] functions.
+ *
+ */
 public interface Logger {
     public fun v(tag: String, message: String)
     public fun d(tag: String, message: String)
