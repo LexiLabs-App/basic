@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.asStateFlow
  */
 
 @ExperimentalBasicSound
-public actual class Audio: AudioBuilder {
+public actual class Audio actual constructor(): AudioBuilder {
 
     private val tag = "Audio"
 
@@ -31,7 +31,7 @@ public actual class Audio: AudioBuilder {
     public actual var url: String = ""
     public actual var autoPlay: Boolean = false
 
-    public actual constructor(url: String, autoPlay: Boolean) {
+    public actual constructor(url: String, autoPlay: Boolean): this() {
         this.url = url
         this.autoPlay = autoPlay
         load()

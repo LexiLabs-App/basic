@@ -25,7 +25,7 @@ import platform.Foundation.NSURL
  */
 
 @ExperimentalBasicSound
-public actual class Audio: AudioBuilder {
+public actual class Audio actual constructor(): AudioBuilder {
 
     private val _audioState = MutableStateFlow<AudioState>(AudioState.NONE)
     public actual override val audioState: StateFlow<AudioState> = _audioState.asStateFlow()
@@ -35,7 +35,7 @@ public actual class Audio: AudioBuilder {
     public actual var url: String = ""
     public actual var autoPlay: Boolean = false
 
-    public actual constructor(url: String, autoPlay: Boolean) {
+    public actual constructor(url: String, autoPlay: Boolean) : this() {
         this.url = url
         this.autoPlay = autoPlay
         load()
