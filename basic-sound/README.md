@@ -51,13 +51,25 @@ sourceSets {
 ```
 
 ## Usage
-
+You can initialize an `Audio` object with a URL
 ```kotlin
 val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
 val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
 ```
 
-You can also load the audio asynchronously:
+Or you can initialize it asynchronously
+```kotlin
+val audio = Audio()
+audio.url = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+DoSomethingElse()
+lifecycleScope.launch {
+    withContext(Dispatchers.IO) {
+        audio.load()
+    }
+}
+```
+
+You can play the audio separately from initializing the `Audio` object.
 ```kotlin
 val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
 val audio = Audio(audioUrl) // loads the audio file
