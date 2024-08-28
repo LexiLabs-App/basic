@@ -9,19 +9,19 @@ A Kotlin Multiplatform library to rapidly add basic features like logging and au
 
 ## Current KMP Support
 
-| Operating System | Basic-Images | Basic-Logging | Basic-Sound |
-|------------------|--------------|---------------|-------------|
-| Android          | - [x]        | - [x]         | - [x]       |
-| iOS              | - [x]        | - [x]         | - [x]       |
-| macOS            | - [x]        | - [x]         | - [x]       |
-| watchOS          |              | - [x]         | - [x]       |
-| tvOS             |              | - [x]         | - [x]       |
-| nodeJS           |              | - [x]         | - [x]       |
-| jsBrowser        |              | - [x]         | - [x]       |
-| wasmJsBrowser    |              | - [x]         |             |
-| JVM              |              | - [x]         |             |
-| Linux            |              | - [x]         |             |
-| Windows          |              | - [x]         |             |
+| Operating System | Basic-Images       | Basic-Logging      | Basic-Sound        |
+|------------------|--------------------|--------------------|--------------------|
+| Android          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| iOS              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| macOS            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| watchOS          |                    | :heavy_check_mark: | :heavy_check_mark: |
+| tvOS             |                    | :heavy_check_mark: | :heavy_check_mark: |
+| nodeJS           |                    | :heavy_check_mark: | :heavy_check_mark: |
+| jsBrowser        |                    | :heavy_check_mark: | :heavy_check_mark: |
+| wasmJsBrowser    |                    | :heavy_check_mark: |                    |
+| JVM              |                    | :heavy_check_mark: |                    |
+| Linux            |                    | :heavy_check_mark: |                    |
+| Windows          |                    | :heavy_check_mark: |                    |
 
 ## Documentation
 * [Basic-Images](basic-images/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
