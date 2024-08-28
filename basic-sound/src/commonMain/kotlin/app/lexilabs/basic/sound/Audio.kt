@@ -11,6 +11,8 @@ import app.lexilabs.basic.sound.AudioState.PLAYING
 import app.lexilabs.basic.sound.AudioState.READY
 import kotlinx.coroutines.flow.StateFlow
 
+// TODO: Create constructor with zero arguments that loads asynchronously
+
 /**
  * Play audio from a url ([String]).
  *
@@ -21,7 +23,7 @@ import kotlinx.coroutines.flow.StateFlow
  * ```
  */
 @ExperimentalBasicSound
-public expect class Audio {
+public expect class Audio() {
 
     /**
      * Play audio from a url ([String]).

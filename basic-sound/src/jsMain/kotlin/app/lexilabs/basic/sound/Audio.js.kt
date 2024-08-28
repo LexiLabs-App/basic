@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import org.w3c.dom.Audio
 
 @OptIn(ExperimentalBasicSound::class)
-public actual class Audio public actual constructor(url: String, autoPlay: Boolean) : AudioBuilder {
+public actual class Audio public actual constructor() : AudioBuilder {
 
     public actual var url: String = ""
     public actual var autoPlay: Boolean = false
@@ -16,7 +16,9 @@ public actual class Audio public actual constructor(url: String, autoPlay: Boole
 
     private var player: Audio? = null
 
-    init {
+    public actual constructor(url: String, autoPlay: Boolean) : this() {
+        this.url = url
+        this.autoPlay = autoPlay
         load()
     }
 

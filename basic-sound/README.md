@@ -6,17 +6,17 @@
 A Kotlin Multiplatform library to rapidly integrate audio across all your Kotlin Multiplatform apps.
 Currently, this library only ingests URLs; objects and files on the local path are not yet supported.
 
-![badge-android](http://img.shields.io/badge/android-fully_supported-65c663.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/ios-fully_supported-65c663.svg?style=flat)
-![badge-mac](http://img.shields.io/badge/macos-fully_supported-65c663.svg?style=flat)
-![badge-watchos](http://img.shields.io/badge/watchos-fully_supported-65c663.svg?style=flat)
-![badge-tvos](http://img.shields.io/badge/tvos-fully_supported-65c663.svg?style=flat)
-![badge-nodejs](https://img.shields.io/badge/jsNode-fully_supported-65c663.svg?style=flat)
-![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-fully_supported-65c663.svg?style=flat)
-![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-not_supported-red.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/jvm-not_supported-red.svg?style=flat)
-![badge-linux](http://img.shields.io/badge/linux-not_supported-red.svg?style=flat)
-![badge-windows](http://img.shields.io/badge/windows-not_supported-red.svg?style=flat)
+![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
+![badge-mac](http://img.shields.io/badge/macos-full_support-65c663.svg?style=flat)
+![badge-watchos](http://img.shields.io/badge/watchos-full_support-65c663.svg?style=flat)
+![badge-tvos](http://img.shields.io/badge/tvos-full_support-65c663.svg?style=flat)
+![badge-nodejs](https://img.shields.io/badge/jsNode-full_support-65c663.svg?style=flat)
+![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-full_support-65c663.svg?style=flat)
+![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-no_support-red.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/jvm-no_support-red.svg?style=flat)
+![badge-linux](http://img.shields.io/badge/linux-no_support-red.svg?style=flat)
+![badge-windows](http://img.shields.io/badge/windows-no_support-red.svg?style=flat)
 
 ## Supported Filetypes
 | Format   | Android | iOS | javascript |                                                                      File / Container Types                                                                       |
@@ -51,13 +51,25 @@ sourceSets {
 ```
 
 ## Usage
-
+You can initialize an `Audio` object with a URL
 ```kotlin
 val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
 val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
 ```
 
-You can also load the audio asynchronously:
+Or you can initialize it asynchronously
+```kotlin
+val audio = Audio()
+audio.url = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+DoSomethingElse()
+lifecycleScope.launch {
+    withContext(Dispatchers.IO) {
+        audio.load()
+    }
+}
+```
+
+You can play the audio separately from initializing the `Audio` object.
 ```kotlin
 val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
 val audio = Audio(audioUrl) // loads the audio file
