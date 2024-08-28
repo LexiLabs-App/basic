@@ -1,7 +1,7 @@
 # Basic-Logging
 <img src="../docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
-[Basic-Images](#basic-images) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
+[Basic-Images](https://basic.lexilabs.app/basic-images) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
 
 A Kotlin Multiplatform library to rapidly add logging to any project.
 
