@@ -17,7 +17,6 @@ import io.ktor.utils.io.core.readBytes
  * val image = ImageClient(urlString) // instantiate and request response from URL
  * ```
  */
-
 public object ImageClient {
 
     private const val TAG = "ImageClient"

@@ -2,6 +2,7 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:app.lexilabs.basic.sound////PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/index.html
 $dokka.location:app.lexilabs.basic.sound/Audio///PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/index.html
+$dokka.location:app.lexilabs.basic.sound/Audio/Audio/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/-audio.html
 $dokka.location:app.lexilabs.basic.sound/Audio/Audio/#kotlin.String#kotlin.Boolean/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/-audio.html
 $dokka.location:app.lexilabs.basic.sound/Audio/audioState/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/audio-state.html
 $dokka.location:app.lexilabs.basic.sound/Audio/autoPlay/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/auto-play.html

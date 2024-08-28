@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -73,6 +72,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":basic-logging"))
             implementation(libs.compose.foundation)
+            implementation(libs.compose.material3)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.resources)
         }
@@ -122,12 +122,12 @@ kotlin {
     }
 }
 
-composeCompiler {
-    enableStrongSkippingMode = true
-
-    reportsDestination = layout.buildDirectory.dir("compose_compiler")
-    stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
-}
+//composeCompiler {
+//    enableStrongSkippingMode = true
+//
+//    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+//    stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
+//}
 
 android {
     namespace = "app.lexilabs.basic.images"

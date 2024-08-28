@@ -32,9 +32,21 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.create
 import platform.UIKit.UIImage
 
+/**
+ * Contains [load] functions for [BasicImage] that accepts both [BasicUrl] and [BasicPath] objects.
+ */
 @OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
 public actual object ImageLoader {
 
+    /**
+     * Downloads a PNG, JPEG, or WEBP file from an internet URL using a [BasicUrl] object, then provides the [ImageBitmap] file, if available.
+     *
+     * Example:
+     * ```kotlin
+     * val url = BasicUrl("https://picsum.photos/200")
+     * val bitmap = ImageLoader.load(url)
+     * ```
+     */
     public actual suspend fun load(url: BasicUrl): ImageBitmap? {
         var bitmap: ImageBitmap? = null
         return withContext(Dispatchers.IO){
@@ -47,6 +59,15 @@ public actual object ImageLoader {
         }
     }
 
+    /**
+     * Opens a PNG, JPEG, or WEBP file from a local path using a [BasicPath] object, then provides the [ImageBitmap] file, if available.
+     *
+     * Example:
+     * ```kotlin
+     * val path = BasicPath("appLocalDirectory/cacheDirectory/images/exampleImage.jpeg")
+     * val bitmap = ImageLoader.load(path)
+     * ```
+     */
     public actual suspend fun load(path: BasicPath): ImageBitmap? {
         var bitmap: ImageBitmap? = null
         return withContext(Dispatchers.IO){
