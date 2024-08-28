@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinx.binary.compatibility.validator)
     alias(libs.plugins.dokka)
-//    alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.composeCompiler)
     `maven-publish`
     signing
@@ -121,13 +120,6 @@ kotlin {
         }
     }
 }
-
-//composeCompiler {
-//    enableStrongSkippingMode = true
-//
-//    reportsDestination = layout.buildDirectory.dir("compose_compiler")
-//    stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
-//}
 
 android {
     namespace = "app.lexilabs.basic.images"

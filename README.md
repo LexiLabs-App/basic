@@ -3,7 +3,7 @@
 
 ![GitHub License](https://img.shields.io/github/license/lexilabs-app/basic)
 ![GitHub Release Date](https://img.shields.io/github/release-date/lexilabs-app/basic)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.10-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.20-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
 A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way.
 
@@ -11,17 +11,17 @@ A Kotlin Multiplatform library to rapidly add basic features like logging and au
 
 | Operating System | Basic-Images       | Basic-Logging      | Basic-Sound        |
 |------------------|--------------------|--------------------|--------------------|
-| Android          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| iOS              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| macOS            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| watchOS          |                    | :heavy_check_mark: | :heavy_check_mark: |
-| tvOS             |                    | :heavy_check_mark: | :heavy_check_mark: |
-| nodeJS           |                    | :heavy_check_mark: | :heavy_check_mark: |
-| jsBrowser        |                    | :heavy_check_mark: | :heavy_check_mark: |
-| wasmJsBrowser    |                    | :heavy_check_mark: |                    |
-| JVM              |                    | :heavy_check_mark: |                    |
-| Linux            |                    | :heavy_check_mark: |                    |
-| Windows          |                    | :heavy_check_mark: |                    |
+| Android          | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| iOS              | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| macOS            | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| watchOS          |                    | :white_check_mark: | :white_check_mark: |
+| tvOS             |                    | :white_check_mark: | :white_check_mark: |
+| nodeJS           |                    | :white_check_mark: | :white_check_mark: |
+| jsBrowser        |                    | :white_check_mark: | :white_check_mark: |
+| wasmJsBrowser    |                    | :white_check_mark: |                    |
+| JVM              |                    | :white_check_mark: |                    |
+| Linux            |                    | :white_check_mark: |                    |
+| Windows          |                    | :white_check_mark: |                    |
 
 ## Documentation
 * [Basic-Images](basic-images/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
