@@ -5,10 +5,10 @@
 
 A Kotlin Multiplatform library to rapidly add logging to any project.
 
-![badge-android](http://img.shields.io/badge/android-fully_supported-65c663.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/ios-fully_supported-65c663.svg?style=flat)
-![badge-mac](http://img.shields.io/badge/macos-fully_supported-65c663.svg?style=flat)
-![badge-watchos](http://img.shields.io/badge/watchos-no_support-65c663.svg?style=flat)
+![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
+![badge-mac](http://img.shields.io/badge/macos-full_support-65c663.svg?style=flat)
+![badge-watchos](http://img.shields.io/badge/watchos-no_support-red.svg?style=flat)
 ![badge-tvos](http://img.shields.io/badge/tvos-no_support-red.svg?style=flat)
 ![badge-nodejs](https://img.shields.io/badge/jsNode-no_support-red.svg?style=flat)
 ![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-no_support-red.svg?style=flat)

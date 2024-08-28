@@ -7,19 +7,24 @@
 
 A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way.
 
-![badge-android](http://img.shields.io/badge/android-fully_supported-65c663.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/ios-fully_supported-65c663.svg?style=flat)
-![badge-mac](http://img.shields.io/badge/macos-fully_supported-65c663.svg?style=flat)
-![badge-watchos](http://img.shields.io/badge/watchos-fully_supported-65c663.svg?style=flat)
-![badge-tvos](http://img.shields.io/badge/tvos-fully_supported-65c663.svg?style=flat)
-![badge-nodejs](https://img.shields.io/badge/jsNode-fully_supported-65c663.svg?style=flat)
-![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-fully_supported-65c663.svg?style=flat)
-![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-partially_supported-yellow.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/jvm-partially_supported-yellow.svg?style=flat)
-![badge-linux](http://img.shields.io/badge/linux-partially_supported-yellow.svg?style=flat)
-![badge-windows](http://img.shields.io/badge/windows-partially_supported-yellow.svg?style=flat)
+## Current KMP Support
+
+| Operating System | Basic-Images | Basic-Logging | Basic-Sound |
+|------------------|--------------|---------------|-------------|
+| Android          | - [x]        | - [x]         | - [x]       |
+| iOS              | - [x]        | - [x]         | - [x]       |
+| macOS            | - [x]        | - [x]         | - [x]       |
+| watchOS          |              | - [x]         | - [x]       |
+| tvOS             |              | - [x]         | - [x]       |
+| nodeJS           |              | - [x]         | - [x]       |
+| jsBrowser        |              | - [x]         | - [x]       |
+| wasmJsBrowser    |              | - [x]         |             |
+| JVM              |              | - [x]         |             |
+| Linux            |              | - [x]         |             |
+| Windows          |              | - [x]         |             |
 
 ## Documentation
+* [Basic-Images](basic-images/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
 * [Basic-Logging](basic-logging/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
 * [Basic-Sound](basic-sound/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
 

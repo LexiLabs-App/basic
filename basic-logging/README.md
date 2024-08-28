@@ -1,21 +1,21 @@
 # Basic-Logging
-<img src="../docs/images/basic.png" alt="basic" height="240" align="right""/> 
+<img src="../docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
 [Basic-Logging](#basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
 
 A Kotlin Multiplatform library to rapidly add logging to any project.
 
-![badge-android](http://img.shields.io/badge/android-fully_supported-65c663.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/ios-fully_supported-65c663.svg?style=flat)
-![badge-mac](http://img.shields.io/badge/macos-fully_supported-65c663.svg?style=flat)
-![badge-watchos](http://img.shields.io/badge/watchos-fully_supported-65c663.svg?style=flat)
-![badge-tvos](http://img.shields.io/badge/tvos-fully_supported-65c663.svg?style=flat)
-![badge-nodejs](https://img.shields.io/badge/jsNode-fully_supported-65c663.svg?style=flat)
-![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-fully_supported-65c663.svg?style=flat)
-![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-fully_supported-65c663.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/jvm-fully_supported-65c663.svg?style=flat)
-![badge-linux](http://img.shields.io/badge/linux-fully_supported-65c663.svg?style=flat)
-![badge-windows](http://img.shields.io/badge/windows-fully_supported-65c663.svg?style=flat)
+![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
+![badge-mac](http://img.shields.io/badge/macos-full_support-65c663.svg?style=flat)
+![badge-watchos](http://img.shields.io/badge/watchos-full_support-65c663.svg?style=flat)
+![badge-tvos](http://img.shields.io/badge/tvos-full_support-65c663.svg?style=flat)
+![badge-nodejs](https://img.shields.io/badge/jsNode-full_support-65c663.svg?style=flat)
+![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-full_support-65c663.svg?style=flat)
+![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-full_support-65c663.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/jvm-full_support-65c663.svg?style=flat)
+![badge-linux](http://img.shields.io/badge/linux-full_support-65c663.svg?style=flat)
+![badge-windows](http://img.shields.io/badge/windows-full_support-65c663.svg?style=flat)
 
 ### How it works
 Basic-Logging uses platform-specific logging libraries to create console logs.
