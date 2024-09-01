@@ -57,18 +57,6 @@ val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS07
 val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
 ```
 
-Or you can initialize it asynchronously
-```kotlin
-val audio = Audio()
-audio.url = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
-DoSomethingElse()
-lifecycleScope.launch {
-    withContext(Dispatchers.IO) {
-        audio.load()
-    }
-}
-```
-
 You can play the audio separately from initializing the `Audio` object.
 ```kotlin
 val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
@@ -90,4 +78,43 @@ audio.play() // and replays it again upon execution
 You should release your audio when done to preserve memory:
 ```kotlin
 audio.release() // converts the audio instance to null
+```
+
+There are lots of options to load larger files asynchronously:
+```kotlin
+// Create empty Audio instance
+val audio = Audio()
+audio.url = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+// Begin collecting the state of audio
+val audioState by audioPlayer.audioState.collectAsState()
+// Begin loading the audio async
+lifecycleScope.launch {
+    withContext(Dispatchers.IO) {
+        audio.load()
+    }
+}
+
+DoSomethingElse() // do other stuff in the meantime
+
+Button(
+    onClick = {
+        when (audioState) {
+            is AudioState.NONE -> audioPlayer.load()
+            is AudioState.READY -> audioPlayer.play()
+            is AudioState.ERROR -> println((audioState as AudioState.ERROR).message)
+            is AudioState.PAUSED -> audioPlayer.play()
+            is AudioState.PLAYING -> audioPlayer.pause()
+            else -> { /** DO NOTHING **/ }
+        }
+    }
+) {
+    when (audioState) {
+        is AudioState.ERROR -> Text("Error")
+        AudioState.LOADING -> Text("Loading")
+        AudioState.NONE -> Text("None")
+        AudioState.READY -> Text("Ready")
+        AudioState.PAUSED -> Text("Paused")
+        AudioState.PLAYING -> Text("Playing")
+    }
+}
 ```
