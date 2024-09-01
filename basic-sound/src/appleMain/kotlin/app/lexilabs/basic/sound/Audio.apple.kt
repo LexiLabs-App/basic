@@ -6,13 +6,10 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import platform.AVFoundation.AVPlayer
-import platform.AVFoundation.AVPlayerItem
-import platform.AVFoundation.pause
-import platform.AVFoundation.play
-import platform.AVFoundation.seekToTime
-import platform.CoreMedia.CMTimeMake
+import platform.AVFAudio.AVAudioPlayer
+import platform.Foundation.NSData
 import platform.Foundation.NSURL
+import platform.Foundation.dataWithContentsOfURL
 
 /**
  * Play audio from a url ([String]).
@@ -24,13 +21,14 @@ import platform.Foundation.NSURL
  * ```
  */
 
+@OptIn(ExperimentalForeignApi::class)
 @ExperimentalBasicSound
 public actual class Audio actual constructor(): AudioBuilder {
 
     private val _audioState = MutableStateFlow<AudioState>(AudioState.NONE)
     public actual override val audioState: StateFlow<AudioState> = _audioState.asStateFlow()
 
-    private var player: AVPlayer? = null
+    private var player: AVAudioPlayer? = null
 
     public actual var url: String = ""
     public actual var autoPlay: Boolean = false
@@ -43,15 +41,18 @@ public actual class Audio actual constructor(): AudioBuilder {
 
     public actual override fun load() {
         _audioState.value = AudioState.LOADING
-        val nsUrl = NSURL.URLWithString(url)
-        nsUrl?.let { verifiedUrl ->
-            val playerItem = AVPlayerItem(uRL = verifiedUrl)
-            player = AVPlayer(playerItem = playerItem)
+//        val nsUrl = NSURL.URLWithString(url)
+//        nsUrl?.let { verifiedUrl ->
+//            val playerItem = AVPlayerItem(uRL = verifiedUrl)
+//            player = AVPlayer(playerItem = playerItem)
+            val url: NSURL = NSURL.URLWithString(url) ?: throw IllegalStateException("load:The URL provided was invalid")
+            val data: NSData = NSData.dataWithContentsOfURL(url) ?: throw IllegalStateException("load:NS failed to load URL as data")
+            player = AVAudioPlayer(data, error = null)
             _audioState.value = AudioState.READY
             if (autoPlay) {
                 play()
             }
-        }
+//        }
     }
 
     public actual override fun play() {
@@ -76,11 +77,11 @@ public actual class Audio actual constructor(): AudioBuilder {
         }
     }
 
-    @OptIn(ExperimentalForeignApi::class)
     public actual override fun stop() {
         try {
             player?.pause()
-            player?.seekToTime(CMTimeMake(value = 0, timescale = 1))
+//            player?.seekToTime(CMTimeMake(value = 0, timescale = 1))
+            player?.currentTime = 0.0
             _audioState.value = AudioState.READY
         } catch (e: Exception) {
             _audioState.value = AudioState.ERROR("stop: $e")
