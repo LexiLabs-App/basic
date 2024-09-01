@@ -36,7 +36,8 @@ Add your dependencies from Maven
 lexilabs-basic = "+" # gets the latest version
 
 [libraries]
-lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic"}
+lexilabs-basic-images = { module = "app.lexilabs.basic:basic-images", version.ref = "lexilabs-basic" }
+lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic" }
 lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref = "lexilabs-basic" }
 ```
 then include the library in your gradle build
@@ -44,6 +45,7 @@ then include the library in your gradle build
 // in your 'shared/build.gradle.kts' or 'composeApp/build.gradle.kts' file
 sourceSets {
     commonMain.dependencies {
+        implementation(libs.lexilabs.basic.images)
         implementation(libs.lexilabs.basic.logging)
         implementation(libs.lexilabs.basic.sound)
     }
