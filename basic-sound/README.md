@@ -19,16 +19,16 @@ Currently, this library only ingests URLs; objects and files on the local path a
 ![badge-windows](http://img.shields.io/badge/windows-no_support-red.svg?style=flat)
 
 ## Supported Filetypes
-| Format   | Android | iOS | javascript |                                                                      File / Container Types                                                                       |
-|----------|:-------:|:---:|:----------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| AAC LC   |   YES   | YES |     NO     | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
-| AMR-NB   |   YES   | NO  |     NO     |                                                                      3GPP (.3gp) AMR (.amr)                                                                       |
-| FLAC     |   YES   | NO  |     NO     |                                                           FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                           |
-| MIDI     |   YES   | NO  |     NO     |                                        Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                        |
-| MP3      |   YES   | YES |    YES     |                                             MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                              |
-| Opus     |   YES   | NO  |   MAYBE    |                                                                    Ogg (.ogg) Matroska (.mkv)                                                                     |
-| PCM/WAVE |   YES   | NO  |    YES     |                                                                            WAVE (.wav)                                                                            |
-| Vorbis   |   YES   | NO  |   MAYBE    |                                             Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                             |
+| Format    |      Android       |        iOS         |     javascript     | File / Container Types                                                                                                                                            |
+|:----------|:------------------:|:------------------:|:------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AAC LC    | :white_check_mark: | :white_check_mark: |        :x:         | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
+| AMR-NB    | :white_check_mark: |        :x:         |        :x:         | 3GPP (.3gp) AMR (.amr)                                                                                                                                            |
+| FLAC      | :white_check_mark: |        :x:         |        :x:         | FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                                                     |
+| MIDI      | :white_check_mark: |        :x:         |        :x:         | Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                                                               |
+| MP3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                                                                          |
+| Opus      | :white_check_mark: |        :x:         |  :question_mark:   | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
+| PCM/WAVE  | :white_check_mark: |        :x:         | :white_check_mark: | WAVE (.wav)                                                                                                                                                       |
+| Vorbis    | :white_check_mark: |        :x:         |  :question_mark:   | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
 
 ## Installation
 You'll need to add your maven dependency list
@@ -53,14 +53,14 @@ sourceSets {
 ## Usage
 You can initialize an `Audio` object with a URL
 ```kotlin
-val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
-val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
+val resource = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+val audio = Audio(resource, true) // AutoPlay is marked "true"
 ```
 
 You can play the audio separately from initializing the `Audio` object.
 ```kotlin
-val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
-val audio = Audio(audioUrl) // loads the audio file
+val resource = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+val audio = Audio(resource) // loads the audio file
 DoSomethingElse()
 audio.play() // plays the audio immediately upon execution
 ```
@@ -84,7 +84,7 @@ There are lots of options to load larger files asynchronously:
 ```kotlin
 // Create empty Audio instance
 val audio = Audio()
-audio.url = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+audio.resource = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
 // Begin collecting the state of audio
 val audioState by audioPlayer.audioState.collectAsState()
 // Begin loading the audio async
@@ -110,11 +110,11 @@ Button(
 ) {
     when (audioState) {
         is AudioState.ERROR -> Text("Error")
-        AudioState.LOADING -> Text("Loading")
-        AudioState.NONE -> Text("None")
-        AudioState.READY -> Text("Ready")
-        AudioState.PAUSED -> Text("Paused")
-        AudioState.PLAYING -> Text("Playing")
+        is AudioState.LOADING -> Text("Loading")
+        is AudioState.NONE -> Text("None")
+        is AudioState.READY -> Text("Ready")
+        is AudioState.PAUSED -> Text("Paused")
+        is AudioState.PLAYING -> Text("Playing")
     }
 }
 ```
