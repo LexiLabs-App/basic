@@ -28,11 +28,11 @@ public actual class Audio actual constructor(): AudioBuilder {
 
     private var mediaPlayer: MediaPlayer? = null
 
-    public actual var url: String = ""
+    public actual var resource: String = ""
     public actual var autoPlay: Boolean = false
 
-    public actual constructor(url: String, autoPlay: Boolean): this() {
-        this.url = url
+    public actual constructor(resource: String, autoPlay: Boolean): this() {
+        this.resource = resource
         this.autoPlay = autoPlay
         load()
     }
@@ -51,7 +51,7 @@ public actual class Audio actual constructor(): AudioBuilder {
     public actual override fun load() {
         _audioState.value = AudioState.LOADING
         mediaPlayer = MediaPlayer().apply {
-            setDataSource(url)
+            setDataSource(resource)
             prepareAsync()
             setOnPreparedListener {
                 // Ready to play

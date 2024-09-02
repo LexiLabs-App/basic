@@ -8,7 +8,7 @@ import org.w3c.dom.Audio
 @OptIn(ExperimentalBasicSound::class)
 public actual class Audio public actual constructor() : AudioBuilder {
 
-    public actual var url: String = ""
+    public actual var resource: String = ""
     public actual var autoPlay: Boolean = false
 
     private val _audioState = MutableStateFlow<AudioState>(AudioState.NONE)
@@ -16,8 +16,8 @@ public actual class Audio public actual constructor() : AudioBuilder {
 
     private var player: Audio? = null
 
-    public actual constructor(url: String, autoPlay: Boolean) : this() {
-        this.url = url
+    public actual constructor(resource: String, autoPlay: Boolean) : this() {
+        this.resource = resource
         this.autoPlay = autoPlay
         load()
     }
@@ -25,7 +25,7 @@ public actual class Audio public actual constructor() : AudioBuilder {
     actual override fun load() {
         _audioState.value = AudioState.LOADING
         try {
-            player = Audio(url)
+            player = Audio(resource)
             player?.oncanplaythrough?.let { _ ->
                 {
                     _audioState.value = AudioState.READY

@@ -24,9 +24,9 @@ import kotlinx.coroutines.flow.StateFlow
 public expect class Audio() {
 
     /**
-     * Play audio from a url ([String]).
+     * Play audio from a url or path ([String]).
      *
-     * @param url provides the link to the audio file online
+     * @param resource provides the link to the audio file online
      * @param autoPlay [play] after [AudioState.READY] is reached
      *
      * Example:
@@ -35,7 +35,7 @@ public expect class Audio() {
      * val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
      * ```
      */
-    public constructor(url: String, autoPlay: Boolean)
+    public constructor(resource: String, autoPlay: Boolean)
 
     /**
      * Provides the state of [Audio] after initialization
@@ -128,7 +128,7 @@ public expect class Audio() {
      * url = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
      * ```
      */
-    public var url: String
+    public var resource: String
 
     /**
      * If true, [Audio] runs [play] immediately after reaching [AudioState.READY]

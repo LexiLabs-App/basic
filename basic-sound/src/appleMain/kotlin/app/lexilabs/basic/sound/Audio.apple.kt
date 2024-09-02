@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import platform.AVFAudio.AVAudioPlayer
 import platform.Foundation.NSData
 import platform.Foundation.NSURL
+import platform.Foundation.dataWithContentsOfFile
 import platform.Foundation.dataWithContentsOfURL
 
 /**
@@ -30,29 +31,32 @@ public actual class Audio actual constructor(): AudioBuilder {
 
     private var player: AVAudioPlayer? = null
 
-    public actual var url: String = ""
+    public actual var resource: String = ""
     public actual var autoPlay: Boolean = false
 
-    public actual constructor(url: String, autoPlay: Boolean) : this() {
-        this.url = url
+    public actual constructor(resource: String, autoPlay: Boolean) : this() {
+        this.resource = resource
         this.autoPlay = autoPlay
         load()
     }
 
     public actual override fun load() {
         _audioState.value = AudioState.LOADING
-//        val nsUrl = NSURL.URLWithString(url)
-//        nsUrl?.let { verifiedUrl ->
-//            val playerItem = AVPlayerItem(uRL = verifiedUrl)
-//            player = AVPlayer(playerItem = playerItem)
-            val url: NSURL = NSURL.URLWithString(url) ?: throw IllegalStateException("load:The URL provided was invalid")
-            val data: NSData = NSData.dataWithContentsOfURL(url) ?: throw IllegalStateException("load:NS failed to load URL as data")
-            player = AVAudioPlayer(data, error = null)
-            _audioState.value = AudioState.READY
-            if (autoPlay) {
-                play()
-            }
-//        }
+        val data: NSData
+        if (resource.substring(0,4) == "http") {
+            val url: NSURL = NSURL.URLWithString(resource)
+                ?: throw IllegalStateException("load:The URL provided was invalid")
+            data = NSData.dataWithContentsOfURL(url)
+                ?: throw IllegalStateException("load:NS failed to load URL as data")
+        } else {
+            data = NSData.dataWithContentsOfFile(resource)
+                ?: throw IllegalStateException("load:The path provided was invalid")
+        }
+        player = AVAudioPlayer(data, error = null)
+        _audioState.value = AudioState.READY
+        if (autoPlay) {
+            play()
+        }
     }
 
     public actual override fun play() {
