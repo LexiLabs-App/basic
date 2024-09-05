@@ -26,9 +26,9 @@ Currently, this library only ingests URLs; objects and files on the local path a
 | FLAC      | :white_check_mark: |        :x:         |        :x:         | FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                                                     |
 | MIDI      | :white_check_mark: |        :x:         |        :x:         | Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                                                               |
 | MP3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                                                                          |
-| Opus      | :white_check_mark: |        :x:         |  :question_mark:   | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
+| Opus      | :white_check_mark: |        :x:         |     :question:     | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
 | PCM/WAVE  | :white_check_mark: |        :x:         | :white_check_mark: | WAVE (.wav)                                                                                                                                                       |
-| Vorbis    | :white_check_mark: |        :x:         |  :question_mark:   | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
+| Vorbis    | :white_check_mark: |        :x:         |     :question:     | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
 
 ## Installation
 You'll need to add your maven dependency list
