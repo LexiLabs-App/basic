@@ -5,23 +5,21 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/lexilabs-app/basic)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.20-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
-A Kotlin Multiplatform library to rapidly add basic features like logging and audio to any project in a small and fast way.
+A Kotlin Multiplatform library to rapidly add basic features like pictures, logging, and audio to any project in a small and fast way.
 
-## Current KMP Support
-
-| Operating System | Basic-Images       | Basic-Logging      | Basic-Sound        |
-|------------------|--------------------|--------------------|--------------------|
-| Android          | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| iOS              | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| macOS            | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| watchOS          |                    | :white_check_mark: | :white_check_mark: |
-| tvOS             |                    | :white_check_mark: | :white_check_mark: |
-| nodeJS           |                    | :white_check_mark: | :white_check_mark: |
-| jsBrowser        |                    | :white_check_mark: | :white_check_mark: |
-| wasmJsBrowser    |                    | :white_check_mark: |                    |
-| JVM              |                    | :white_check_mark: |                    |
-| Linux            |                    | :white_check_mark: |                    |
-| Windows          |                    | :white_check_mark: |                    |
+| Platforms     |     Basic-Images     |    Basic-Logging     |     Basic-Sound      |
+|:--------------|:--------------------:|:--------------------:|:--------------------:|
+| Android       |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |
+| iOS           |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |
+| macOS         |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |
+| watchOS       |                      |  :white_check_mark:  |  :white_check_mark:  |
+| tvOS          |                      |  :white_check_mark:  |  :white_check_mark:  |
+| nodeJS        |                      |  :white_check_mark:  |  :white_check_mark:  |
+| jsBrowser     |                      |  :white_check_mark:  |  :white_check_mark:  |
+| wasmJsBrowser |                      |  :white_check_mark:  |                      |
+| JVM           |                      |  :white_check_mark:  |                      |
+| Linux         |                      |  :white_check_mark:  |                      |
+| Windows       |                      |  :white_check_mark:  |                      |
 
 ## Documentation
 * [Basic-Images](basic-images/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
