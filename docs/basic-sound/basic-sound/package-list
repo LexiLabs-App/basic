@@ -10,8 +10,8 @@ $dokka.location:app.lexilabs.basic.sound/Audio/load/#/PointingToDeclaration/bas
 $dokka.location:app.lexilabs.basic.sound/Audio/pause/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/pause.html
 $dokka.location:app.lexilabs.basic.sound/Audio/play/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/play.html
 $dokka.location:app.lexilabs.basic.sound/Audio/release/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/release.html
+$dokka.location:app.lexilabs.basic.sound/Audio/resource/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/resource.html
 $dokka.location:app.lexilabs.basic.sound/Audio/stop/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/stop.html
-$dokka.location:app.lexilabs.basic.sound/Audio/url/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio/url.html
 $dokka.location:app.lexilabs.basic.sound/AudioBuilder///PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-builder/index.html
 $dokka.location:app.lexilabs.basic.sound/AudioBuilder/audioState/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-builder/audio-state.html
 $dokka.location:app.lexilabs.basic.sound/AudioBuilder/load/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-builder/load.html
