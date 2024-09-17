@@ -51,6 +51,7 @@ import app.lexilabs.basic.images.ImageLoader.load
  * @param placeholderEnabled Boolean value to determine if the image should be preceded by a
  * circular progress indicator while loading.
  */
+@ExperimentalBasicImages
 @Composable
 public fun BasicImage(
     path: BasicPath,
@@ -121,6 +122,7 @@ public fun BasicImage(
  * @param placeholderEnabled Boolean value to determine if the image should be preceded by a
  * circular progress indicator while loading.
  */
+@ExperimentalBasicImages
 @Composable
 public fun BasicImage(
     url: BasicUrl,
@@ -163,6 +165,7 @@ public fun BasicImage(
 /**
  * A composable that displays while waiting on a [BasicImage] to load.
  */
+@ExperimentalBasicImages
 @Composable
 public fun BasicImagePlaceHolder(
     modifier: Modifier = Modifier,

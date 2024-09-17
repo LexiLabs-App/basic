@@ -9,6 +9,7 @@ package app.lexilabs.basic.images
  * @property ImageState.SHOWING The [BasicImage] is displaying the bitmap
  * @property ImageState.ERROR An error has occurred
  */
+@ExperimentalBasicImages
 public sealed class ImageState {
 
     /**

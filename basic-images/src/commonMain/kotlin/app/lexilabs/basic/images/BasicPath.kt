@@ -10,6 +10,7 @@ package app.lexilabs.basic.images
  * println(path.toString())
  * ```
  */
+@ExperimentalBasicImages
 public class BasicPath(pathString: String) {
     private val path: String = pathString
 
