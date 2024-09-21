@@ -3,6 +3,7 @@ package app.lexilabs.basic.images
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.toComposeImageBitmap
 import app.lexilabs.basic.images.ImageLoader.load
+import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.allocArrayOf
 import kotlinx.cinterop.get
@@ -85,6 +86,7 @@ public actual object ImageLoader {
         return this@toImageBitmap.toNSData().toUIImage().toSkiaImage()?.toComposeImageBitmap()
     }
 
+    @OptIn(BetaInteropApi::class)
     private fun ByteArray.toNSData(): NSData {
         memScoped {
             return NSData.create(

@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
@@ -92,7 +91,7 @@ kotlin {
 //            implementation(libs.ktor.client.darwin)
 //            implementation(libs.ktor.client.ios)
 //        }
-        jvmMain.dependencies {}
+//        jvmMain.dependencies {}
 //        jsMain.dependencies {}
 //        wasmJsMain.dependencies {}
 //        linuxMain.dependencies {}
