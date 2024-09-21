@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
@@ -10,9 +11,6 @@ plugins {
     `maven-publish`
     signing
 }
-
-// THIS IS REQUIRED TO PREVENT the ":shared:testClasses" error
-//task("testClasses")
 
 kotlin {
 
@@ -29,11 +27,12 @@ kotlin {
         }
         binaries.executable()
     }
-//
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
 
     listOf(
         iosX64(), // mobile
@@ -73,6 +72,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.coroutines.test)
+            implementation(project(":basic-logging"))
         }
 
         androidMain.dependencies {
@@ -81,10 +81,8 @@ kotlin {
 
         appleMain.dependencies {  }
 
-//        jvmMain.dependencies {
-//            implementation(libs.kotlinx.coroutines.swing)
-//        }
-//
+//        jvmMain.dependencies {}
+
         jsMain.dependencies {}
 //
 //        linuxMain.dependencies {

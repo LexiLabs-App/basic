@@ -10,6 +10,7 @@ package app.lexilabs.basic.images
  * println(url.toString())
  * ```
  */
+@ExperimentalBasicImages
 public class BasicUrl(urlString: String) {
     private val url: String = urlString
 

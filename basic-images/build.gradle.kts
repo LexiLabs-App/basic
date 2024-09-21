@@ -17,8 +17,8 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-//    jvm()
-//
+    jvm()
+
 //    js {
 //        browser {
 //            webpackTask {
@@ -87,8 +87,13 @@ kotlin {
             implementation(libs.ktor.client.darwin)
             implementation(libs.ktor.client.ios)
         }
+//        tvosMain.dependencies {
+//            implementation(libs.ktor.client.darwin)
+//            implementation(libs.ktor.client.ios)
+//        }
 //        jvmMain.dependencies {}
 //        jsMain.dependencies {}
+//        wasmJsMain.dependencies {}
 //        linuxMain.dependencies {}
 //        mingwMain.dependencies {}
     }

@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 /**
  * Contains [load] functions for [BasicImage] that accepts both [BasicUrl] and [BasicPath] objects.
  */
+@ExperimentalBasicImages
 public expect object ImageLoader {
     /**
      * Downloads a PNG, JPEG, or WEBP file from an internet URL using a [BasicUrl] object, then provides the [ImageBitmap] file, if available.

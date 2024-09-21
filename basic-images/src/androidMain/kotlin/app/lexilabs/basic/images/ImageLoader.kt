@@ -10,6 +10,7 @@ import java.io.File
 /**
  * Contains [load] functions for [BasicImage] that accepts both [BasicUrl] and [BasicPath] objects.
  */
+@OptIn(ExperimentalBasicImages::class)
 public actual object ImageLoader {
 
     /**
@@ -23,9 +24,10 @@ public actual object ImageLoader {
      */
     public actual suspend fun load(url: BasicUrl): ImageBitmap? {
         var bitmap: ImageBitmap? = null
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             ImageClient(url.toString())?.let { bitmapByteArray ->
-                bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.size).asImageBitmap()
+                bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.size)
+                    .asImageBitmap()
             } ?: {
                 bitmap = null
             }
@@ -44,9 +46,10 @@ public actual object ImageLoader {
      */
     public actual suspend fun load(path: BasicPath): ImageBitmap? {
         var bitmap: ImageBitmap?
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             val bitmapByteArray = File(path.toString()).readBytes()
-            bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.size).asImageBitmap()
+            bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.size)
+                .asImageBitmap()
             return@withContext bitmap
         }
     }
