@@ -13,13 +13,13 @@ Currently, this library only ingests URLs; objects and files on the local path a
 ![badge-tvos](http://img.shields.io/badge/tvos-full_support-65c663.svg?style=flat)
 ![badge-nodejs](https://img.shields.io/badge/jsNode-full_support-65c663.svg?style=flat)
 ![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-full_support-65c663.svg?style=flat)
-![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-no_support-red.svg?style=flat)
+![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-full_support-65c663.svg?style=flat)
 ![badge-jvm](http://img.shields.io/badge/jvm-no_support-red.svg?style=flat)
 ![badge-linux](http://img.shields.io/badge/linux-no_support-red.svg?style=flat)
 ![badge-windows](http://img.shields.io/badge/windows-no_support-red.svg?style=flat)
 
 ## Supported Filetypes
-| Format    |      Android       |        iOS         |     javascript     | File / Container Types                                                                                                                                            |
+| Format    |      Android       |        iOS         | javascript / wasm  | File / Container Types                                                                                                                                            |
 |:----------|:------------------:|:------------------:|:------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AAC LC    | :white_check_mark: | :white_check_mark: |        :x:         | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
 | AMR-NB    | :white_check_mark: |        :x:         |        :x:         | 3GPP (.3gp) AMR (.amr)                                                                                                                                            |
