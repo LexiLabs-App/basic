@@ -2,7 +2,7 @@ package app.lexilabs.basic.images
 
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.toComposeImageBitmap
-import kotlinx.cinterop.BetaInteropApi
+import app.lexilabs.basic.images.ImageLoader.load
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.allocArrayOf
 import kotlinx.cinterop.get
@@ -35,7 +35,7 @@ import platform.UIKit.UIImage
 /**
  * Contains [load] functions for [BasicImage] that accepts both [BasicUrl] and [BasicPath] objects.
  */
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
+@OptIn(ExperimentalForeignApi::class, ExperimentalBasicImages::class)
 public actual object ImageLoader {
 
     /**
@@ -49,7 +49,7 @@ public actual object ImageLoader {
      */
     public actual suspend fun load(url: BasicUrl): ImageBitmap? {
         var bitmap: ImageBitmap? = null
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             ImageClient(url.toString())?.let { bitmapByteArray ->
                 bitmap = bitmapByteArray.toImageBitmap()
             } ?: {
@@ -70,7 +70,7 @@ public actual object ImageLoader {
      */
     public actual suspend fun load(path: BasicPath): ImageBitmap? {
         var bitmap: ImageBitmap? = null
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             getFileAsImageBitmap(path.toString())
         }
     }
@@ -87,8 +87,10 @@ public actual object ImageLoader {
 
     private fun ByteArray.toNSData(): NSData {
         memScoped {
-            return NSData.create(bytes = allocArrayOf(this@toNSData),
-                length = this@toNSData.size.toULong())
+            return NSData.create(
+                bytes = allocArrayOf(this@toNSData),
+                length = this@toNSData.size.toULong()
+            )
         }
     }
 

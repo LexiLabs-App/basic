@@ -1,11 +1,13 @@
 package app.lexilabs.basic.images
 
-import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.awt.image.BufferedImage
+import java.io.ByteArrayInputStream
 import java.io.File
+import javax.imageio.ImageIO
 
 /**
  * Contains [load] functions for [BasicImage] that accepts both [BasicUrl] and [BasicPath] objects.
@@ -26,8 +28,7 @@ public actual object ImageLoader {
         var bitmap: ImageBitmap? = null
         return withContext(Dispatchers.IO) {
             ImageClient(url.toString())?.let { bitmapByteArray ->
-                bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.size)
-                    .asImageBitmap()
+                bitmap = bitmapByteArray.toImageBitmap()
             } ?: {
                 bitmap = null
             }
@@ -45,12 +46,17 @@ public actual object ImageLoader {
      * ```
      */
     public actual suspend fun load(path: BasicPath): ImageBitmap? {
-        var bitmap: ImageBitmap?
         return withContext(Dispatchers.IO) {
             val bitmapByteArray = File(path.toString()).readBytes()
-            bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.size)
-                .asImageBitmap()
-            return@withContext bitmap
+            return@withContext bitmapByteArray.toImageBitmap()
         }
+    }
+
+    private fun ByteArray.toImageBitmap(): ImageBitmap {
+        // Convert ByteArray to BufferedImage
+        val inputStream = ByteArrayInputStream(this)
+        val bufferedImage: BufferedImage = ImageIO.read(inputStream)
+        // Convert BufferedImage to ImageBitmap
+        return bufferedImage.toComposeImageBitmap()
     }
 }

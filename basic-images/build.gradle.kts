@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
@@ -17,8 +18,8 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-//    jvm()
-//
+    jvm()
+
 //    js {
 //        browser {
 //            webpackTask {
@@ -87,8 +88,13 @@ kotlin {
             implementation(libs.ktor.client.darwin)
             implementation(libs.ktor.client.ios)
         }
-//        jvmMain.dependencies {}
+//        tvosMain.dependencies {
+//            implementation(libs.ktor.client.darwin)
+//            implementation(libs.ktor.client.ios)
+//        }
+        jvmMain.dependencies {}
 //        jsMain.dependencies {}
+//        wasmJsMain.dependencies {}
 //        linuxMain.dependencies {}
 //        mingwMain.dependencies {}
     }

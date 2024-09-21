@@ -34,7 +34,7 @@ import platform.Foundation.create
 /**
  * Contains [load] functions for [BasicImage] that accepts both [BasicUrl] and [BasicPath] objects.
  */
-@OptIn(ExperimentalForeignApi::class)
+@OptIn(ExperimentalForeignApi::class, ExperimentalBasicImages::class)
 public actual object ImageLoader {
 
     /**
@@ -48,7 +48,7 @@ public actual object ImageLoader {
      */
     public actual suspend fun load(url: BasicUrl): ImageBitmap? {
         var bitmap: ImageBitmap? = null
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             ImageClient(url.toString())?.let { bitmapByteArray ->
                 bitmap = bitmapByteArray.toImageBitmap()
             } ?: {
@@ -68,7 +68,7 @@ public actual object ImageLoader {
      * ```
      */
     public actual suspend fun load(path: BasicPath): ImageBitmap? {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             return@withContext getFileAsImageBitmap(filePath = path.toString())
         }
     }
@@ -86,8 +86,10 @@ public actual object ImageLoader {
     @OptIn(BetaInteropApi::class)
     private fun ByteArray.toNSData(): NSData {
         memScoped {
-            return NSData.create(bytes = allocArrayOf(this@toNSData),
-                length = this@toNSData.size.toULong())
+            return NSData.create(
+                bytes = allocArrayOf(this@toNSData),
+                length = this@toNSData.size.toULong()
+            )
         }
     }
 
