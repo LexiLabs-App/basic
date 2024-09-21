@@ -4,7 +4,7 @@
 [![Basic-Sound](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
 
 A Kotlin Multiplatform library to rapidly integrate audio across all your Kotlin Multiplatform apps.
-Currently, this library only ingests URLs; objects and files on the local path are not yet supported.
+Currently, this library only ingests URLs and local paths. Composable Resources are also possible, but may be finicky.
 
 ![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
