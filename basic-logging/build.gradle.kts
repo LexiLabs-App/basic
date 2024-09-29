@@ -114,7 +114,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 1 // was 24
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
