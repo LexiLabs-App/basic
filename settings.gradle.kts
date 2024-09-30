@@ -1,4 +1,5 @@
 rootProject.name = "Basic"
+include(":basic-ads")
 include(":basic-images")
 include(":basic-sound")
 include(":basic-logging")
