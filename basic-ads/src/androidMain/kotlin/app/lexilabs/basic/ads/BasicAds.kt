@@ -1,6 +1,7 @@
 package app.lexilabs.basic.ads
 
 import android.content.Context
+import androidx.annotation.MainThread
 import androidx.annotation.RequiresPermission
 
 public actual typealias AdError = com.google.android.gms.ads.AdError
@@ -12,6 +13,7 @@ public actual object BasicAds {
     public actual val errorDomain: String
         get() = com.google.android.gms.ads.MobileAds.ERROR_DOMAIN
 
+    @DependsOnGoogleMobileAds
     public actual var configuration: RequestConfiguration
         get() = com.google.android.gms.ads.MobileAds.getRequestConfiguration().toCommon()
         set(config) = com.google.android.gms.ads.MobileAds.setRequestConfiguration(config.toAndroid())
@@ -22,6 +24,7 @@ public actual object BasicAds {
     public actual val initialized: Boolean
         get() = com.google.android.gms.ads.MobileAds.getInitializationStatus()?.adapterStatusMap?.isNotEmpty() ?: false
 
+    @MainThread
     @RequiresPermission("android.permission.INTERNET")
     public actual fun initialize(context: Any?) {
         com.google.android.gms.ads.MobileAds.initialize(context as Context)
