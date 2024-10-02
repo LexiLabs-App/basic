@@ -1,7 +1,7 @@
 package app.lexilabs.basic.ads
 
+import androidx.annotation.MainThread
 import cocoapods.Google_Mobile_Ads_SDK.GADErrorDomain
-import cocoapods.Google_Mobile_Ads_SDK.GADInitializationStatus
 import cocoapods.Google_Mobile_Ads_SDK.GADMobileAds
 import cocoapods.Google_Mobile_Ads_SDK.GADPublisherPrivacyPersonalizationState
 import cocoapods.Google_Mobile_Ads_SDK.GADRequestConfiguration
@@ -10,14 +10,13 @@ import platform.Foundation.NSNumber
 
 //@OptIn(ExperimentalForeignApi::class)
 //public actual typealias InitializationStatus = GADInitializationStatus
-
+@OptIn(ExperimentalForeignApi::class)
 public actual object BasicAds {
 
-    @OptIn(ExperimentalForeignApi::class)
     public actual val errorDomain: String
         get() = GADErrorDomain
 
-    @OptIn(ExperimentalForeignApi::class)
+    @DependsOnGoogleMobileAds
     public actual var configuration: RequestConfiguration
         get() = GADMobileAds.sharedInstance().requestConfiguration().toCommon()
         set(config) { config.setConfigurationForIos() }
@@ -27,7 +26,9 @@ public actual object BasicAds {
     public actual val initialized: Boolean
         get() = TODO("Not yet implemented")
 
+    @MainThread
     public actual fun initialize(context: Any?) {
+        GADMobileAds.sharedInstance().startWithCompletionHandler(null)
     }
 
 //    @OptIn(ExperimentalForeignApi::class)
@@ -54,6 +55,7 @@ public actual object BasicAds {
     }
 }
 
+@DependsOnGoogleMobileAds
 @OptIn(ExperimentalForeignApi::class)
 private fun RequestConfiguration.setConfigurationForIos() {
     GADMobileAds.sharedInstance().requestConfiguration.let {
@@ -65,6 +67,7 @@ private fun RequestConfiguration.setConfigurationForIos() {
     }
 }
 
+@DependsOnGoogleMobileAds
 @OptIn(ExperimentalForeignApi::class)
 private fun GADRequestConfiguration.toCommon(): RequestConfiguration =
     RequestConfiguration(
@@ -75,8 +78,10 @@ private fun GADRequestConfiguration.toCommon(): RequestConfiguration =
         testDeviceIds = this.testDeviceIdentifiers?.map { it.toString() }
     )
 
+@DependsOnGoogleMobileAds
 private fun RequestConfiguration.PublisherPrivacyPersonalizationState.toIos(): GADPublisherPrivacyPersonalizationState =
     this.ordinal.toLong()
 
+@DependsOnGoogleMobileAds
 private fun GADPublisherPrivacyPersonalizationState.toCommon(): RequestConfiguration.PublisherPrivacyPersonalizationState =
     RequestConfiguration.PublisherPrivacyPersonalizationState.fromInt(this.toInt())

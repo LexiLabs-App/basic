@@ -1,5 +1,6 @@
 package app.lexilabs.basic.ads
 
+@DependsOnGoogleMobileAds
 public expect class AdSize public constructor(width: Int, height: Int) {
 
     public val width: Int

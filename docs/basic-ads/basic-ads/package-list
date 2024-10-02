@@ -43,6 +43,8 @@ $dokka.location:app.lexilabs.basic.ads/BasicAds/openDebugMenu/#kotlin.Any?#kotli
 $dokka.location:app.lexilabs.basic.ads/BasicAds/setAppMuted/#kotlin.Boolean/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-basic-ads/set-app-muted.html
 $dokka.location:app.lexilabs.basic.ads/BasicAds/setAppVolume/#kotlin.Float/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-basic-ads/set-app-volume.html
 $dokka.location:app.lexilabs.basic.ads/BasicAds/version/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-basic-ads/version.html
+$dokka.location:app.lexilabs.basic.ads/DependsOnGoogleMobileAds///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-depends-on-google-mobile-ads/index.html
+$dokka.location:app.lexilabs.basic.ads/ExperimentalBasicAds///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-experimental-basic-ads/index.html
 $dokka.location:app.lexilabs.basic.ads/RequestConfiguration.Companion///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-request-configuration/-companion/index.html
 $dokka.location:app.lexilabs.basic.ads/RequestConfiguration.Companion/MAX_AD_CONTENT_RATING_G/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-request-configuration/-companion/-m-a-x_-a-d_-c-o-n-t-e-n-t_-r-a-t-i-n-g_-g.html
 $dokka.location:app.lexilabs.basic.ads/RequestConfiguration.Companion/MAX_AD_CONTENT_RATING_MA/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-request-configuration/-companion/-m-a-x_-a-d_-c-o-n-t-e-n-t_-r-a-t-i-n-g_-m-a.html

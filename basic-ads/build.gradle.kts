@@ -64,10 +64,11 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.compose.foundation)
+            implementation(libs.annotations)
         }
         androidMain.dependencies {
             implementation(libs.compose.ui)
-            implementation(libs.google.play.services.ads)
+            api(libs.google.play.services.ads)
         }
         iosMain.dependencies {}
 //        jvmMain.dependencies {}

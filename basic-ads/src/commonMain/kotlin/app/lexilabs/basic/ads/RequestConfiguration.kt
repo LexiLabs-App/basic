@@ -1,5 +1,6 @@
 package app.lexilabs.basic.ads
 
+@DependsOnGoogleMobileAds
 public data class RequestConfiguration(
     val maxAdContentRating: String?,
     val publisherPrivacyPersonalizationState: PublisherPrivacyPersonalizationState,
