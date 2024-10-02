@@ -2,8 +2,7 @@ package app.lexilabs.basic.ads
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.interop.UIKitView
+import androidx.compose.ui.viewinterop.UIKitView
 import cocoapods.Google_Mobile_Ads_SDK.GADBannerView
 import cocoapods.Google_Mobile_Ads_SDK.GADRequest
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -23,8 +22,7 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
                 setAdUnitID(adId)
                 loadRequest(requestAd())
             }
-        },
-        modifier = Modifier
+        }
     )
 }
 

@@ -29,15 +29,15 @@ public actual class AdSize actual constructor(public actual val width: Int, publ
     }
     public fun toIos(): GADAdSize {
         return when(this) {
-            BANNER -> { GADAdSizeBanner }
-            FULL_BANNER -> { GADAdSizeFullBanner }
-            LARGE_BANNER -> { GADAdSizeLargeBanner }
-            LEADERBOARD -> { GADAdSizeLeaderboard }
-            MEDIUM_RECTANGLE -> { GADAdSizeMediumRectangle }
-            WIDE_SKYSCRAPER -> { GADAdSizeSkyscraper }
-            FLUID -> { GADAdSizeFluid }
-            INVALID -> { GADAdSizeInvalid }
-            else -> { GADAdSizeFluid }
+            BANNER -> GADAdSizeBanner
+            FULL_BANNER -> GADAdSizeFullBanner
+            LARGE_BANNER -> GADAdSizeLargeBanner
+            LEADERBOARD -> GADAdSizeLeaderboard
+            MEDIUM_RECTANGLE -> GADAdSizeMediumRectangle
+            WIDE_SKYSCRAPER -> GADAdSizeSkyscraper
+            FLUID -> GADAdSizeFluid
+            INVALID -> GADAdSizeInvalid
+            else -> GADAdSizeFluid
         }
     }
 }
