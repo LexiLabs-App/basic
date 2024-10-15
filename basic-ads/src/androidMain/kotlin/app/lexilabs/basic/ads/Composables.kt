@@ -9,11 +9,11 @@ import androidx.compose.ui.viewinterop.AndroidView
 
 @Composable
 public actual fun BannerAd(adId: String, adSize: AdSize) {
-    DisposableEffect(Unit) {
-        onDispose {
-            TODO()
-        }
-    }
+//    DisposableEffect(Unit) {
+//        onDispose {
+//            TODO()
+//        }
+//    }
     AndroidView(
         factory = { context ->
             val adView = AdView(context)
