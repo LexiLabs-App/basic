@@ -9,6 +9,8 @@ $dokka.location:app.lexilabs.basic.ads//RewardedInterstitialAd/#kotlin.String#ap
 $dokka.location:app.lexilabs.basic.ads//toAndroid/app.lexilabs.basic.ads.AdSize#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-android.html
 $dokka.location:app.lexilabs.basic.ads//toAndroid/app.lexilabs.basic.ads.RequestConfiguration#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-android.html
 $dokka.location:app.lexilabs.basic.ads//toAndroid/app.lexilabs.basic.ads.RequestConfiguration.PublisherPrivacyPersonalizationState#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-android.html
+$dokka.location:app.lexilabs.basic.ads//toCGRectCValue/app.lexilabs.basic.ads.AdSize#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-c-g-rect-c-value.html
+$dokka.location:app.lexilabs.basic.ads//toCGRectCValue/cocoapods.Google_Mobile_Ads_SDK.GADAdSize#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-c-g-rect-c-value.html
 $dokka.location:app.lexilabs.basic.ads//toCommon/cocoapods.Google_Mobile_Ads_SDK.GADAdSize#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-common.html
 $dokka.location:app.lexilabs.basic.ads//toCommon/com.google.android.gms.ads.AdSize#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-common.html
 $dokka.location:app.lexilabs.basic.ads//toCommon/com.google.android.gms.ads.RequestConfiguration#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-common.html

@@ -9,7 +9,10 @@ import cocoapods.Google_Mobile_Ads_SDK.GADAdSizeLargeBanner
 import cocoapods.Google_Mobile_Ads_SDK.GADAdSizeLeaderboard
 import cocoapods.Google_Mobile_Ads_SDK.GADAdSizeMediumRectangle
 import cocoapods.Google_Mobile_Ads_SDK.GADAdSizeSkyscraper
+import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi
+import platform.CoreGraphics.CGRect
+import platform.CoreGraphics.CGRectMake
 
 @OptIn(ExperimentalForeignApi::class)
 public actual class AdSize actual constructor(public actual val width: Int, public actual val height: Int) {
@@ -48,3 +51,23 @@ public fun GADAdSize.toCommon(): AdSize =
         width = this.size.width.toInt(),
         height = this.size.height.toInt()
     )
+
+@OptIn(ExperimentalForeignApi::class)
+public fun GADAdSize.toCGRectCValue(): CValue<CGRect> {
+    return CGRectMake(
+        x = 0.0,
+        y = 0.0,
+        width = this.size.width,
+        height = this.size.height
+    )
+}
+
+@OptIn(ExperimentalForeignApi::class)
+public fun AdSize.toCGRectCValue(): CValue<CGRect> {
+    return CGRectMake(
+        x = 0.0,
+        y = 0.0,
+        width = this.width.toDouble(),
+        height = this.height.toDouble()
+    )
+}
