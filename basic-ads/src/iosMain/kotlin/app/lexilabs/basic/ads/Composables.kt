@@ -2,6 +2,7 @@ package app.lexilabs.basic.ads
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.viewinterop.UIKitView
+import app.lexilabs.basic.logging.Log
 import cocoapods.Google_Mobile_Ads_SDK.GADBannerView
 import cocoapods.Google_Mobile_Ads_SDK.GADRequest
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -12,6 +13,7 @@ import platform.UIKit.UIView
 @OptIn(ExperimentalForeignApi::class)
 @Composable
 public actual fun BannerAd(adId: String, adSize: AdSize) {
+    Log.d("BannerAd", "starting")
 //    DisposableEffect(Unit) {
 //        onDispose { TODO() }
 //    }
@@ -21,10 +23,11 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
                 adUnitID = adId
                 rootViewController = UIApplication.sharedApplication.keyWindow?.rootViewController
                 if (rootViewController == null) {
-                    println("The BannerAd UIKitView rootController value is null")
+                    Log.d("BannerAd","rootController=null")
                 }
                 loadRequest(GADRequest())
             }
+            Log.d("BannerAd","finished")
             bannerView
         },
     )
