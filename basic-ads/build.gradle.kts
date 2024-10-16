@@ -65,6 +65,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.compose.foundation)
             implementation(libs.annotations)
+            implementation(project(":basic-logging"))
         }
         androidMain.dependencies {
             implementation(libs.compose.ui)
