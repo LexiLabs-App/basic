@@ -6,7 +6,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.viewinterop.AndroidView
 
 @RequiresPermission("android.permission.INTERNET")
-
 @Composable
 public actual fun BannerAd(adId: String, adSize: AdSize) {
 //    DisposableEffect(Unit) {
@@ -20,7 +19,7 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
             adView.apply {
                 setAdSize(adSize.toAndroid())
                 adUnitId = adId
-                loadAd(requestAd())
+                loadAd(AdLoader.requestAd())
             }
         }
     )
@@ -28,7 +27,7 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun InterstitialAd(adId: String, adSize: AdSize) { TODO() }
+public actual fun InterstitialAd(loadedAd: InterstitialAd) { TODO() }
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
@@ -41,5 +40,3 @@ public actual fun RewardedInterstitialAd(adId: String, adSize: AdSize) { TODO() 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
 public actual fun AppOpenAd(adId: String, adSize: AdSize) { TODO() }
-
-private fun requestAd() = com.google.android.gms.ads.AdRequest.Builder().build()
