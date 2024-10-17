@@ -7,7 +7,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.UIKitView
 import app.lexilabs.basic.logging.Log
 import cocoapods.Google_Mobile_Ads_SDK.GADBannerView
-import cocoapods.Google_Mobile_Ads_SDK.GADRequest
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.UIKit.UIApplication
 
@@ -26,7 +25,7 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
             val bannerView = GADBannerView(adSize.toCGRectCValue()).apply {
                 adUnitID = adId
                 this.rootViewController = viewController
-                loadRequest(GADRequest())
+                loadRequest(AdLoader.requestAd())
             }
             bannerView
         },
@@ -34,8 +33,9 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
     )
 }
 
+@OptIn(ExperimentalForeignApi::class)
 @Composable
-public actual fun InterstitialAd(adId: String, adSize: AdSize) { TODO() }
+public actual fun InterstitialAd(loadedAd: InterstitialAd) { TODO() }
 
 @Composable
 public actual fun RewardedAd(adId: String, adSize: AdSize) { TODO() }
