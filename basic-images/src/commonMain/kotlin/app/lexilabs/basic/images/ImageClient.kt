@@ -8,6 +8,8 @@ import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.utils.io.core.readBytes
+import io.ktor.utils.io.readRemaining
+import kotlinx.io.readByteArray
 
 /**
  * Gets and caches an image file by url[String] after [invoke] of [ImageClient] instance.
@@ -47,7 +49,7 @@ public object ImageClient {
                 200 -> {
                     /** OK **/
                     Log.d(TAG, "Response [${response.status.value}]: OK - $urlString")
-                    response.bodyAsChannel().readRemaining().readBytes()
+                    response.bodyAsChannel().readRemaining().readByteArray()
                 }
 
                 404 -> {
