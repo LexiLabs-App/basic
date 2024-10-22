@@ -1,12 +1,12 @@
 [versions]
-kotlin = "2.0.20"
-agp = "8.6.1"
+kotlin = "2.0.21"
+agp = "8.7.1"
 kotlinx-coroutines = "1.9.0"
 bcv = "0.16.3"
 serialization = "1.7.3"
 dokka = "1.9.20"
-compose = "1.6.11"
-ktor = "2.3.12"
+compose = "1.7.0"
+ktor = "3.0.0"
 
 [libraries]
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
