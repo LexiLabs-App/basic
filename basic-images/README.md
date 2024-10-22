@@ -1,9 +1,9 @@
-# Basic-Logging
+# Basic-Images
 <img src="../docs/images/basic.png" alt="basic" height="240" align="right"/> 
 
 [Basic-Images](https://basic.lexilabs.app/basic-images) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
 
-A Kotlin Multiplatform library to rapidly add logging to any project.
+A Kotlin Multiplatform library to rapidly add images to any project.
 
 ![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
