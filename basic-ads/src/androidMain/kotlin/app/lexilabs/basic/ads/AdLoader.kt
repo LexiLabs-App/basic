@@ -1,15 +1,17 @@
 package app.lexilabs.basic.ads
 
-import android.content.Context
+import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.annotation.RequiresPermission
 import app.lexilabs.basic.logging.Log
 
 public actual typealias AdRequest = com.google.android.gms.ads.AdRequest
-public typealias InterstitialAd = com.google.android.gms.ads.interstitial.InterstitialAd
 
-public actual object AdLoader {
+public actual class AdLoader {
 
-    public const val TAG: String = "AdLoader"
+    private val tag: String = "AdLoader"
+    private var interstitialAd: com.google.android.gms.ads.interstitial.InterstitialAd? = null
+    private var interstitialAdUnitId: String = ""
 
     @RequiresPermission("android.permission.INTERNET")
     public actual fun requestAd(): AdRequest =
@@ -17,66 +19,74 @@ public actual object AdLoader {
 
     @RequiresPermission("android.permission.INTERNET")
     public actual fun loadInterstitialAd(
-        context: Any?, adUnitId: String
-    ): InterstitialAd? {
-        var holder: com.google.android.gms.ads.interstitial.InterstitialAd? = null
+        activity: Any?,
+        adUnitId: String,
+        onLoaded: () -> Unit
+    ) {
+        interstitialAdUnitId = adUnitId
         com.google.android.gms.ads.interstitial.InterstitialAd
             .load(
-                context as Context,
+                activity as Activity,
                 adUnitId,
                 requestAd(),
                 object : com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: com.google.android.gms.ads.LoadAdError) {
-                Log.d(TAG, "loadInterstitialAd:failure:$adError")
+                super.onAdFailedToLoad(adError)
+                Log.d(tag, "loadInterstitialAd:failure:$adError")
             }
 
-            override fun onAdLoaded(interstitialAd: com.google.android.gms.ads.interstitial.InterstitialAd) {
-                Log.d(TAG, "loadInterstitialAd:success")
-                holder = interstitialAd
+            override fun onAdLoaded(ad: com.google.android.gms.ads.interstitial.InterstitialAd) {
+                super.onAdLoaded(ad)
+                Log.d(tag, "loadInterstitialAd:success")
+                interstitialAd = ad
+                onLoaded()
             }
         })
-        holder?.let {
-            holder = setFullScreenCallbacks(it)
-        }
-        return holder
     }
 
-    private fun setFullScreenCallbacks(
-        ad: com.google.android.gms.ads.interstitial.InterstitialAd
-    ): InterstitialAd? {
-
-        var holder: com.google.android.gms.ads.interstitial.InterstitialAd? = ad
-
-        holder?.fullScreenContentCallback =
-            object: com.google.android.gms.ads.FullScreenContentCallback() {
-
+    @SuppressLint("MissingPermission")
+    @RequiresPermission("android.permission.INTERNET")
+    public actual fun showInterstitialAd(activity: Any?, onDismissed: () -> Unit){
+        if (interstitialAd != null) {
+            interstitialAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
                 override fun onAdClicked() {
+                    super.onAdClicked()
                     // Called when a click is recorded for an ad.
-                    Log.d(TAG, "Ad was clicked.")
+                    Log.d(tag, "Ad was clicked.")
+                    loadInterstitialAd(activity, interstitialAdUnitId)
                 }
 
                 override fun onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent()
                     // Called when ad is dismissed.
-                    Log.d(TAG, "Ad dismissed fullscreen content.")
-                    holder = null
+                    Log.d(tag, "Ad dismissed fullscreen content.")
+                    interstitialAd = null
+                    loadInterstitialAd(activity, interstitialAdUnitId)
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
+                    super.onAdFailedToShowFullScreenContent(p0)
                     // Called when ad fails to show.
-                    Log.e(TAG, "Ad failed to show fullscreen content.")
-                    holder = null
+                    Log.e(tag, "Ad failed to show fullscreen content.")
+                    interstitialAd = null
                 }
 
                 override fun onAdImpression() {
+                    super.onAdImpression()
                     // Called when an impression is recorded for an ad.
-                    Log.d(TAG, "Ad recorded an impression.")
+                    Log.d(tag, "Ad recorded an impression.")
                 }
 
                 override fun onAdShowedFullScreenContent() {
+                    super.onAdShowedFullScreenContent()
                     // Called when ad is shown.
-                    Log.d(TAG, "Ad showed fullscreen content.")
+                    Log.d(tag, "Ad showed fullscreen content.")
                 }
             }
-        return holder
+            // CONTINUE
+            (interstitialAd as com.google.android.gms.ads.interstitial.InterstitialAd).show(activity as Activity)
+        } else {
+            Log.d(tag, "The interstitial ad wasn't ready yet.")
+        }
     }
 }

@@ -3,7 +3,7 @@ $dokka.linkExtension:html
 $dokka.location:app.lexilabs.basic.ads////PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/index.html
 $dokka.location:app.lexilabs.basic.ads//AppOpenAd/#kotlin.String#app.lexilabs.basic.ads.AdSize/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-app-open-ad.html
 $dokka.location:app.lexilabs.basic.ads//BannerAd/#kotlin.String#app.lexilabs.basic.ads.AdSize/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-banner-ad.html
-$dokka.location:app.lexilabs.basic.ads//InterstitialAd/#kotlin.String#app.lexilabs.basic.ads.AdSize/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-interstitial-ad.html
+$dokka.location:app.lexilabs.basic.ads//InterstitialAd/#kotlin.Any?#kotlin.String#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-interstitial-ad.html
 $dokka.location:app.lexilabs.basic.ads//RewardedAd/#kotlin.String#app.lexilabs.basic.ads.AdSize/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-rewarded-ad.html
 $dokka.location:app.lexilabs.basic.ads//RewardedInterstitialAd/#kotlin.String#app.lexilabs.basic.ads.AdSize/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-rewarded-interstitial-ad.html
 $dokka.location:app.lexilabs.basic.ads//toAndroid/app.lexilabs.basic.ads.AdSize#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-android.html
@@ -17,6 +17,12 @@ $dokka.location:app.lexilabs.basic.ads//toCommon/com.google.android.gms.ads.Requ
 $dokka.location:app.lexilabs.basic.ads//toCommon/com.google.android.gms.ads.RequestConfiguration.PublisherPrivacyPersonalizationState#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/to-common.html
 $dokka.location:app.lexilabs.basic.ads/AdError///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-error/index.html
 $dokka.location:app.lexilabs.basic.ads/AdError/AdError/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-error/-ad-error.html
+$dokka.location:app.lexilabs.basic.ads/AdLoader///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-loader/index.html
+$dokka.location:app.lexilabs.basic.ads/AdLoader/AdLoader/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-loader/-ad-loader.html
+$dokka.location:app.lexilabs.basic.ads/AdLoader/loadInterstitialAd/#kotlin.Any?#kotlin.String#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-loader/load-interstitial-ad.html
+$dokka.location:app.lexilabs.basic.ads/AdLoader/requestAd/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-loader/request-ad.html
+$dokka.location:app.lexilabs.basic.ads/AdLoader/showInterstitialAd/#kotlin.Any?#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-loader/show-interstitial-ad.html
+$dokka.location:app.lexilabs.basic.ads/AdRequest///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-request/index.html
 $dokka.location:app.lexilabs.basic.ads/AdSize.Companion///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/-companion/index.html
 $dokka.location:app.lexilabs.basic.ads/AdSize.Companion/AUTO_HEIGHT/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/-companion/-a-u-t-o_-h-e-i-g-h-t.html
 $dokka.location:app.lexilabs.basic.ads/AdSize.Companion/BANNER/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/-companion/-b-a-n-n-e-r.html

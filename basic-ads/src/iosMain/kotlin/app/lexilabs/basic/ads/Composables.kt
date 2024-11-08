@@ -25,7 +25,7 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
             val bannerView = GADBannerView(adSize.toCGRectCValue()).apply {
                 adUnitID = adId
                 this.rootViewController = viewController
-                loadRequest(AdLoader.requestAd())
+                loadRequest(AdLoader().requestAd())
             }
             bannerView
         },
@@ -33,9 +33,8 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
     )
 }
 
-@OptIn(ExperimentalForeignApi::class)
 @Composable
-public actual fun InterstitialAd(loadedAd: InterstitialAd) { TODO() }
+public actual fun InterstitialAd(context: Any?, adUnitId: String, onDismissed: () -> Unit) { TODO() }
 
 @Composable
 public actual fun RewardedAd(adId: String, adSize: AdSize) { TODO() }

@@ -2,7 +2,6 @@ package app.lexilabs.basic.ads
 
 import androidx.annotation.RequiresPermission
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.viewinterop.AndroidView
 
 @RequiresPermission("android.permission.INTERNET")
@@ -19,7 +18,7 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
             adView.apply {
                 setAdSize(adSize.toAndroid())
                 adUnitId = adId
-                loadAd(AdLoader.requestAd())
+                loadAd(AdLoader().requestAd())
             }
         }
     )
@@ -27,7 +26,16 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun InterstitialAd(loadedAd: InterstitialAd) { TODO() }
+public actual fun InterstitialAd(context: Any?, adUnitId: String, onDismissed: () -> Unit) {
+    val adLoader = AdLoader()
+    adLoader.loadInterstitialAd(
+        context,
+        adUnitId,
+        onLoaded = {
+            adLoader.showInterstitialAd(context, onDismissed)
+        }
+    )
+}
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
