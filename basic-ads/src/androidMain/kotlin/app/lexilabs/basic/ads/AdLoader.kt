@@ -14,6 +14,8 @@ public actual class AdLoader {
     private var interstitialAdUnitId: String = ""
     private var rewardedInterstitialAd: com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd? = null
     private var rewardedInterstitialAdUnitId: String = ""
+    private var rewardedAd: com.google.android.gms.ads.rewarded.RewardedAd? = null
+    private var rewardedAdUnitId: String = ""
 
     @RequiresPermission("android.permission.INTERNET")
     public actual fun requestAd(): AdRequest =
@@ -128,7 +130,7 @@ public actual class AdLoader {
                     super.onAdClicked()
                     // Called when a click is recorded for an ad.
                     Log.d(tag, "Ad was clicked.")
-                    loadInterstitialAd(activity, rewardedInterstitialAdUnitId)
+                    loadRewardedInterstitialAd(activity, rewardedInterstitialAdUnitId)
                 }
 
                 override fun onAdDismissedFullScreenContent() {
@@ -136,7 +138,7 @@ public actual class AdLoader {
                     // Called when ad is dismissed.
                     Log.d(tag, "Ad dismissed fullscreen content.")
                     rewardedInterstitialAd = null
-                    loadInterstitialAd(activity, rewardedInterstitialAdUnitId)
+                    loadRewardedInterstitialAd(activity, rewardedInterstitialAdUnitId)
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
@@ -160,6 +162,83 @@ public actual class AdLoader {
             }
             // CONTINUE
             (rewardedInterstitialAd as com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd).show(
+                activity as Activity
+            ) {
+                onRewardEarned()
+            }
+        } else {
+            Log.d(tag, "The rewarded interstitial ad wasn't ready yet.")
+        }
+    }
+
+    @RequiresPermission("android.permission.INTERNET")
+    public actual fun loadRewardedAd(
+        activity: Any?,
+        adUnitId: String,
+        onLoaded: () -> Unit
+    ) {
+        rewardedAdUnitId = adUnitId
+        com.google.android.gms.ads.rewarded.RewardedAd
+            .load(
+                activity as Activity,
+                adUnitId,
+                requestAd(),
+                object : com.google.android.gms.ads.rewarded.RewardedAdLoadCallback() {
+                    override fun onAdFailedToLoad(adError: com.google.android.gms.ads.LoadAdError) {
+                        super.onAdFailedToLoad(adError)
+                        Log.d(tag, "loadRewardedInterstitialAd:failure:$adError")
+                    }
+
+                    override fun onAdLoaded(ad: com.google.android.gms.ads.rewarded.RewardedAd) {
+                        super.onAdLoaded(ad)
+                        Log.d(tag, "loadRewardedInterstitialAd:success")
+                        rewardedAd = ad
+                        onLoaded()
+                    }
+                })
+    }
+
+    @SuppressLint("MissingPermission")
+    @RequiresPermission("android.permission.INTERNET")
+    public actual fun showRewardedAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit){
+        if (rewardedAd != null) {
+            rewardedAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
+                override fun onAdClicked() {
+                    super.onAdClicked()
+                    // Called when a click is recorded for an ad.
+                    Log.d(tag, "Ad was clicked.")
+                    loadRewardedAd(activity, rewardedAdUnitId)
+                }
+
+                override fun onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent()
+                    // Called when ad is dismissed.
+                    Log.d(tag, "Ad dismissed fullscreen content.")
+                    rewardedAd = null
+                    loadRewardedAd(activity, rewardedAdUnitId)
+                }
+
+                override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
+                    super.onAdFailedToShowFullScreenContent(p0)
+                    // Called when ad fails to show.
+                    Log.e(tag, "Ad failed to show fullscreen content.")
+                    rewardedAd = null
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+                    // Called when an impression is recorded for an ad.
+                    Log.d(tag, "Ad recorded an impression.")
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    super.onAdShowedFullScreenContent()
+                    // Called when ad is shown.
+                    Log.d(tag, "Ad showed fullscreen content.")
+                }
+            }
+            // CONTINUE
+            (rewardedAd as com.google.android.gms.ads.rewarded.RewardedAd).show(
                 activity as Activity
             ) {
                 onRewardEarned()

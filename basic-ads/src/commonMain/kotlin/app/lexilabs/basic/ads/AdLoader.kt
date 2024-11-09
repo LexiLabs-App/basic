@@ -8,4 +8,6 @@ public expect class AdLoader() {
     public fun showInterstitialAd(activity: Any?, onDismissed: () -> Unit = {})
     public fun loadRewardedInterstitialAd(activity: Any?, adUnitId: String, onLoaded: () -> Unit = {})
     public fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit = {}, onRewardEarned: () -> Unit = {})
+    public fun loadRewardedAd(activity: Any?, adUnitId: String, onLoaded: () -> Unit = {})
+    public fun showRewardedAd(activity: Any?, onDismissed: () -> Unit = {}, onRewardEarned: () -> Unit = {})
 }
