@@ -12,6 +12,8 @@ public actual class AdLoader {
     private val tag: String = "AdLoader"
     private var interstitialAd: com.google.android.gms.ads.interstitial.InterstitialAd? = null
     private var interstitialAdUnitId: String = ""
+    private var rewardedInterstitialAd: com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd? = null
+    private var rewardedInterstitialAdUnitId: String = ""
 
     @RequiresPermission("android.permission.INTERNET")
     public actual fun requestAd(): AdRequest =
@@ -87,6 +89,83 @@ public actual class AdLoader {
             (interstitialAd as com.google.android.gms.ads.interstitial.InterstitialAd).show(activity as Activity)
         } else {
             Log.d(tag, "The interstitial ad wasn't ready yet.")
+        }
+    }
+
+    @RequiresPermission("android.permission.INTERNET")
+    public actual fun loadRewardedInterstitialAd(
+        activity: Any?,
+        adUnitId: String,
+        onLoaded: () -> Unit
+    ) {
+        rewardedInterstitialAdUnitId = adUnitId
+        com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd
+            .load(
+                activity as Activity,
+                adUnitId,
+                requestAd(),
+                object : com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback() {
+                    override fun onAdFailedToLoad(adError: com.google.android.gms.ads.LoadAdError) {
+                        super.onAdFailedToLoad(adError)
+                        Log.d(tag, "loadRewardedInterstitialAd:failure:$adError")
+                    }
+
+                    override fun onAdLoaded(ad: com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd) {
+                        super.onAdLoaded(ad)
+                        Log.d(tag, "loadRewardedInterstitialAd:success")
+                        rewardedInterstitialAd = ad
+                        onLoaded()
+                    }
+                })
+    }
+
+    @SuppressLint("MissingPermission")
+    @RequiresPermission("android.permission.INTERNET")
+    public actual fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit){
+        if (rewardedInterstitialAd != null) {
+            rewardedInterstitialAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
+                override fun onAdClicked() {
+                    super.onAdClicked()
+                    // Called when a click is recorded for an ad.
+                    Log.d(tag, "Ad was clicked.")
+                    loadInterstitialAd(activity, rewardedInterstitialAdUnitId)
+                }
+
+                override fun onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent()
+                    // Called when ad is dismissed.
+                    Log.d(tag, "Ad dismissed fullscreen content.")
+                    rewardedInterstitialAd = null
+                    loadInterstitialAd(activity, rewardedInterstitialAdUnitId)
+                }
+
+                override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
+                    super.onAdFailedToShowFullScreenContent(p0)
+                    // Called when ad fails to show.
+                    Log.e(tag, "Ad failed to show fullscreen content.")
+                    rewardedInterstitialAd = null
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+                    // Called when an impression is recorded for an ad.
+                    Log.d(tag, "Ad recorded an impression.")
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    super.onAdShowedFullScreenContent()
+                    // Called when ad is shown.
+                    Log.d(tag, "Ad showed fullscreen content.")
+                }
+            }
+            // CONTINUE
+            (rewardedInterstitialAd as com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd).show(
+                activity as Activity
+            ) {
+                onRewardEarned()
+            }
+        } else {
+            Log.d(tag, "The rewarded interstitial ad wasn't ready yet.")
         }
     }
 }

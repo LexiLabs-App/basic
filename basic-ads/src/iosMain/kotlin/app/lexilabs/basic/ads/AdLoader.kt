@@ -14,4 +14,8 @@ public actual class AdLoader {
     public actual fun loadInterstitialAd(activity: Any?, adUnitId: String, onLoaded: () -> Unit) { TODO() }
 
     public actual fun showInterstitialAd(activity: Any?, onDismissed: () -> Unit){ TODO() }
+
+    public actual fun loadRewardedInterstitialAd(activity: Any?, adUnitId: String, onLoaded: () -> Unit) { TODO() }
+
+    public actual fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit) { TODO() }
 }
