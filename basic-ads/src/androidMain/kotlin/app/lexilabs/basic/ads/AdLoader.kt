@@ -27,6 +27,7 @@ public actual class AdLoader {
         adUnitId: String,
         onLoaded: () -> Unit
     ) {
+        Log.d(tag, "loadInterstitialAd: Loading")
         interstitialAdUnitId = adUnitId
         com.google.android.gms.ads.interstitial.InterstitialAd
             .load(

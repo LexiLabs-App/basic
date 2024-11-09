@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.UIKitView
-import app.lexilabs.basic.logging.Log
 import cocoapods.Google_Mobile_Ads_SDK.GADBannerView
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.UIKit.UIApplication
@@ -13,10 +12,6 @@ import platform.UIKit.UIApplication
 @OptIn(ExperimentalForeignApi::class)
 @Composable
 public actual fun BannerAd(adId: String, adSize: AdSize) {
-    Log.d("BannerAd", "composable:starting")
-//    DisposableEffect(Unit) {
-//        onDispose { TODO() }
-//    }
     UIKitView(
         factory = {
             val viewController = UIApplication.sharedApplication.keyWindow?.rootViewController
@@ -34,13 +29,10 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
 }
 
 @Composable
-public actual fun InterstitialAd(context: Any?, adUnitId: String, onDismissed: () -> Unit) { TODO() }
+public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit) { TODO() }
 
 @Composable
-public actual fun RewardedAd(adId: String, adSize: AdSize) { TODO() }
+public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) { TODO() }
 
 @Composable
-public actual fun RewardedInterstitialAd(adId: String, adSize: AdSize) { TODO() }
-
-@Composable
-public actual fun AppOpenAd(adId: String, adSize: AdSize) { TODO() }
+public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) { TODO() }

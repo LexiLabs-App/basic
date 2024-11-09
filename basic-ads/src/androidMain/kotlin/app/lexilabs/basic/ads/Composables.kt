@@ -7,11 +7,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 @RequiresPermission("android.permission.INTERNET")
 @Composable
 public actual fun BannerAd(adId: String, adSize: AdSize) {
-//    DisposableEffect(Unit) {
-//        onDispose {
-//            TODO()
-//        }
-//    }
     AndroidView(
         factory = { context ->
             val adView = AdView(context)
@@ -26,25 +21,47 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun InterstitialAd(context: Any?, adUnitId: String, onDismissed: () -> Unit) {
+public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit) {
     val adLoader = AdLoader()
     adLoader.loadInterstitialAd(
-        context,
+        activity,
         adUnitId,
         onLoaded = {
-            adLoader.showInterstitialAd(context, onDismissed)
+            adLoader.showInterstitialAd(activity, onDismissed)
         }
     )
 }
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun RewardedAd(adId: String, adSize: AdSize) { TODO() }
+public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+    val adLoader = AdLoader()
+    adLoader.loadRewardedAd(
+        activity = activity,
+        adUnitId = adId,
+        onLoaded = {
+            adLoader.showRewardedAd(
+                activity = activity,
+                onDismissed = onDismissed,
+                onRewardEarned = onRewardEarned
+            )
+        }
+    )
+}
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun RewardedInterstitialAd(adId: String, adSize: AdSize) { TODO() }
-
-@RequiresPermission("android.permission.INTERNET")
-@Composable
-public actual fun AppOpenAd(adId: String, adSize: AdSize) { TODO() }
+public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+    val adLoader = AdLoader()
+    adLoader.loadRewardedInterstitialAd(
+        activity = activity,
+        adUnitId = adId,
+        onLoaded = {
+            adLoader.showRewardedInterstitialAd(
+                activity = activity,
+                onDismissed = onDismissed,
+                onRewardEarned = onRewardEarned
+            )
+        }
+    )
+}
