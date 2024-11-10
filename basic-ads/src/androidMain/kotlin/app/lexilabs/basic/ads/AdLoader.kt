@@ -52,7 +52,8 @@ public actual class AdLoader {
     @SuppressLint("MissingPermission")
     @RequiresPermission("android.permission.INTERNET")
     public actual fun showInterstitialAd(activity: Any?, onDismissed: () -> Unit){
-        if (interstitialAd != null) {
+//        if (interstitialAd != null) {
+        interstitialAd?.let {
             interstitialAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
                 override fun onAdClicked() {
                     super.onAdClicked()
@@ -90,9 +91,7 @@ public actual class AdLoader {
             }
             // CONTINUE
             (interstitialAd as com.google.android.gms.ads.interstitial.InterstitialAd).show(activity as Activity)
-        } else {
-            Log.d(tag, "The interstitial ad wasn't ready yet.")
-        }
+        } ?: Log.d(tag, "The interstitial ad wasn't ready yet.")
     }
 
     @RequiresPermission("android.permission.INTERNET")
@@ -125,7 +124,7 @@ public actual class AdLoader {
     @SuppressLint("MissingPermission")
     @RequiresPermission("android.permission.INTERNET")
     public actual fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit){
-        if (rewardedInterstitialAd != null) {
+        rewardedInterstitialAd?.let {
             rewardedInterstitialAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
                 override fun onAdClicked() {
                     super.onAdClicked()
@@ -167,9 +166,7 @@ public actual class AdLoader {
             ) {
                 onRewardEarned()
             }
-        } else {
-            Log.d(tag, "The rewarded interstitial ad wasn't ready yet.")
-        }
+        } ?: Log.d(tag, "The rewarded interstitial ad wasn't ready yet.")
     }
 
     @RequiresPermission("android.permission.INTERNET")
@@ -202,7 +199,7 @@ public actual class AdLoader {
     @SuppressLint("MissingPermission")
     @RequiresPermission("android.permission.INTERNET")
     public actual fun showRewardedAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit){
-        if (rewardedAd != null) {
+        rewardedAd?.let {
             rewardedAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
                 override fun onAdClicked() {
                     super.onAdClicked()
@@ -244,8 +241,6 @@ public actual class AdLoader {
             ) {
                 onRewardEarned()
             }
-        } else {
-            Log.d(tag, "The rewarded interstitial ad wasn't ready yet.")
-        }
+        } ?: Log.d(tag, "The rewarded interstitial ad wasn't ready yet.")
     }
 }
