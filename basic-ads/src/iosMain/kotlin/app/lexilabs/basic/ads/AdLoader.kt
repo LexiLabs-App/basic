@@ -70,35 +70,35 @@ public actual class AdLoader {
                     ad: GADFullScreenPresentingAdProtocol,
                     didFailToPresentFullScreenContentWithError: NSError
                 ) {
-                    super.ad(ad, didFailToPresentFullScreenContentWithError)
+                    // super.ad(ad, didFailToPresentFullScreenContentWithError)
                     Log.d(tag, "showInterstitialAd:ad called")
                 }
 
                 override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidDismissFullScreenContent(ad)
+                    // super.adDidDismissFullScreenContent(ad)
                     Log.d(tag, "showInterstitialAd:dismissed")
                     interstitialAd = null
                     onDismissed()
                 }
 
                 override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidRecordClick(ad)
+                    // super.adDidRecordClick(ad)
                     Log.d(tag, "showInterstitialAd:recorded click")
                 }
 
                 override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidRecordImpression(ad)
+                    // super.adDidRecordImpression(ad)
                     Log.d(tag, "showInterstitialAd:recorded impression")
 
                 }
 
                 override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adWillDismissFullScreenContent(ad)
+                    // super.adWillDismissFullScreenContent(ad)
                     Log.d(tag, "showInterstitialAd:will dismiss")
                 }
 
                 override fun adWillPresentFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adWillPresentFullScreenContent(ad)
+                    // super.adWillPresentFullScreenContent(ad)
                     Log.d(tag, "showInterstitialAd:will present content")
                 }
             }
@@ -138,35 +138,35 @@ public actual class AdLoader {
                     ad: GADFullScreenPresentingAdProtocol,
                     didFailToPresentFullScreenContentWithError: NSError
                 ) {
-                    super.ad(ad, didFailToPresentFullScreenContentWithError)
+                    // super.ad(ad, didFailToPresentFullScreenContentWithError)
                     Log.d(tag, "showRewardedInterstitialAd:ad called")
                 }
 
                 override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidDismissFullScreenContent(ad)
+                    // super.adDidDismissFullScreenContent(ad)
                     Log.d(tag, "showRewardedInterstitialAd:dismissed")
                     rewardedInterstitialAd = null
                     onDismissed()
                 }
 
                 override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidRecordClick(ad)
+                    // super.adDidRecordClick(ad)
                     Log.d(tag, "showRewardedInterstitialAd:recorded click")
                 }
 
                 override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidRecordImpression(ad)
+                    // super.adDidRecordImpression(ad)
                     Log.d(tag, "showRewardedInterstitialAd:recorded impression")
 
                 }
 
                 override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adWillDismissFullScreenContent(ad)
+                    // super.adWillDismissFullScreenContent(ad)
                     Log.d(tag, "showRewardedInterstitialAd:will dismiss")
                 }
 
                 override fun adWillPresentFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adWillPresentFullScreenContent(ad)
+                    // super.adWillPresentFullScreenContent(ad)
                     Log.d(tag, "showRewardedInterstitialAd:will present content")
                 }
             }
@@ -214,35 +214,35 @@ public actual class AdLoader {
                     ad: GADFullScreenPresentingAdProtocol,
                     didFailToPresentFullScreenContentWithError: NSError
                 ) {
-                    super.ad(ad, didFailToPresentFullScreenContentWithError)
+                    // super.ad(ad, didFailToPresentFullScreenContentWithError)
                     Log.d(tag, "showRewardedAd:ad called")
                 }
 
                 override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidDismissFullScreenContent(ad)
+                    // super.adDidDismissFullScreenContent(ad)
                     Log.d(tag, "showRewardedAd:dismissed")
                     rewardedAd = null
                     onDismissed()
                 }
 
                 override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidRecordClick(ad)
+                    // super.adDidRecordClick(ad)
                     Log.d(tag, "showRewardedAd:recorded click")
                 }
 
                 override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adDidRecordImpression(ad)
+                    // super.adDidRecordImpression(ad)
                     Log.d(tag, "showRewardedAd:recorded impression")
 
                 }
 
                 override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adWillDismissFullScreenContent(ad)
+                    // super.adWillDismissFullScreenContent(ad)
                     Log.d(tag, "showRewardedAd:will dismiss")
                 }
 
                 override fun adWillPresentFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
-                    super.adWillPresentFullScreenContent(ad)
+                    // super.adWillPresentFullScreenContent(ad)
                     Log.d(tag, "showRewardedAd:will present content")
                 }
             }
