@@ -27,7 +27,7 @@ public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: 
         activity,
         adUnitId,
         onLoaded = {
-            adLoader.showInterstitialAd(activity, onDismissed)
+            adLoader.showInterstitialAd(activity) { onDismissed() }
         }
     )
 }
@@ -42,8 +42,8 @@ public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Un
         onLoaded = {
             adLoader.showRewardedAd(
                 activity = activity,
-                onDismissed = onDismissed,
-                onRewardEarned = onRewardEarned
+                onDismissed = { onDismissed() },
+                onRewardEarned = { onRewardEarned() }
             )
         }
     )
@@ -59,8 +59,8 @@ public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismiss
         onLoaded = {
             adLoader.showRewardedInterstitialAd(
                 activity = activity,
-                onDismissed = onDismissed,
-                onRewardEarned = onRewardEarned
+                onDismissed = { onDismissed() },
+                onRewardEarned = { onRewardEarned() }
             )
         }
     )

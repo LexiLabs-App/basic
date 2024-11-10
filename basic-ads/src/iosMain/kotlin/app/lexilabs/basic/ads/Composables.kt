@@ -29,10 +29,45 @@ public actual fun BannerAd(adId: String, adSize: AdSize) {
 }
 
 @Composable
-public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit) { TODO() }
+public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit) {
+    val adLoader = AdLoader()
+    adLoader.loadInterstitialAd(
+        activity,
+        adUnitId,
+        onLoaded = {
+            adLoader.showInterstitialAd(activity) { onDismissed() }
+        }
+    )
+}
 
 @Composable
-public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) { TODO() }
+public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+    val adLoader = AdLoader()
+    adLoader.loadRewardedAd(
+        activity = activity,
+        adUnitId = adId,
+        onLoaded = {
+            adLoader.showRewardedAd(
+                activity = activity,
+                onDismissed = { onDismissed() },
+                onRewardEarned = { onRewardEarned() }
+            )
+        }
+    )
+}
 
 @Composable
-public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) { TODO() }
+public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+    val adLoader = AdLoader()
+    adLoader.loadRewardedInterstitialAd(
+        activity = activity,
+        adUnitId = adId,
+        onLoaded = {
+            adLoader.showRewardedInterstitialAd(
+                activity = activity,
+                onDismissed = { onDismissed() },
+                onRewardEarned = { onRewardEarned() }
+            )
+        }
+    )
+}
