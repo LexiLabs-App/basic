@@ -44,7 +44,7 @@ $dokka.location:app.lexilabs.basic.ads/AdSize/height/#/PointingToDeclaration/ba
 $dokka.location:app.lexilabs.basic.ads/AdSize/toIos/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/to-ios.html
 $dokka.location:app.lexilabs.basic.ads/AdSize/width/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/width.html
 $dokka.location:app.lexilabs.basic.ads/AdUnitId///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/index.html
-$dokka.location:app.lexilabs.basic.ads/AdUnitId/autoSelect/#kotlin.String?#kotlin.String?#kotlin.String?/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/auto-select.html
+$dokka.location:app.lexilabs.basic.ads/AdUnitId/autoSelect/#kotlin.String?#kotlin.String?/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/auto-select.html
 $dokka.location:app.lexilabs.basic.ads/AdView///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-view/index.html
 $dokka.location:app.lexilabs.basic.ads/BasicAds///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-basic-ads/index.html
 $dokka.location:app.lexilabs.basic.ads/BasicAds/configuration/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-basic-ads/configuration.html

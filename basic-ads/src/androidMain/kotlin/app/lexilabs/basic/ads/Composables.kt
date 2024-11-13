@@ -11,9 +11,9 @@ public actual fun BannerAd(adUnitId: String, adSize: AdSize) {
         factory = { context ->
             val adView = AdView(context)
             adView.apply {
-                setAdSize(adSize.toAndroid())
-                adUnitId = adUnitId
-                loadAd(AdLoader().requestAd())
+                this.setAdSize(adSize.toAndroid())
+                this.adUnitId = adUnitId
+                this.loadAd(AdLoader().requestAd())
             }
         }
     )
