@@ -1,5 +1,16 @@
 package app.lexilabs.basic.ads
 
+/**
+ * Sets the initial configuration of your AdMob instance for Android, iOS, and Javascript
+ * @param maxAdContentRating The maximum content rating of the ads you wish to display
+ * @param publisherPrivacyPersonalizationState The privacy level of the ads
+ * @param tagForChildDirectedTreatment Should ads be appropriate for children
+ * @param tagForUnderAgeOfConsent Should ads be limited to content for children under the age of consent
+ * @param testDeviceIds A [List] of id [String] for testing devices
+ * @see BasicAds.initialize
+ * @see BasicAds.configuration
+ * @see DependsOnGoogleMobileAds
+ */
 @DependsOnGoogleMobileAds
 public data class RequestConfiguration(
     val maxAdContentRating: String?,

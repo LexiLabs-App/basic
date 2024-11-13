@@ -6,13 +6,13 @@ import androidx.compose.ui.viewinterop.AndroidView
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun BannerAd(adId: String, adSize: AdSize) {
+public actual fun BannerAd(adUnitId: String, adSize: AdSize) {
     AndroidView(
         factory = { context ->
             val adView = AdView(context)
             adView.apply {
                 setAdSize(adSize.toAndroid())
-                adUnitId = adId
+                adUnitId = adUnitId
                 loadAd(AdLoader().requestAd())
             }
         }
@@ -34,11 +34,11 @@ public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: 
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+public actual fun RewardedAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
     val adLoader = AdLoader()
     adLoader.loadRewardedAd(
         activity = activity,
-        adUnitId = adId,
+        adUnitId = adUnitId,
         onLoaded = {
             adLoader.showRewardedAd(
                 activity = activity,
@@ -51,11 +51,11 @@ public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Un
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+public actual fun RewardedInterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
     val adLoader = AdLoader()
     adLoader.loadRewardedInterstitialAd(
         activity = activity,
-        adUnitId = adId,
+        adUnitId = adUnitId,
         onLoaded = {
             adLoader.showRewardedInterstitialAd(
                 activity = activity,

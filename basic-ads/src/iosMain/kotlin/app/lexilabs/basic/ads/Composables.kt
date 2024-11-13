@@ -11,14 +11,14 @@ import platform.UIKit.UIApplication
 
 @OptIn(ExperimentalForeignApi::class)
 @Composable
-public actual fun BannerAd(adId: String, adSize: AdSize) {
+public actual fun BannerAd(adUnitId: String, adSize: AdSize) {
     UIKitView(
         factory = {
             val viewController = UIApplication.sharedApplication.keyWindow?.rootViewController
             checkNotNull(viewController) { "Root ViewController is null" }
 
             val bannerView = GADBannerView(adSize.toCGRectCValue()).apply {
-                adUnitID = adId
+                adUnitID = adUnitId
                 this.rootViewController = viewController
                 loadRequest(AdLoader().requestAd())
             }
@@ -41,11 +41,11 @@ public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: 
 }
 
 @Composable
-public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+public actual fun RewardedAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
     val adLoader = AdLoader()
     adLoader.loadRewardedAd(
         activity = activity,
-        adUnitId = adId,
+        adUnitId = adUnitId,
         onLoaded = {
             adLoader.showRewardedAd(
                 activity = activity,
@@ -57,11 +57,11 @@ public actual fun RewardedAd(activity: Any?, adId: String, onDismissed: () -> Un
 }
 
 @Composable
-public actual fun RewardedInterstitialAd(activity: Any?, adId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+public actual fun RewardedInterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
     val adLoader = AdLoader()
     adLoader.loadRewardedInterstitialAd(
         activity = activity,
-        adUnitId = adId,
+        adUnitId = adUnitId,
         onLoaded = {
             adLoader.showRewardedInterstitialAd(
                 activity = activity,
