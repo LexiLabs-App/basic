@@ -18,23 +18,6 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-//    jvm()
-//
-//    js {
-//        browser {
-//            webpackTask {
-//                mainOutputFileName = "shared.js"
-//            }
-//        }
-//        binaries.executable()
-//    }
-//
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
-
     listOf(
         iosX64(), // mobile
         iosArm64(), // mobile
@@ -69,12 +52,9 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.compose.ui)
-            api(libs.google.play.services.ads)
+            compileOnly(libs.google.play.services.ads)
         }
         iosMain.dependencies {}
-//        jvmMain.dependencies {}
-//        jsMain.dependencies {}
-//        wasmJsMain.dependencies {}
     }
 
     //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers

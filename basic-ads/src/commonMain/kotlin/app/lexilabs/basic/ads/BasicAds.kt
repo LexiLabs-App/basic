@@ -3,7 +3,7 @@ package app.lexilabs.basic.ads
 import androidx.annotation.MainThread
 
 /**
- * The main module for instantiating Android, iOS, and Javascript implementations of AdMob
+ * The main module for instantiating Android and iOS implementations of AdMob
  * @property errorDomain The domain name of which errors occur on
  * @property configuration The [RequestConfiguration] for the instantiation of AdMob
  * @property version The version of AdMob being used
@@ -45,7 +45,7 @@ public expect object BasicAds {
     public val initialized: Boolean
 
     /**
-     * The main function for instantiating Android, iOS, and Javascript implementations of AdMob.
+     * The main function for instantiating Android and iOS implementations of AdMob.
      * It is equivalent to Android's `MobileAds.Initialize(context)`.
      * @throws Exception when run outside the [MainThread]
      * @param context Android Context or null for iOS, passed in an [Any] variable
@@ -57,7 +57,7 @@ public expect object BasicAds {
 //    public fun getInitializationStatus(): InitializationStatus?
 
     /**
-     * I have no idea what this does, but its here and it works on Android, iOS, and Javascript
+     * I have no idea what this does, but its here and it works on Android and iOS
      * @param context Android Context or null for iOS, passed in an [Any] variable
      * @see DependsOnGoogleMobileAds
      * @see BasicAds

@@ -10,7 +10,6 @@ public expect object AdUnitId {
      * This function works for any ad type.
      * @param androidAdUnitId provide an AdUnitId [String] for Android implementation
      * @param iosAdUnitId provide an AdUnitId [String] for iOS implementation
-     * @param jsAdUnitId provide an AdUnitId [String] for Javascript implementation
      */
-    public fun autoSelect(androidAdUnitId: String? = null, iosAdUnitId: String? = null, jsAdUnitId: String? = null): String
+    public fun autoSelect(androidAdUnitId: String? = null, iosAdUnitId: String? = null): String
 }

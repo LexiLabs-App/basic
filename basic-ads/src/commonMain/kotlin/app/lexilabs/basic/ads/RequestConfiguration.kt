@@ -1,7 +1,7 @@
 package app.lexilabs.basic.ads
 
 /**
- * Sets the initial configuration of your AdMob instance for Android, iOS, and Javascript
+ * Sets the initial configuration of your AdMob instance for Android and iOS
  * @param maxAdContentRating The maximum content rating of the ads you wish to display
  * @param publisherPrivacyPersonalizationState The privacy level of the ads
  * @param tagForChildDirectedTreatment Should ads be appropriate for children
