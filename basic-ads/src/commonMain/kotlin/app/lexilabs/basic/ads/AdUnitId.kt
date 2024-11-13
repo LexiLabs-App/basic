@@ -12,4 +12,9 @@ public expect object AdUnitId {
      * @param iosAdUnitId provide an AdUnitId [String] for iOS implementation
      */
     public fun autoSelect(androidAdUnitId: String? = null, iosAdUnitId: String? = null): String
+
+    public val BANNER_DEFAULT: String
+    public val INTERSTITIAL_DEFAULT: String
+    public val REWARDED_INTERSTITIAL_DEFAULT: String
+    public val REWARDED_DEFAULT: String
 }
