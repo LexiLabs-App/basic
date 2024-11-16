@@ -50,7 +50,7 @@ sourceSets {
 }
 ```
 
-## Usage
+## `Audio()` Usage
 You can initialize an `Audio` object with a URL
 ```kotlin
 val resource = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
@@ -81,9 +81,10 @@ audio.release() // converts the audio instance to null
 ```
 
 There are lots of options to load larger files asynchronously:
+
 ```kotlin
 // Create empty Audio instance
-val audio = Audio()
+val audio: Audio = Audio()
 audio.resource = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
 // Begin collecting the state of audio
 val audioState by audioPlayer.audioState.collectAsState()
@@ -104,7 +105,9 @@ Button(
             is AudioState.ERROR -> println((audioState as AudioState.ERROR).message)
             is AudioState.PAUSED -> audioPlayer.play()
             is AudioState.PLAYING -> audioPlayer.pause()
-            else -> { /** DO NOTHING **/ }
+            else -> {
+                /** DO NOTHING **/
+            }
         }
     }
 ) {
@@ -115,6 +118,32 @@ Button(
         is AudioState.READY -> Text("Ready")
         is AudioState.PAUSED -> Text("Paused")
         is AudioState.PLAYING -> Text("Playing")
+        else -> { Text("Error") }
     }
 }
+```
+## `AudioByte` Usage
+AudioByte allows you to load audio to memory to play multiple times later without reloading -- sort of like a soundboard.
+You could make a callable class that is passed throughout the app so the sounds could be access in any context.
+If you need help creating a platformContext, [you're welcome to steal my method.]("https://medium.com/@robert.jamison/passing-android-context-in-kmp-jetpack-compose-8de5b5de7bdd")
+```kotlin
+// Your custom class built in commonMain
+class SoundBoard(platformContext: Any) {
+    // 
+    private val audioByte: AudioByte = AudioByte()
+    private val click: Any = audioByte.load(platformContext, Res.getUri("files/click.mp3"))
+    private val fanfare: Any = audioByte.load(platformContext, Res.getUri("files/fanfare.mp3"))
+
+    fun click() = audioByte.play(click)
+    fun fanfare() = audioByte.play(solveId)
+    fun release() = audioByte.release()
+}
+
+// create your class later
+val soundBoard = SoundBoard(myPlatformContext)
+// generate the sound whenever you like after
+soundBoard.click()
+// remember to release when you won't need the soundboard anymore.  
+// If you use the sound everywhere, you won't need to do this
+soundBoard.release()
 ```
