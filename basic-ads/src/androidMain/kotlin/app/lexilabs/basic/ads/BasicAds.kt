@@ -20,7 +20,6 @@ public actual object BasicAds {
 
     public actual val version: String = com.google.android.gms.ads.MobileAds.getVersion().toString()
 
-    // TODO: Verify that this works
     public actual val initialized: Boolean
         get() = com.google.android.gms.ads.MobileAds.getInitializationStatus()?.adapterStatusMap?.isNotEmpty() ?: false
 

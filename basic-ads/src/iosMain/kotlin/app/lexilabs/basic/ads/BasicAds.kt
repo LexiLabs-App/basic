@@ -5,7 +5,9 @@ import cocoapods.Google_Mobile_Ads_SDK.GADErrorDomain
 import cocoapods.Google_Mobile_Ads_SDK.GADMobileAds
 import cocoapods.Google_Mobile_Ads_SDK.GADPublisherPrivacyPersonalizationState
 import cocoapods.Google_Mobile_Ads_SDK.GADRequestConfiguration
+import cocoapods.Google_Mobile_Ads_SDK.GADVersionNumber
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.useContents
 import platform.Foundation.NSNumber
 
 //@OptIn(ExperimentalForeignApi::class)
@@ -21,10 +23,12 @@ public actual object BasicAds {
         get() = GADMobileAds.sharedInstance().requestConfiguration().toCommon()
         set(config) { config.setConfigurationForIos() }
 
-    public actual val version: String
-        get() = TODO("Not yet implemented")
-    public actual val initialized: Boolean
-        get() = TODO("Not yet implemented")
+    public actual val version: String = GADMobileAds.sharedInstance().versionNumber.useContents {
+        "$majorVersion.$minorVersion.$patchVersion"
+    }
+
+    public actual val initialized: Boolean =
+        GADMobileAds.sharedInstance().initializationStatus.adapterStatusesByClassName.isNotEmpty()
 
     @MainThread
     public actual fun initialize(context: Any?) {
