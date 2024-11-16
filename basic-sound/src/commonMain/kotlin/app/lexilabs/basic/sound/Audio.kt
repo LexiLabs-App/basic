@@ -1,5 +1,4 @@
 @file:Suppress("ConvertSecondaryConstructorToPrimary")
-// TODO: need to add the constructor for filepath in later versions
 
 package app.lexilabs.basic.sound
 

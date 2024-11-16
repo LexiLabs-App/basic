@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.multiplatform).apply(false)
     alias(libs.plugins.android.library).apply(false)
     alias(libs.plugins.kotlinx.serialization.plugin)
+    alias(libs.plugins.native.cocoapods)
     alias(libs.plugins.dokka)
 }
 
@@ -13,7 +14,7 @@ buildscript {
 
 allprojects {
     group = "app.lexilabs.basic"
-    version = "0.1.10"
+    version = "0.2.0"
 
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "maven-publish")
