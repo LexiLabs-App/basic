@@ -15,7 +15,7 @@ Basic-Ads uses the existing Android and iOS Google AdMob libraries to display ad
 For **Android**, complete the steps in AdMob's instructions:
 
 * [Configure your app](https://developers.google.com/admob/android/quick-start#import_the_mobile_ads_sdk)
-* 
+
 For **iOS**, complete the steps in AdMob's instructions:
 
 * [Import the Mobile Ads SDK](https://developers.google.com/admob/ios/quick-start#import_the_mobile_ads_sdk)
