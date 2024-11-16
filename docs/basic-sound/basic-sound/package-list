@@ -19,6 +19,15 @@ $dokka.location:app.lexilabs.basic.sound/AudioBuilder/pause/#/PointingToDeclarat
 $dokka.location:app.lexilabs.basic.sound/AudioBuilder/play/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-builder/play.html
 $dokka.location:app.lexilabs.basic.sound/AudioBuilder/release/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-builder/release.html
 $dokka.location:app.lexilabs.basic.sound/AudioBuilder/stop/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-builder/stop.html
+$dokka.location:app.lexilabs.basic.sound/AudioByte///PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte/index.html
+$dokka.location:app.lexilabs.basic.sound/AudioByte/AudioByte/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte/-audio-byte.html
+$dokka.location:app.lexilabs.basic.sound/AudioByte/load/#kotlin.Any#kotlin.String/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte/load.html
+$dokka.location:app.lexilabs.basic.sound/AudioByte/play/#kotlin.Any/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte/play.html
+$dokka.location:app.lexilabs.basic.sound/AudioByte/release/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte/release.html
+$dokka.location:app.lexilabs.basic.sound/AudioByteBuilder///PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte-builder/index.html
+$dokka.location:app.lexilabs.basic.sound/AudioByteBuilder/load/#kotlin.Any#kotlin.String/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte-builder/load.html
+$dokka.location:app.lexilabs.basic.sound/AudioByteBuilder/play/#kotlin.Any/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte-builder/play.html
+$dokka.location:app.lexilabs.basic.sound/AudioByteBuilder/release/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-byte-builder/release.html
 $dokka.location:app.lexilabs.basic.sound/AudioState.ERROR///PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-state/-e-r-r-o-r/index.html
 $dokka.location:app.lexilabs.basic.sound/AudioState.ERROR/ERROR/#kotlin.String/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-state/-e-r-r-o-r/-e-r-r-o-r.html
 $dokka.location:app.lexilabs.basic.sound/AudioState.ERROR/message/#/PointingToDeclaration/basic-sound/app.lexilabs.basic.sound/-audio-state/-e-r-r-o-r/message.html

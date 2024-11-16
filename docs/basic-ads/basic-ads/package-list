@@ -44,6 +44,10 @@ $dokka.location:app.lexilabs.basic.ads/AdSize/height/#/PointingToDeclaration/ba
 $dokka.location:app.lexilabs.basic.ads/AdSize/toIos/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/to-ios.html
 $dokka.location:app.lexilabs.basic.ads/AdSize/width/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-size/width.html
 $dokka.location:app.lexilabs.basic.ads/AdUnitId///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/index.html
+$dokka.location:app.lexilabs.basic.ads/AdUnitId/BANNER_DEFAULT/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/-b-a-n-n-e-r_-d-e-f-a-u-l-t.html
+$dokka.location:app.lexilabs.basic.ads/AdUnitId/INTERSTITIAL_DEFAULT/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/-i-n-t-e-r-s-t-i-t-i-a-l_-d-e-f-a-u-l-t.html
+$dokka.location:app.lexilabs.basic.ads/AdUnitId/REWARDED_DEFAULT/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/-r-e-w-a-r-d-e-d_-d-e-f-a-u-l-t.html
+$dokka.location:app.lexilabs.basic.ads/AdUnitId/REWARDED_INTERSTITIAL_DEFAULT/#/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/-r-e-w-a-r-d-e-d_-i-n-t-e-r-s-t-i-t-i-a-l_-d-e-f-a-u-l-t.html
 $dokka.location:app.lexilabs.basic.ads/AdUnitId/autoSelect/#kotlin.String?#kotlin.String?/PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-unit-id/auto-select.html
 $dokka.location:app.lexilabs.basic.ads/AdView///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-ad-view/index.html
 $dokka.location:app.lexilabs.basic.ads/BasicAds///PointingToDeclaration/basic-ads/app.lexilabs.basic.ads/-basic-ads/index.html
