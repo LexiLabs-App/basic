@@ -16,19 +16,21 @@ import androidx.compose.runtime.Composable
 
 /**
  * Loads and displays an Interstitial Ad using a [Composable].
+ * @param activity the current Activity (only needed for Android Impl)
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param onDismissed Lambda that executes when the user closes the ad
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
 @Composable public expect fun InterstitialAd(
-    activity: Any? = null,
+    activity: Any?,
     adUnitId: String = AdUnitId.INTERSTITIAL_DEFAULT,
     onDismissed: () -> Unit = {}
 )
 
 /**
  * Loads and displays a Rewarded Ad using a [Composable].
+ * @param activity the current Activity (only needed for Android Impl)
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param onDismissed Lambda that executes when the user closes the ad
  * @param onRewardEarned Lambda that executes when the user has earned an ad-related reward
@@ -36,7 +38,7 @@ import androidx.compose.runtime.Composable
  */
 @DependsOnGoogleMobileAds
 @Composable public expect fun RewardedAd(
-    activity: Any? = null,
+    activity: Any?,
     adUnitId: String = AdUnitId.REWARDED_DEFAULT,
     onDismissed: () -> Unit = {},
     onRewardEarned: () -> Unit = {}
@@ -44,6 +46,7 @@ import androidx.compose.runtime.Composable
 
 /**
  * Loads and displays a Rewarded Interstitial Ad using a [Composable].
+ * @param activity the current Activity (only needed for Android Impl)
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param onDismissed Lambda that executes when the user closes the ad
  * @param onRewardEarned Lambda that executes when the user has earned an ad-related reward
@@ -51,7 +54,7 @@ import androidx.compose.runtime.Composable
  */
 @DependsOnGoogleMobileAds
 @Composable public expect fun RewardedInterstitialAd(
-    activity: Any? = null,
+    activity: Any?,
     adUnitId: String = AdUnitId.REWARDED_INTERSTITIAL_DEFAULT,
     onDismissed: () -> Unit = {},
     onRewardEarned: () -> Unit = {}
