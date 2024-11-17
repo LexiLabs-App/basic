@@ -10,7 +10,8 @@ A Kotlin Multiplatform library to rapidly get Google AdMob running on Android an
 
 ### How it works
 Basic-Ads uses the existing Android and iOS Google AdMob libraries to display ads as `Composables`.
-A [full walkthrough](https://medium.com/@robert.jamison/composable-ads-f8795924aa0d) is available on my Medium Blog.
+A [full walkthrough](https://medium.com/@robert.jamison/composable-ads-f8795924aa0d) is available on my Medium Blog, 
+and there's also [an easy-start template](https://github.com/LexiLabs-App/Example-Basic-Ads).
 
 ## Preparation
 For **Android**, complete the steps in AdMob's instructions:
