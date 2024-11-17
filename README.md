@@ -1,5 +1,5 @@
 # Basic
-<img src="docs/images/basic.png" alt="basic" height="240" align="right"/> 
+<img src="docs/images/basic_240.png" alt="basic" style="margin-left: auto; margin-right: 0;"/> 
 
 ![GitHub License](https://img.shields.io/github/license/lexilabs-app/basic)
 ![GitHub Release Date](https://img.shields.io/github/release-date/lexilabs-app/basic)
@@ -22,10 +22,10 @@ A Kotlin Multiplatform library to rapidly add basic features like pictures, logg
 | Windows       |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: | :hourglass_flowing_sand: |
 
 ## Documentation
+* [Basic-Ads](basic-ads/README.md) [![MavenCentral](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
 * [Basic-Images](basic-images/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
 * [Basic-Logging](basic-logging/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
 * [Basic-Sound](basic-sound/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
-* [Basic-Ads](basic-ads/README.md) [![MavenCentral](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
 
 ## Quick Start
 Add your dependencies from Maven
@@ -35,10 +35,10 @@ Add your dependencies from Maven
 lexilabs-basic = "+" # gets the latest version
 
 [libraries]
-lexilabs-basic-images = { module = "app.lexilabs.basic:basic-images", version.ref = "lexilabs-basic" }
-lexilabs-basic-logging = { module = "app.lexilabs.basic:basic-logging", version.ref = "lexilabs-basic" }
-lexilabs-basic-sound = { module = "app.lexilabs.basic:basic-sound", version.ref = "lexilabs-basic" }
-lexilabs-basic-ads = { module = "app.lexilabs.basic:basic-ads", version.ref = "lexilabs-basic" }
+lexilabs-basic-ads = { group = "app.lexilabs.basic", name = "basic-ads", version.ref = "lexilabs-basic" }
+lexilabs-basic-images = { group = "app.lexilabs.basic", name = "basic-images", version.ref = "lexilabs-basic" }
+lexilabs-basic-logging = { group = "app.lexilabs.basic", name = "basic-logging", version.ref = "lexilabs-basic" }
+lexilabs-basic-sound = { group = "app.lexilabs.basic", name = "basic-sound", version.ref = "lexilabs-basic" }
 ```
 then include the library in your gradle build
 ```kotlin

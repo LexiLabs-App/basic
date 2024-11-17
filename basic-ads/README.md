@@ -3,7 +3,7 @@
 
 [Basic-Ads](https://basic.lexilabs.app/basic-ads) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
 
-A Kotlin Multiplatform library to rapidly get Gooble AdMob running on Android and iOS
+A Kotlin Multiplatform library to rapidly get Google AdMob running on Android and iOS
 
 ![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
