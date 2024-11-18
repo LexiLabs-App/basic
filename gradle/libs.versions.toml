@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.1.0-Beta1"# "2.0.20"
+kotlin = "2.1.0-RC"# "2.0.20"
 agp = "8.7.1"
 kotlinx-coroutines = "1.9.0"
 bcv = "0.16.3"
