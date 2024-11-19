@@ -19,13 +19,21 @@ import androidx.compose.runtime.Composable
  * @param activity the current Activity (only needed for Android Impl)
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param onDismissed Lambda that executes when the user closes the ad
+ * @param onShown Lambda expression that executes after the ad is presented
+ * @param onImpression Lambda expression that executes after the user has seen the ad
+ * @param onClick Lambda expression that executes after the user clicks the ad
+ * @param onFailure Lambda expression that executes after the ad fails to load or redirect
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
 @Composable public expect fun InterstitialAd(
     activity: Any?,
     adUnitId: String = AdUnitId.INTERSTITIAL_DEFAULT,
-    onDismissed: () -> Unit = {}
+    onDismissed: () -> Unit = {},
+    onShown: () -> Unit = {},
+    onImpression: () -> Unit = {},
+    onClick: () -> Unit = {},
+    onFailure: () -> Unit = {},
 )
 
 /**
@@ -34,6 +42,10 @@ import androidx.compose.runtime.Composable
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param onDismissed Lambda that executes when the user closes the ad
  * @param onRewardEarned Lambda that executes when the user has earned an ad-related reward
+ * @param onShown Lambda expression that executes after the ad is presented
+ * @param onImpression Lambda expression that executes after the user has seen the ad
+ * @param onClick Lambda expression that executes after the user clicks the ad
+ * @param onFailure Lambda expression that executes after the ad fails to load or redirect
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
@@ -41,7 +53,11 @@ import androidx.compose.runtime.Composable
     activity: Any?,
     adUnitId: String = AdUnitId.REWARDED_DEFAULT,
     onDismissed: () -> Unit = {},
-    onRewardEarned: () -> Unit = {}
+    onRewardEarned: () -> Unit = {},
+    onShown: () -> Unit = {},
+    onImpression: () -> Unit = {},
+    onClick: () -> Unit = {},
+    onFailure: () -> Unit = {},
 )
 
 /**
@@ -50,6 +66,10 @@ import androidx.compose.runtime.Composable
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param onDismissed Lambda that executes when the user closes the ad
  * @param onRewardEarned Lambda that executes when the user has earned an ad-related reward
+ * @param onShown Lambda expression that executes after the ad is presented
+ * @param onImpression Lambda expression that executes after the user has seen the ad
+ * @param onClick Lambda expression that executes after the user clicks the ad
+ * @param onFailure Lambda expression that executes after the ad fails to load or redirect
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
@@ -57,5 +77,9 @@ import androidx.compose.runtime.Composable
     activity: Any?,
     adUnitId: String = AdUnitId.REWARDED_INTERSTITIAL_DEFAULT,
     onDismissed: () -> Unit = {},
-    onRewardEarned: () -> Unit = {}
+    onRewardEarned: () -> Unit = {},
+    onShown: () -> Unit = {},
+    onImpression: () -> Unit = {},
+    onClick: () -> Unit = {},
+    onFailure: () -> Unit = {},
 )
