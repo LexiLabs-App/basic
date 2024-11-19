@@ -51,7 +51,14 @@ public actual class AdLoader {
 
     @SuppressLint("MissingPermission")
     @RequiresPermission("android.permission.INTERNET")
-    public actual fun showInterstitialAd(activity: Any?, onDismissed: () -> Unit){
+    public actual fun showInterstitialAd(
+        activity: Any?,
+        onDismissed: () -> Unit,
+        onShown: () -> Unit,
+        onImpression: () -> Unit,
+        onClick: () -> Unit,
+        onFailure: () -> Unit,
+    ){
 //        if (interstitialAd != null) {
         interstitialAd?.let {
             interstitialAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
@@ -60,6 +67,7 @@ public actual class AdLoader {
                     // Called when a click is recorded for an ad.
                     Log.d(tag, "Ad was clicked.")
                     loadInterstitialAd(activity, interstitialAdUnitId)
+                    onClick()
                 }
 
                 override fun onAdDismissedFullScreenContent() {
@@ -68,6 +76,7 @@ public actual class AdLoader {
                     Log.d(tag, "Ad dismissed fullscreen content.")
                     interstitialAd = null
                     loadInterstitialAd(activity, interstitialAdUnitId)
+                    onDismissed()
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
@@ -75,18 +84,21 @@ public actual class AdLoader {
                     // Called when ad fails to show.
                     Log.e(tag, "Ad failed to show fullscreen content.")
                     interstitialAd = null
+                    onFailure()
                 }
 
                 override fun onAdImpression() {
                     super.onAdImpression()
                     // Called when an impression is recorded for an ad.
                     Log.d(tag, "Ad recorded an impression.")
+                    onImpression()
                 }
 
                 override fun onAdShowedFullScreenContent() {
                     super.onAdShowedFullScreenContent()
                     // Called when ad is shown.
                     Log.d(tag, "Ad showed fullscreen content.")
+                    onShown()
                 }
             }
             // CONTINUE
@@ -123,7 +135,15 @@ public actual class AdLoader {
 
     @SuppressLint("MissingPermission")
     @RequiresPermission("android.permission.INTERNET")
-    public actual fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit){
+    public actual fun showRewardedInterstitialAd(
+        activity: Any?,
+        onRewardEarned: () -> Unit,
+        onDismissed: () -> Unit,
+        onShown: () -> Unit,
+        onImpression: () -> Unit,
+        onClick: () -> Unit,
+        onFailure: () -> Unit,
+    ){
         rewardedInterstitialAd?.let {
             rewardedInterstitialAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
                 override fun onAdClicked() {
@@ -131,6 +151,7 @@ public actual class AdLoader {
                     // Called when a click is recorded for an ad.
                     Log.d(tag, "Ad was clicked.")
                     loadRewardedInterstitialAd(activity, rewardedInterstitialAdUnitId)
+                    onClick()
                 }
 
                 override fun onAdDismissedFullScreenContent() {
@@ -139,6 +160,7 @@ public actual class AdLoader {
                     Log.d(tag, "Ad dismissed fullscreen content.")
                     rewardedInterstitialAd = null
                     loadRewardedInterstitialAd(activity, rewardedInterstitialAdUnitId)
+                    onDismissed()
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
@@ -146,18 +168,21 @@ public actual class AdLoader {
                     // Called when ad fails to show.
                     Log.e(tag, "Ad failed to show fullscreen content.")
                     rewardedInterstitialAd = null
+                    onFailure()
                 }
 
                 override fun onAdImpression() {
                     super.onAdImpression()
                     // Called when an impression is recorded for an ad.
                     Log.d(tag, "Ad recorded an impression.")
+                    onImpression()
                 }
 
                 override fun onAdShowedFullScreenContent() {
                     super.onAdShowedFullScreenContent()
                     // Called when ad is shown.
                     Log.d(tag, "Ad showed fullscreen content.")
+                    onShown()
                 }
             }
             // CONTINUE
@@ -198,7 +223,15 @@ public actual class AdLoader {
 
     @SuppressLint("MissingPermission")
     @RequiresPermission("android.permission.INTERNET")
-    public actual fun showRewardedAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit){
+    public actual fun showRewardedAd(
+        activity: Any?,
+        onRewardEarned: () -> Unit,
+        onDismissed: () -> Unit,
+        onShown: () -> Unit,
+        onImpression: () -> Unit,
+        onClick: () -> Unit,
+        onFailure: () -> Unit,
+    ){
         rewardedAd?.let {
             rewardedAd?.fullScreenContentCallback = object: com.google.android.gms.ads.FullScreenContentCallback() {
                 override fun onAdClicked() {
@@ -206,6 +239,7 @@ public actual class AdLoader {
                     // Called when a click is recorded for an ad.
                     Log.d(tag, "Ad was clicked.")
                     loadRewardedAd(activity, rewardedAdUnitId)
+                    onClick()
                 }
 
                 override fun onAdDismissedFullScreenContent() {
@@ -214,6 +248,7 @@ public actual class AdLoader {
                     Log.d(tag, "Ad dismissed fullscreen content.")
                     rewardedAd = null
                     loadRewardedAd(activity, rewardedAdUnitId)
+                    onDismissed()
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: com.google.android.gms.ads.AdError) {
@@ -221,18 +256,21 @@ public actual class AdLoader {
                     // Called when ad fails to show.
                     Log.e(tag, "Ad failed to show fullscreen content.")
                     rewardedAd = null
+                    onFailure()
                 }
 
                 override fun onAdImpression() {
                     super.onAdImpression()
                     // Called when an impression is recorded for an ad.
                     Log.d(tag, "Ad recorded an impression.")
+                    onImpression()
                 }
 
                 override fun onAdShowedFullScreenContent() {
                     super.onAdShowedFullScreenContent()
                     // Called when ad is shown.
                     Log.d(tag, "Ad showed fullscreen content.")
+                    onShown()
                 }
             }
             // CONTINUE

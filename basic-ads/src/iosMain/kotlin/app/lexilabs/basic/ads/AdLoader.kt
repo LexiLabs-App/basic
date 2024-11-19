@@ -59,7 +59,11 @@ public actual class AdLoader {
 
     public actual fun showInterstitialAd(
         activity: Any?, /* This variable is unused, but necessary for Android */
-        onDismissed: () -> Unit
+        onDismissed: () -> Unit,
+        onShown: () -> Unit,
+        onImpression: () -> Unit,
+        onClick: () -> Unit,
+        onFailure: () -> Unit,
     ){
         val viewController = UIApplication.sharedApplication.keyWindow?.rootViewController
         checkNotNull(viewController) { "Root ViewController is null" }
@@ -72,6 +76,7 @@ public actual class AdLoader {
                 ) {
                     // super.ad(ad, didFailToPresentFullScreenContentWithError)
                     Log.d(tag, "showInterstitialAd:ad called")
+                    onShown()
                 }
 
                 override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
@@ -84,12 +89,13 @@ public actual class AdLoader {
                 override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
                     // super.adDidRecordClick(ad)
                     Log.d(tag, "showInterstitialAd:recorded click")
+                    onClick()
                 }
 
                 override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
                     // super.adDidRecordImpression(ad)
                     Log.d(tag, "showInterstitialAd:recorded impression")
-
+                    onImpression()
                 }
 
                 override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
@@ -128,7 +134,15 @@ public actual class AdLoader {
         )
     }
 
-    public actual fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+    public actual fun showRewardedInterstitialAd(
+        activity: Any?, /* This variable is unused, but necessary for Android */
+        onRewardEarned: () -> Unit,
+        onDismissed: () -> Unit,
+        onShown: () -> Unit,
+        onImpression: () -> Unit,
+        onClick: () -> Unit,
+        onFailure: () -> Unit,
+    ) {
         val viewController = UIApplication.sharedApplication.keyWindow?.rootViewController
         checkNotNull(viewController) { "Root ViewController is null" }
 
@@ -140,6 +154,7 @@ public actual class AdLoader {
                 ) {
                     // super.ad(ad, didFailToPresentFullScreenContentWithError)
                     Log.d(tag, "showRewardedInterstitialAd:ad called")
+                    onShown()
                 }
 
                 override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
@@ -152,12 +167,13 @@ public actual class AdLoader {
                 override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
                     // super.adDidRecordClick(ad)
                     Log.d(tag, "showRewardedInterstitialAd:recorded click")
+                    onClick()
                 }
 
                 override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
                     // super.adDidRecordImpression(ad)
                     Log.d(tag, "showRewardedInterstitialAd:recorded impression")
-
+                    onImpression()
                 }
 
                 override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
@@ -204,7 +220,15 @@ public actual class AdLoader {
         )
     }
 
-    public actual fun showRewardedAd(activity: Any?, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+    public actual fun showRewardedAd(
+        activity: Any?, /* This variable is unused, but necessary for Android */
+        onRewardEarned: () -> Unit,
+        onDismissed: () -> Unit,
+        onShown: () -> Unit,
+        onImpression: () -> Unit,
+        onClick: () -> Unit,
+        onFailure: () -> Unit,
+    ) {
         val viewController = UIApplication.sharedApplication.keyWindow?.rootViewController
         checkNotNull(viewController) { "Root ViewController is null" }
 
@@ -216,6 +240,7 @@ public actual class AdLoader {
                 ) {
                     // super.ad(ad, didFailToPresentFullScreenContentWithError)
                     Log.d(tag, "showRewardedAd:ad called")
+                    onShown()
                 }
 
                 override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
@@ -228,12 +253,13 @@ public actual class AdLoader {
                 override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
                     // super.adDidRecordClick(ad)
                     Log.d(tag, "showRewardedAd:recorded click")
+                    onClick()
                 }
 
                 override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
                     // super.adDidRecordImpression(ad)
                     Log.d(tag, "showRewardedAd:recorded impression")
-
+                    onImpression()
                 }
 
                 override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
