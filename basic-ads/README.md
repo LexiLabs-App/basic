@@ -76,8 +76,8 @@ fun AdScreen() {
     BannerAd() // Results in a Test Banner Ad being created
     // You'll need to access your platform-specific Activity (Android) or null (iOS) to pass as an `Any?` argument
     InterstitialAd(activity) // Results in a Test Interstitial Ad being created
-    RewardedInterstitialAd(activity) // Results in a Test Rewarded Interstitial Ad (Beta) being created
-    RewardedAd(activity) // Results in a Test Rewarded Ad being created
+    RewardedInterstitialAd(activity, {} ) // Results in a Test Rewarded Interstitial Ad (Beta) being created
+    RewardedAd(activity, {}) // Results in a Test Rewarded Ad being created
 }
 ```
 
@@ -98,6 +98,18 @@ fun AdScreen() {
         },
         onRewardEarned = {
             playSomeCoolSound()
+        },
+        onShown = {
+            addValueToSomeCounter()
+        }, 
+        onImpression = {
+            addValueToSomeTracker()
+        }, 
+        onClick = {
+            incrementSomeValueSomewhere()
+        }, 
+        onFailure = {
+            runTheBackupOption()
         }
     )
 }

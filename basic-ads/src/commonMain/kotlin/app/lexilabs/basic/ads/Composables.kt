@@ -40,8 +40,8 @@ import androidx.compose.runtime.Composable
  * Loads and displays a Rewarded Ad using a [Composable].
  * @param activity the current Activity (only needed for Android Impl)
  * @param adUnitId Your AdMob AdUnitId [String]
- * @param onDismissed Lambda that executes when the user closes the ad
  * @param onRewardEarned Lambda that executes when the user has earned an ad-related reward
+ * @param onDismissed Lambda that executes when the user closes the ad
  * @param onShown Lambda expression that executes after the ad is presented
  * @param onImpression Lambda expression that executes after the user has seen the ad
  * @param onClick Lambda expression that executes after the user clicks the ad
@@ -52,8 +52,8 @@ import androidx.compose.runtime.Composable
 @Composable public expect fun RewardedAd(
     activity: Any?,
     adUnitId: String = AdUnitId.REWARDED_DEFAULT,
+    onRewardEarned: () -> Unit,
     onDismissed: () -> Unit = {},
-    onRewardEarned: () -> Unit = {},
     onShown: () -> Unit = {},
     onImpression: () -> Unit = {},
     onClick: () -> Unit = {},
@@ -64,8 +64,8 @@ import androidx.compose.runtime.Composable
  * Loads and displays a Rewarded Interstitial Ad using a [Composable].
  * @param activity the current Activity (only needed for Android Impl)
  * @param adUnitId Your AdMob AdUnitId [String]
- * @param onDismissed Lambda that executes when the user closes the ad
  * @param onRewardEarned Lambda that executes when the user has earned an ad-related reward
+ * @param onDismissed Lambda that executes when the user closes the ad
  * @param onShown Lambda expression that executes after the ad is presented
  * @param onImpression Lambda expression that executes after the user has seen the ad
  * @param onClick Lambda expression that executes after the user clicks the ad
@@ -76,8 +76,8 @@ import androidx.compose.runtime.Composable
 @Composable public expect fun RewardedInterstitialAd(
     activity: Any?,
     adUnitId: String = AdUnitId.REWARDED_INTERSTITIAL_DEFAULT,
+    onRewardEarned: () -> Unit,
     onDismissed: () -> Unit = {},
-    onRewardEarned: () -> Unit = {},
     onShown: () -> Unit = {},
     onImpression: () -> Unit = {},
     onClick: () -> Unit = {},

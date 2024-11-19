@@ -59,8 +59,8 @@ public actual fun InterstitialAd(
 public actual fun RewardedAd(
     activity: Any?,
     adUnitId: String,
-    onDismissed: () -> Unit,
     onRewardEarned: () -> Unit,
+    onDismissed: () -> Unit,
     onShown: () -> Unit,
     onImpression: () -> Unit,
     onClick: () -> Unit,
@@ -88,8 +88,8 @@ public actual fun RewardedAd(
 public actual fun RewardedInterstitialAd(
     activity: Any?,
     adUnitId: String,
-    onDismissed: () -> Unit,
     onRewardEarned: () -> Unit,
+    onDismissed: () -> Unit,
     onShown: () -> Unit,
     onImpression: () -> Unit,
     onClick: () -> Unit,
