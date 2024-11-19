@@ -35,6 +35,9 @@ kotlin {
     wasmJs {
         browser()
         binaries.executable()
+        compilerOptions {
+            freeCompilerArgs.add("-Xwasm-attach-js-exception")
+        }
     }
 
     listOf(
