@@ -44,10 +44,21 @@ public expect class AdLoader() {
      * As long as [loadInterstitialAd] is called from the same [AdLoader] instance, the ad will display.
      * @param activity Android Activity or iOS null value stored in an [Any] variable
      * @param onDismissed Lambda expression that executes when the user closes the ad
+     * @param onShown Lambda expression that executes after the ad is presented
+     * @param onImpression Lambda expression that executes after the user has seen the ad
+     * @param onClick Lambda expression that executes after the user clicks the ad
+     * @param onFailure Lambda expression that executes after the ad fails to load or redirect
      * @author rjamison@lexilabs.app
      * @see loadInterstitialAd
      */
-    public fun showInterstitialAd(activity: Any?, onDismissed: () -> Unit = {})
+    public fun showInterstitialAd(
+        activity: Any?,
+        onDismissed: () -> Unit = {},
+        onShown: () -> Unit = {},
+        onImpression: () -> Unit = {},
+        onClick: () -> Unit = {},
+        onFailure: () -> Unit = {},
+    )
 
     /**
      * Requests and loads a fullscreen AdMob ad and notifies load completion via [onLoaded] lambda.
@@ -70,10 +81,22 @@ public expect class AdLoader() {
      * @param activity Android Activity or iOS null value stored in an [Any] variable
      * @param onDismissed Lambda expression that executes when the user closes the ad
      * @param onRewardEarned Lambda expression that executes when the user earns a reward from the ad
+     * @param onShown Lambda expression that executes after the ad is presented
+     * @param onImpression Lambda expression that executes after the user has seen the ad
+     * @param onClick Lambda expression that executes after the user clicks the ad
+     * @param onFailure Lambda expression that executes after the ad fails to load or redirect
      * @author rjamison@lexilabs.app
      * @see loadRewardedInterstitialAd
      */
-    public fun showRewardedInterstitialAd(activity: Any?, onDismissed: () -> Unit = {}, onRewardEarned: () -> Unit = {})
+    public fun showRewardedInterstitialAd(
+        activity: Any?,
+        onRewardEarned: () -> Unit,
+        onDismissed: () -> Unit = {},
+        onShown: () -> Unit = {},
+        onImpression: () -> Unit = {},
+        onClick: () -> Unit = {},
+        onFailure: () -> Unit = {},
+    )
 
     /**
      * Requests and loads a fullscreen AdMob ad and notifies load completion via [onLoaded] lambda.
@@ -96,8 +119,20 @@ public expect class AdLoader() {
      * @param activity Android Activity or iOS null value stored in an [Any] variable
      * @param onDismissed Lambda expression that executes when the user closes the ad
      * @param onRewardEarned Lambda expression that executes when the user earns a reward from the ad
+     * @param onShown Lambda expression that executes after the ad is presented
+     * @param onImpression Lambda expression that executes after the user has seen the ad
+     * @param onClick Lambda expression that executes after the user clicks the ad
+     * @param onFailure Lambda expression that executes after the ad fails to load or redirect
      * @author rjamison@lexilabs.app
      * @see loadRewardedAd
      */
-    public fun showRewardedAd(activity: Any?, onDismissed: () -> Unit = {}, onRewardEarned: () -> Unit = {})
+    public fun showRewardedAd(
+        activity: Any?,
+        onRewardEarned: () -> Unit,
+        onDismissed: () -> Unit = {},
+        onShown: () -> Unit = {},
+        onImpression: () -> Unit = {},
+        onClick: () -> Unit = {},
+        onFailure: () -> Unit = {},
+    )
 }

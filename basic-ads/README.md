@@ -3,14 +3,15 @@
 
 [Basic-Ads](https://basic.lexilabs.app/basic-ads) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
 
-A Kotlin Multiplatform library to rapidly get Gooble AdMob running on Android and iOS
+A Kotlin Multiplatform library to rapidly get Google AdMob running on Android and iOS
 
 ![badge-android](http://img.shields.io/badge/android-full_support-65c663.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/ios-full_support-65c663.svg?style=flat)
 
 ### How it works
 Basic-Ads uses the existing Android and iOS Google AdMob libraries to display ads as `Composables`.
-A [full walkthrough](https://medium.com/@robert.jamison/composable-ads-f8795924aa0d) is available on my Medium Blog.
+A [full walkthrough](https://medium.com/@robert.jamison/composable-ads-f8795924aa0d) is available on my Medium Blog, 
+and there's also [an easy-start template](https://github.com/LexiLabs-App/Example-Basic-Ads).
 
 ## Preparation
 For **Android**, complete the steps in AdMob's instructions:
@@ -75,8 +76,8 @@ fun AdScreen() {
     BannerAd() // Results in a Test Banner Ad being created
     // You'll need to access your platform-specific Activity (Android) or null (iOS) to pass as an `Any?` argument
     InterstitialAd(activity) // Results in a Test Interstitial Ad being created
-    RewardedInterstitialAd(activity) // Results in a Test Rewarded Interstitial Ad (Beta) being created
-    RewardedAd(activity) // Results in a Test Rewarded Ad being created
+    RewardedInterstitialAd(activity, {} ) // Results in a Test Rewarded Interstitial Ad (Beta) being created
+    RewardedAd(activity, {}) // Results in a Test Rewarded Ad being created
 }
 ```
 
@@ -97,6 +98,18 @@ fun AdScreen() {
         },
         onRewardEarned = {
             playSomeCoolSound()
+        },
+        onShown = {
+            addValueToSomeCounter()
+        }, 
+        onImpression = {
+            addValueToSomeTracker()
+        }, 
+        onClick = {
+            incrementSomeValueSomewhere()
+        }, 
+        onFailure = {
+            runTheBackupOption()
         }
     )
 }

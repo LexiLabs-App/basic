@@ -17,8 +17,6 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-//    jvm()
-
     js {
         browser {
             webpackTask {
@@ -32,6 +30,9 @@ kotlin {
     wasmJs {
         browser()
         binaries.executable()
+        compilerOptions {
+            freeCompilerArgs.add("-Xwasm-attach-js-exception")
+        }
     }
 
     listOf(
@@ -55,44 +56,20 @@ kotlin {
         }
     }
 
-//    linuxX64 {
-//        binaries.staticLib {
-//            baseName = "basic-sound"
-//        }
-//    }
-//
-//
-//    mingwX64 {
-//        binaries.staticLib {
-//            baseName = "basic-sound"
-//        }
-//    }
-
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.coroutines.test)
             implementation(project(":basic-logging"))
         }
-
         androidMain.dependencies {
             implementation(libs.kotlinx.coroutines.android)
         }
-
         appleMain.dependencies {  }
-
-//        jvmMain.dependencies {}
-
         jsMain.dependencies {}
-//
-//        linuxMain.dependencies {
-//            implementation(libs.ktor.client.curl)
-//        }
-//
-//        mingwMain.dependencies {
-//            implementation(libs.ktor.client.winhttp)
-//        }
-
+        wasmJsMain.dependencies {
+            implementation(libs.kotlinx.browser)
+        }
     }
 
     //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers

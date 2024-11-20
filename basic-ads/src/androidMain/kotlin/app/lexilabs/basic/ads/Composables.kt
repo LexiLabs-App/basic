@@ -21,20 +21,44 @@ public actual fun BannerAd(adUnitId: String, adSize: AdSize) {
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun InterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit) {
+public actual fun InterstitialAd(
+    activity: Any?,
+    adUnitId: String,
+    onDismissed: () -> Unit,
+    onShown: () -> Unit,
+    onImpression: () -> Unit,
+    onClick: () -> Unit,
+    onFailure: () -> Unit,
+) {
     val adLoader = AdLoader()
     adLoader.loadInterstitialAd(
         activity,
         adUnitId,
         onLoaded = {
-            adLoader.showInterstitialAd(activity) { onDismissed() }
+            adLoader.showInterstitialAd(
+                activity = activity,
+                onDismissed = { onDismissed() },
+                onShown = { onShown() },
+                onImpression = { onImpression() },
+                onClick = { onClick() },
+                onFailure = { onFailure() }
+            )
         }
     )
 }
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun RewardedAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+public actual fun RewardedAd(
+    activity: Any?,
+    adUnitId: String,
+    onRewardEarned: () -> Unit,
+    onDismissed: () -> Unit,
+    onShown: () -> Unit,
+    onImpression: () -> Unit,
+    onClick: () -> Unit,
+    onFailure: () -> Unit,
+) {
     val adLoader = AdLoader()
     adLoader.loadRewardedAd(
         activity = activity,
@@ -43,7 +67,11 @@ public actual fun RewardedAd(activity: Any?, adUnitId: String, onDismissed: () -
             adLoader.showRewardedAd(
                 activity = activity,
                 onDismissed = { onDismissed() },
-                onRewardEarned = { onRewardEarned() }
+                onRewardEarned = { onRewardEarned() },
+                onShown = { onShown() },
+                onImpression = { onImpression() },
+                onClick = { onClick() },
+                onFailure = { onFailure() }
             )
         }
     )
@@ -51,7 +79,16 @@ public actual fun RewardedAd(activity: Any?, adUnitId: String, onDismissed: () -
 
 @RequiresPermission("android.permission.INTERNET")
 @Composable
-public actual fun RewardedInterstitialAd(activity: Any?, adUnitId: String, onDismissed: () -> Unit, onRewardEarned: () -> Unit) {
+public actual fun RewardedInterstitialAd(
+    activity: Any?,
+    adUnitId: String,
+    onRewardEarned: () -> Unit,
+    onDismissed: () -> Unit,
+    onShown: () -> Unit,
+    onImpression: () -> Unit,
+    onClick: () -> Unit,
+    onFailure: () -> Unit,
+) {
     val adLoader = AdLoader()
     adLoader.loadRewardedInterstitialAd(
         activity = activity,
@@ -60,7 +97,11 @@ public actual fun RewardedInterstitialAd(activity: Any?, adUnitId: String, onDis
             adLoader.showRewardedInterstitialAd(
                 activity = activity,
                 onDismissed = { onDismissed() },
-                onRewardEarned = { onRewardEarned() }
+                onRewardEarned = { onRewardEarned() },
+                onShown = { onShown() },
+                onImpression = { onImpression() },
+                onClick = { onClick() },
+                onFailure = { onFailure() }
             )
         }
     )
