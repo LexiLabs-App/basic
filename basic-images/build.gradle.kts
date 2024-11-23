@@ -70,7 +70,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":basic-logging"))
-            implementation(libs.compose.foundation)
+            compileOnly(libs.compose.foundation)
             implementation(libs.compose.material3)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.resources)

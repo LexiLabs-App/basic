@@ -25,14 +25,25 @@ Add your dependencies from Maven
 ```toml
 # in your 'libs.versions.toml' file
 [versions]
+kotlin = "+" # gets the latest version, but MUST BE 2.1.0-RC2 OR HIGHER
+compose = "+" # gets the latest version
 lexilabs-basic = "+" #gets the latest version
 
 [libraries]
 lexilabs-basic-images = { module = "app.lexilabs.basic:basic-images", version.ref = "lexilabs-basic"}
+
+[plugins] # make sure you're using the JetBrains plugin to import your composables
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ```
 then include the library in your gradle build
 ```kotlin
 // in your 'shared/build.gradle.kts' file
+plugins {
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
+}
+
 sourceSets {
     commonMain.dependencies {
         implementation(libs.lexilabs.basic.images)
