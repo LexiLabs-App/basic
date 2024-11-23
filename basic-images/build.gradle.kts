@@ -18,21 +18,21 @@ kotlin {
 
     jvm()
 
-    js(IR) {
-        binaries.executable()
-        browser {
-            commonWebpackConfig {
-                cssSupport {
-                    enabled.set(true)
-                }
-            }
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                }
-            }
-        }
-    }
+//    js(IR) {
+//        binaries.executable()
+//        browser {
+//            commonWebpackConfig {
+//                cssSupport {
+//                    enabled.set(true)
+//                }
+//            }
+//            testTask {
+//                useKarma {
+//                    useChromeHeadless()
+//                }
+//            }
+//        }
+//    }
 
 //    @OptIn(ExperimentalWasmDsl::class)
 //    wasmJs {
@@ -99,9 +99,9 @@ kotlin {
 //            implementation(libs.ktor.client.ios)
 //        }
 //        jvmMain.dependencies {}
-        jsMain.dependencies {
-            implementation(libs.compose.html)
-        }
+//        jsMain.dependencies {
+//            implementation(libs.compose.html)
+//        }
 //        wasmJsMain.dependencies {}
 //        linuxMain.dependencies {}
 //        mingwMain.dependencies {}
