@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.1.0-RC2" # "2.0.20"
+kotlin = "2.0.21" # "2.0.20"
 agp = "8.7.2"
 kotlinx-coroutines = "1.9.0"
 kotlinx-browser = "0.2"
@@ -7,7 +7,6 @@ bcv = "0.16.3"
 serialization = "1.7.3"
 dokka = "1.9.20"
 compose = "1.7.1"
-compose-android = "1.7.5"
 ktor = "3.0.1"
 google-play-services-ads = "23.5.0"
 annotations = "1.9.1"
@@ -30,7 +29,6 @@ ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor"}
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktor" }
-compose-ui = {module = "androidx.compose.ui:ui", version.ref = "compose-android"}
 google-play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "google-play-services-ads"}
 annotations = { module = "androidx.annotation:annotation", version.ref = "annotations"}
 
