@@ -35,7 +35,7 @@ You'll need to add your maven dependency list
 ```toml
 # in your 'libs.versions.toml' file
 [versions]
-kotlin = "2.1.0-RC2" # Updated Kotlin version required due to hotfix for Composable Resources
+kotlin = "2.1.0" # Updated Kotlin version required due to Composable Resources
 lexilabs-basic = "+" # gets the latest version
 
 [libraries]
