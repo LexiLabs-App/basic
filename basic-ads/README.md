@@ -31,7 +31,7 @@ Add your dependencies from Maven
 ```toml
 # in your 'libs.versions.toml' file
 [versions]
-kotlin = "+" # gets the latest version
+kotlin = "2.1.0"
 compose = "+" # gets the latest version
 lexilabs-basic = "+" # gets the latest version
 google-play-services-ads = "+" # you did this during the preparation step
