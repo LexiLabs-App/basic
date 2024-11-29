@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
@@ -46,12 +46,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.compose.foundation)
+            compileOnly(libs.compose.foundation)
+            api(libs.compose.foundation)
             implementation(libs.annotations)
             implementation(project(":basic-logging"))
         }
         androidMain.dependencies {
-            implementation(libs.compose.ui)
             compileOnly(libs.google.play.services.ads)
         }
         iosMain.dependencies {}
@@ -66,8 +66,6 @@ kotlin {
         }
     }
 
-    // https://youtrack.jetbrains.com/issue/KT-61573
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
     }

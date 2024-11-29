@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
@@ -19,15 +19,22 @@ kotlin {
 
     jvm()
 
-//    js {
+//    js(IR) {
+//        binaries.executable()
 //        browser {
-//            webpackTask {
-//                mainOutputFileName = "shared.js"
+//            commonWebpackConfig {
+//                cssSupport {
+//                    enabled.set(true)
+//                }
+//            }
+//            testTask {
+//                useKarma {
+//                    useChromeHeadless()
+//                }
 //            }
 //        }
-//        binaries.executable()
 //    }
-//
+
 //    @OptIn(ExperimentalWasmDsl::class)
 //    wasmJs {
 //        browser()
@@ -70,7 +77,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":basic-logging"))
-            implementation(libs.compose.foundation)
+            compileOnly(libs.compose.foundation)
+            api(libs.compose.foundation)
             implementation(libs.compose.material3)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.resources)
@@ -92,7 +100,9 @@ kotlin {
 //            implementation(libs.ktor.client.ios)
 //        }
 //        jvmMain.dependencies {}
-//        jsMain.dependencies {}
+//        jsMain.dependencies {
+//            implementation(libs.compose.html)
+//        }
 //        wasmJsMain.dependencies {}
 //        linuxMain.dependencies {}
 //        mingwMain.dependencies {}
@@ -107,8 +117,6 @@ kotlin {
         }
     }
 
-    // https://youtrack.jetbrains.com/issue/KT-61573
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
     }

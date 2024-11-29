@@ -1,6 +1,6 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
@@ -17,13 +17,20 @@ kotlin {
     // FORCES CHECK OF PUBLIC API DECLARATIONS
     explicitApi()
 
-    js {
+    js(IR) {
+        binaries.executable()
         browser {
-            webpackTask {
-                mainOutputFileName = "shared.js"
+            commonWebpackConfig {
+                cssSupport {
+                    enabled.set(true)
+                }
+            }
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                }
             }
         }
-        binaries.executable()
     }
 
     @OptIn(ExperimentalWasmDsl::class)
@@ -81,8 +88,6 @@ kotlin {
         }
     }
 
-    // https://youtrack.jetbrains.com/issue/KT-61573
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
     }
