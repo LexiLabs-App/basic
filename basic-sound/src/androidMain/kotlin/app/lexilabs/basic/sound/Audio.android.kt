@@ -89,12 +89,12 @@ public actual class Audio actual constructor(): AudioBuilder {
                         Log.e(tag, "play:AudioState.NONE: mediaPlayer not initialized" )
                         _audioState.value =
                             AudioState.ERROR("play:AudioState.NONE: mediaPlayer not initialized")
-                        throw IllegalStateException("play:AudioState.NONE: mediaPlayer not initialized")
+//                        throw IllegalStateException("play:AudioState.NONE: mediaPlayer not initialized")
                     }
 
                     is AudioState.ERROR -> {
                         Log.e(tag, "play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}" )
-                        throw Exception("play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}")
+//                        throw Exception("play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}")
                     }
 
                     is AudioState.PAUSED -> {
