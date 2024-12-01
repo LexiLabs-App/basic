@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.1.0" # "2.0.21"
+kotlin = "2.0.21" # DO NOT INCREASE UNTIL GITLIVE UPDATES THEIR KOTLIN VERSION
 agp = "8.7.2"
 kotlinx-coroutines = "1.9.0"
 kotlinx-browser = "0.3"
