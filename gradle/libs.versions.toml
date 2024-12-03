@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.1.0" # "2.0.21"
-agp = "8.7.2"
+agp = "8.7.3"
 kotlinx-coroutines = "1.9.0"
 kotlinx-browser = "0.2"
 bcv = "0.16.3"
