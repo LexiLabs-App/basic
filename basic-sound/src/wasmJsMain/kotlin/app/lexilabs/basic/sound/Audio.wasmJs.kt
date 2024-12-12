@@ -1,5 +1,6 @@
 package app.lexilabs.basic.sound
 
+import app.lexilabs.basic.logging.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -8,6 +9,7 @@ import org.w3c.dom.Audio
 @OptIn(ExperimentalBasicSound::class)
 public actual class Audio public actual constructor() : AudioBuilder {
 
+    private val tag = "Basic-Sound Audio"
     public actual var resource: String = ""
     public actual var autoPlay: Boolean = false
 
@@ -23,8 +25,8 @@ public actual class Audio public actual constructor() : AudioBuilder {
     }
 
     actual override fun load() {
-        _audioState.value = AudioState.LOADING
         try {
+        _audioState.value = AudioState.LOADING
             player = Audio(resource)
             player?.oncanplaythrough?.let { _ ->
                 {
@@ -35,63 +37,82 @@ public actual class Audio public actual constructor() : AudioBuilder {
                 }
             }
         } catch (e: Exception) {
-            _audioState.value = AudioState.ERROR("load:failure:$e")
+            Log.e(tag, "load:failure: $e")
+            _audioState.value = AudioState.ERROR("load:failure: $e")
         }
     }
 
     actual override fun play() {
-        player?.let {
-            if (audioState.value !is AudioState.PLAYING) {
-                when (audioState.value) {
-                    is AudioState.ERROR -> {
-                        throw Exception("play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}")
-                    }
-                    is AudioState.LOADING -> { /** DO NOTHING **/}
-                    is AudioState.NONE -> {
-                        _audioState.value =
-                            AudioState.ERROR("play:AudioState.NONE: mediaPlayer not initialized")
-                        throw IllegalStateException("play:AudioState.NONE: mediaPlayer not initialized")
-                    }
-                    is AudioState.PAUSED -> {
-                        it.play()
-                        _audioState.value = AudioState.PLAYING
-                    }
-                    is AudioState.PLAYING -> { /** DO NOTHING **/ }
-                    is AudioState.READY -> {
-                        it.play()
-                        _audioState.value = AudioState.PLAYING
+        try {
+            player?.let {
+                if (audioState.value !is AudioState.PLAYING) {
+                    when (audioState.value) {
+                        is AudioState.ERROR -> {
+                            throw Exception("play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}")
+                        }
+                        is AudioState.LOADING -> { /** DO NOTHING **/ }
+                        is AudioState.NONE -> {
+                            throw IllegalStateException("play:AudioState.NONE: mediaPlayer not initialized")
+                        }
+                        is AudioState.PAUSED -> {
+                            it.play()
+                            _audioState.value = AudioState.PLAYING
+                        }
+                        is AudioState.PLAYING -> { /** DO NOTHING **/ }
+                        is AudioState.READY -> {
+                            it.play()
+                            _audioState.value = AudioState.PLAYING
+                        }
                     }
                 }
             }
+        } catch (e: Exception) {
+            Log.e(tag, "play:failure: $e")
+            _audioState.value = AudioState.ERROR("play:failure: $e")
         }
     }
 
     actual override fun pause() {
-        player?.let {
-            if (audioState.value is AudioState.PLAYING) {
-                it.pause()
-                _audioState.value = AudioState.PAUSED
+        try {
+            player?.let {
+                if (audioState.value is AudioState.PLAYING) {
+                    it.pause()
+                    _audioState.value = AudioState.PAUSED
+                }
             }
+        } catch (e: Exception) {
+            Log.e(tag, "pause:failure: $e")
+            _audioState.value = AudioState.ERROR("pause:failure: $e")
         }
     }
 
     actual override fun stop() {
-        player?.let {
-            if (audioState.value is AudioState.PLAYING) {
-                it.pause()
-                it.currentTime = 0.0
-                _audioState.value = AudioState.READY
+        try {
+            player?.let {
+                if (audioState.value is AudioState.PLAYING) {
+                    it.pause()
+                    it.currentTime = 0.0
+                    _audioState.value = AudioState.READY
+                }
             }
+        } catch (e: Exception) {
+            Log.e(tag, "stop:failure: $e")
+            _audioState.value = AudioState.ERROR("stop:failure: $e")
         }
     }
 
     actual override fun release() {
-        _audioState.value = AudioState.NONE
-        player?.let {
-            it.pause()
-            it.src = ""
-            it.load()
+        try {
+            _audioState.value = AudioState.NONE
+            player?.let {
+                it.pause()
+                it.src = ""
+                it.load()
+            }
+            player = null
+        } catch (e: Exception) {
+            Log.e(tag, "release:failure: $e")
+            _audioState.value = AudioState.ERROR("release:failure: $e")
         }
-        player = null
     }
 }

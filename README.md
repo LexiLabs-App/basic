@@ -3,7 +3,7 @@
 
 ![GitHub License](https://img.shields.io/github/license/lexilabs-app/basic)
 ![GitHub Release Date](https://img.shields.io/github/release-date/lexilabs-app/basic)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.0-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
 A Kotlin Multiplatform library to rapidly add basic features like pictures, logging, and audio to any project in a small and fast way.
 

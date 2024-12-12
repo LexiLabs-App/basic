@@ -49,92 +49,96 @@ public actual class Audio actual constructor(): AudioBuilder {
      * ```
      */
     public actual override fun load() {
-        _audioState.value = AudioState.LOADING
-        mediaPlayer = MediaPlayer().apply {
-            setDataSource(resource)
-            prepareAsync()
-            setOnPreparedListener {
-                // Ready to play
-                _audioState.value = AudioState.READY
-                if (autoPlay) {
-                    play()
+        try {
+            _audioState.value = AudioState.LOADING
+            mediaPlayer = MediaPlayer().apply {
+                setDataSource(resource)
+                prepareAsync()
+                setOnPreparedListener {
+                    // Ready to play
+                    _audioState.value = AudioState.READY
+                    if (autoPlay) {
+                        play()
+                    }
+                }
+                setOnErrorListener { _, what, extra ->
+                    throw Exception("init: MediaPlayer Error: $resource")
+                }
+                setOnCompletionListener {
+                    _audioState.value = AudioState.READY
                 }
             }
-            setOnErrorListener { _, what, extra ->
-                // Handle error
-                _audioState.value = AudioState.ERROR("init: MediaPlayer Error: what=$what, extra=$extra")
-                true // Indicating that the error was handled
-            }
-            setOnCompletionListener {
-                _audioState.value = AudioState.READY
-            }
+        } catch (e: Exception) {
+            Log.e(tag, "load:failure: $e")
+            _audioState.value = AudioState.ERROR("load:failure: $e")
         }
     }
 
     public actual override fun play() {
-        mediaPlayer?.let {
-            if (!it.isPlaying) {
-                when (audioState.value) {
-                    is AudioState.PLAYING -> {
-                        /** do nothing **/
-                        Log.d(tag, "play:AudioState.PLAYING: do you want it louder or something, lady?" )
-                    }
-
-                    is AudioState.LOADING -> {
-                        /** do nothing **/
-                        Log.d(tag, "play:AudioState.LOADING: wait for player to load" )
-                    }
-
-                    is AudioState.NONE -> {
-                        Log.e(tag, "play:AudioState.NONE: mediaPlayer not initialized" )
-                        _audioState.value =
-                            AudioState.ERROR("play:AudioState.NONE: mediaPlayer not initialized")
-                        throw IllegalStateException("play:AudioState.NONE: mediaPlayer not initialized")
-                    }
-
-                    is AudioState.ERROR -> {
-                        Log.e(tag, "play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}" )
-                        throw Exception("play:AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}")
-                    }
-
-                    is AudioState.PAUSED -> {
-                        Log.i(tag,"play:AudioState.PAUSED: resuming" )
-                        it.start()
-                        _audioState.value = AudioState.PLAYING
-                    }
-
-                    is AudioState.READY -> {
-                        Log.i(tag, "play:AudioState.READY: playing" )
-                        it.start()
-                        _audioState.value = AudioState.PLAYING
+        try {
+            mediaPlayer?.let {
+                if (!it.isPlaying) {
+                    when (audioState.value) {
+                        is AudioState.LOADING,
+                        is AudioState.PLAYING -> { /** do nothing **/ }
+                        is AudioState.NONE -> {
+                            throw Exception ("AudioState.NONE: mediaPlayer not initialized")
+//                        throw IllegalStateException("play:AudioState.NONE: mediaPlayer not initialized")
+                        }
+                        is AudioState.ERROR -> {
+                            throw Exception("AudioState.ERROR: ${(audioState.value as AudioState.ERROR).message}")
+                        }
+                        is AudioState.PAUSED,
+                        is AudioState.READY -> {
+                            it.start()
+                            _audioState.value = AudioState.PLAYING
+                        }
                     }
                 }
             }
+        } catch (e: Exception) {
+            Log.e(tag, "play:failure: $e")
+            _audioState.value = AudioState.ERROR("play:failure: $e")
         }
     }
 
     public actual override fun pause() {
-        mediaPlayer?.let {
-            if (it.isPlaying) {
-                it.pause()
-                _audioState.value = AudioState.PAUSED
+        try {
+            mediaPlayer?.let {
+                if (it.isPlaying) {
+                    it.pause()
+                    _audioState.value = AudioState.PAUSED
+                }
             }
+        } catch (e: Exception) {
+            Log.e(tag, "pause:failure: $e")
+            _audioState.value = AudioState.ERROR("pause:failure: $e")
         }
     }
 
     public actual override fun stop() {
-        mediaPlayer?.let {
-            if (it.isPlaying) {
-                it.stop()
-                it.prepareAsync()
-                _audioState.value = AudioState.READY
+        try {
+            mediaPlayer?.let {
+                if (it.isPlaying) {
+                    it.stop()
+                    it.prepareAsync()
+                    _audioState.value = AudioState.READY
+                }
             }
+        } catch (e: Exception) {
+            Log.e(tag, "stop:failure: $e")
+            _audioState.value = AudioState.ERROR("stop:failure: $e")
         }
     }
 
     public actual override fun release() {
-        _audioState.value = AudioState.NONE
-        mediaPlayer?.release()
-        mediaPlayer = null
+        try {
+            _audioState.value = AudioState.NONE
+            mediaPlayer?.release()
+            mediaPlayer = null
+        } catch (e: Exception) {
+            Log.e(tag, "release:failure: $e")
+            _audioState.value = AudioState.ERROR("release:failure: $e")
+        }
     }
 }
