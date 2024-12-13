@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlinx.binary.compatibility.validator)
     alias(libs.plugins.dokka)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kover)
     `maven-publish`
     signing
 }

@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.native.cocoapods)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kover)
     `maven-publish`
     signing
 }
