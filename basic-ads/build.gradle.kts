@@ -49,6 +49,7 @@ kotlin {
         commonMain.dependencies {
             compileOnly(libs.compose.foundation)
             api(libs.compose.foundation)
+            implementation(libs.annotations)
             implementation(project(":basic-logging"))
         }
         androidMain.dependencies {
