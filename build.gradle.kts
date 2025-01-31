@@ -24,7 +24,7 @@ dependencies {
 
 allprojects {
     group = "app.lexilabs.basic"
-    version = "0.2.4"
+    version = "0.2.5-beta01"
 
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "maven-publish")
