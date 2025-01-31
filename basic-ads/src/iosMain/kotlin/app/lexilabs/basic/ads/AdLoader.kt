@@ -1,11 +1,17 @@
 package app.lexilabs.basic.ads
 
 import app.lexilabs.basic.logging.Log
+
 import cocoapods.Google_Mobile_Ads_SDK.GADInterstitialAd
+import cocoapods.Google_Mobile_Ads_SDK.GADInterstitialAdLoadCompletionHandler
 import cocoapods.Google_Mobile_Ads_SDK.GADRequest
 import cocoapods.Google_Mobile_Ads_SDK.GADRewardedAd
+import cocoapods.Google_Mobile_Ads_SDK.GADRewardedAdLoadCompletionHandler
 import cocoapods.Google_Mobile_Ads_SDK.GADRewardedInterstitialAd
+import cocoapods.Google_Mobile_Ads_SDK.GADRewardedInterstitialAdLoadCompletionHandler
+import cocoapods.Google_Mobile_Ads_SDK.GADUserDidEarnRewardHandler
 import kotlinx.cinterop.ExperimentalForeignApi
+import platform.Foundation.NSError
 import platform.UIKit.UIApplication
 
 @OptIn(ExperimentalForeignApi::class)
@@ -36,10 +42,16 @@ public actual class AdLoader {
         GADInterstitialAd.loadWithAdUnitID(
             adUnitID = interstitialAdId,
             request = requestAd(),
-            completionHandler = InterstitialAdLoadCompletionHandler(
-                onLoad = { interstitialAd = it },
-                onError = { Log.e(tag, "loadInterstitialAd:failure:$it")}
-            )
+            completionHandler = object : GADInterstitialAdLoadCompletionHandler {
+                override fun invoke(p1: GADInterstitialAd?, p2: NSError?) {
+                    p1?.let {
+                        Log.d(tag, "loadInterstitialAd:success")
+                        interstitialAd = it
+                        onLoaded()
+                    }
+                    p2?.let { Log.e(tag, "loadInterstitialAd:failure:$it") }
+                }
+            }
         )
     }
 
@@ -78,10 +90,16 @@ public actual class AdLoader {
         GADRewardedInterstitialAd.loadWithAdUnitID(
             adUnitID = rewardedInterstitialAdId,
             request = requestAd(),
-            completionHandler = RewardedInterstitialAdLoadCompletionHandler(
-                onLoad = { rewardedInterstitialAd = it },
-                onError = { Log.e(tag, "loadRewardedInterstitialAd:failure:$it")}
-            )
+            completionHandler = object : GADRewardedInterstitialAdLoadCompletionHandler {
+                override fun invoke(p1: GADRewardedInterstitialAd?, p2: NSError?) {
+                    p1?.let {
+                        Log.d(tag, "loadRewardedInterstitialAd:success")
+                        rewardedInterstitialAd = it
+                        onLoaded()
+                    }
+                    p2?.let { Log.e(tag, "loadRewardedInterstitialAd:failure:$it") }
+                }
+            }
         )
     }
 
@@ -109,9 +127,12 @@ public actual class AdLoader {
             )
             rewardedInterstitialAd?.presentFromRootViewController(
                 viewController = viewController,
-                userDidEarnRewardHandler = UserDidEarnRewardHandler(
-                    onRewardEarned = onRewardEarned
-                )
+                userDidEarnRewardHandler = object: GADUserDidEarnRewardHandler{
+                    override fun invoke() {
+                        onRewardEarned()
+                    }
+
+                }
             )
         } ?: Log.d(tag, "The interstitial ad wasn't ready yet.")
     }
@@ -125,10 +146,16 @@ public actual class AdLoader {
         GADRewardedAd.loadWithAdUnitID(
             adUnitID = rewardedAdId,
             request = requestAd(),
-            completionHandler = RewardedAdLoadCompletionHandler(
-                onLoad = { rewardedAd = it },
-                onError = { Log.e(tag, "loadRewardedAd:failure:$it")}
-            )
+            completionHandler = object : GADRewardedAdLoadCompletionHandler {
+                override fun invoke(p1: GADRewardedAd?, p2: NSError?) {
+                    p1?.let {
+                        Log.d(tag, "loadRewardedAd:success")
+                        rewardedAd = it
+                        onLoaded()
+                    }
+                    p2?.let { Log.e(tag, "loadRewardedAd:failure:$it") }
+                }
+            }
         )
     }
 
@@ -156,9 +183,11 @@ public actual class AdLoader {
             )
             rewardedAd?.presentFromRootViewController(
                 rootViewController = viewController,
-                userDidEarnRewardHandler = UserDidEarnRewardHandler(
-                    onRewardEarned = onRewardEarned
-                )
+                userDidEarnRewardHandler = object: GADUserDidEarnRewardHandler{
+                    override fun invoke() {
+                        onRewardEarned()
+                    }
+                }
             )
         } ?: Log.d(tag, "The interstitial ad wasn't ready yet.")
     }

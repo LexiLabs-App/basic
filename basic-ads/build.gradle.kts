@@ -34,7 +34,7 @@ kotlin {
         ios.deploymentTarget = libs.versions.ios.deploymentTarget.get()
         framework {
             baseName = "GoogleMobileAds"
-            // FIXME: Enable "isStatic", build, disable "isStatic", then build again.
+            // Enable "isStatic", build, disable "isStatic", then build again.
 //            isStatic = true
         }
         noPodspec()
@@ -49,7 +49,6 @@ kotlin {
         commonMain.dependencies {
             compileOnly(libs.compose.foundation)
             api(libs.compose.foundation)
-            implementation(libs.annotations)
             implementation(project(":basic-logging"))
         }
         androidMain.dependencies {
