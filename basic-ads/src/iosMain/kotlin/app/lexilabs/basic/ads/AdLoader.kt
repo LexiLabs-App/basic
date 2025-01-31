@@ -1,7 +1,8 @@
 package app.lexilabs.basic.ads
 
 import app.lexilabs.basic.logging.Log
-
+import cocoapods.Google_Mobile_Ads_SDK.GADFullScreenContentDelegateProtocol
+import cocoapods.Google_Mobile_Ads_SDK.GADFullScreenPresentingAdProtocol
 import cocoapods.Google_Mobile_Ads_SDK.GADInterstitialAd
 import cocoapods.Google_Mobile_Ads_SDK.GADInterstitialAdLoadCompletionHandler
 import cocoapods.Google_Mobile_Ads_SDK.GADRequest
@@ -13,6 +14,7 @@ import cocoapods.Google_Mobile_Ads_SDK.GADUserDidEarnRewardHandler
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSError
 import platform.UIKit.UIApplication
+import platform.darwin.NSObject
 
 @OptIn(ExperimentalForeignApi::class)
 public actual typealias AdRequest = GADRequest
@@ -67,16 +69,45 @@ public actual class AdLoader {
         checkNotNull(viewController) { "Root ViewController is null" }
 
         interstitialAd?.let {
+            interstitialAd?.fullScreenContentDelegate = object: NSObject(), GADFullScreenContentDelegateProtocol{
+                override fun ad(
+                    ad: GADFullScreenPresentingAdProtocol,
+                    didFailToPresentFullScreenContentWithError: NSError
+                ) {
+                    // super.ad(ad, didFailToPresentFullScreenContentWithError)
+                    Log.d(tag, "showInterstitialAd:ad called")
+                    onShown()
+                }
 
-            interstitialAd?.fullScreenContentDelegate = AdFullScreenContent(
-                onShown = onShown,
-                onDismissed = {
-                    onDismissed()
+                override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidDismissFullScreenContent(ad)
+                    Log.d(tag, "showInterstitialAd:dismissed")
                     interstitialAd = null
-                },
-                onClick = onClick,
-                onImpression = onImpression
-            )
+                    onDismissed()
+                }
+
+                override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidRecordClick(ad)
+                    Log.d(tag, "showInterstitialAd:recorded click")
+                    onClick()
+                }
+
+                override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidRecordImpression(ad)
+                    Log.d(tag, "showInterstitialAd:recorded impression")
+                    onImpression()
+                }
+
+                override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adWillDismissFullScreenContent(ad)
+                    Log.d(tag, "showInterstitialAd:will dismiss")
+                }
+
+                override fun adWillPresentFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adWillPresentFullScreenContent(ad)
+                    Log.d(tag, "showInterstitialAd:will present content")
+                }
+            }
             interstitialAd?.presentFromRootViewController(viewController)
         } ?: Log.d(tag, "The interstitial ad wasn't ready yet.")
     }
@@ -116,15 +147,45 @@ public actual class AdLoader {
         checkNotNull(viewController) { "Root ViewController is null" }
 
         rewardedInterstitialAd?.let {
-            rewardedInterstitialAd?.fullScreenContentDelegate = AdFullScreenContent(
-                onShown = onShown,
-                onDismissed = {
+            rewardedInterstitialAd?.fullScreenContentDelegate = object: NSObject(), GADFullScreenContentDelegateProtocol{
+                override fun ad(
+                    ad: GADFullScreenPresentingAdProtocol,
+                    didFailToPresentFullScreenContentWithError: NSError
+                ) {
+                    // super.ad(ad, didFailToPresentFullScreenContentWithError)
+                    Log.d(tag, "showRewardedInterstitialAd:ad called")
+                    onShown()
+                }
+
+                override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidDismissFullScreenContent(ad)
+                    Log.d(tag, "showRewardedInterstitialAd:dismissed")
+                    rewardedInterstitialAd = null
                     onDismissed()
-                    interstitialAd = null
-                },
-                onClick = onClick,
-                onImpression = onImpression
-            )
+                }
+
+                override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidRecordClick(ad)
+                    Log.d(tag, "showRewardedInterstitialAd:recorded click")
+                    onClick()
+                }
+
+                override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidRecordImpression(ad)
+                    Log.d(tag, "showRewardedInterstitialAd:recorded impression")
+                    onImpression()
+                }
+
+                override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adWillDismissFullScreenContent(ad)
+                    Log.d(tag, "showRewardedInterstitialAd:will dismiss")
+                }
+
+                override fun adWillPresentFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adWillPresentFullScreenContent(ad)
+                    Log.d(tag, "showRewardedInterstitialAd:will present content")
+                }
+            }
             rewardedInterstitialAd?.presentFromRootViewController(
                 viewController = viewController,
                 userDidEarnRewardHandler = object: GADUserDidEarnRewardHandler{
@@ -172,21 +233,52 @@ public actual class AdLoader {
         checkNotNull(viewController) { "Root ViewController is null" }
 
         rewardedAd?.let {
-            rewardedAd?.fullScreenContentDelegate = AdFullScreenContent(
-                onShown = onShown,
-                onDismissed = {
+            rewardedAd?.fullScreenContentDelegate = object: NSObject(), GADFullScreenContentDelegateProtocol{
+                override fun ad(
+                    ad: GADFullScreenPresentingAdProtocol,
+                    didFailToPresentFullScreenContentWithError: NSError
+                ) {
+                    // super.ad(ad, didFailToPresentFullScreenContentWithError)
+                    Log.d(tag, "showRewardedAd:ad called")
+                    onShown()
+                }
+
+                override fun adDidDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidDismissFullScreenContent(ad)
+                    Log.d(tag, "showRewardedAd:dismissed")
+                    rewardedAd = null
                     onDismissed()
-                    interstitialAd = null
-                              },
-                onClick = onClick,
-                onImpression = onImpression
-            )
+                }
+
+                override fun adDidRecordClick(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidRecordClick(ad)
+                    Log.d(tag, "showRewardedAd:recorded click")
+                    onClick()
+                }
+
+                override fun adDidRecordImpression(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adDidRecordImpression(ad)
+                    Log.d(tag, "showRewardedAd:recorded impression")
+                    onImpression()
+                }
+
+                override fun adWillDismissFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adWillDismissFullScreenContent(ad)
+                    Log.d(tag, "showRewardedAd:will dismiss")
+                }
+
+                override fun adWillPresentFullScreenContent(ad: GADFullScreenPresentingAdProtocol) {
+                    // super.adWillPresentFullScreenContent(ad)
+                    Log.d(tag, "showRewardedAd:will present content")
+                }
+            }
             rewardedAd?.presentFromRootViewController(
                 rootViewController = viewController,
                 userDidEarnRewardHandler = object: GADUserDidEarnRewardHandler{
                     override fun invoke() {
                         onRewardEarned()
                     }
+
                 }
             )
         } ?: Log.d(tag, "The interstitial ad wasn't ready yet.")
