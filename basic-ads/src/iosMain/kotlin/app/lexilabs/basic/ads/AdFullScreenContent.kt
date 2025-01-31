@@ -17,6 +17,8 @@ public class AdFullScreenContent(
 
     private val tag = "AdFullScreenContent"
 
+    // TODO: Verify all callbacks work
+
     override fun ad(
         ad: GADFullScreenPresentingAdProtocol,
         didFailToPresentFullScreenContentWithError: NSError
