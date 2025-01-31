@@ -1,9 +1,12 @@
+import com.android.utils.TraceUtils.simpleId
+
 plugins {
     alias(libs.plugins.multiplatform).apply(false)
     alias(libs.plugins.android.library).apply(false)
     alias(libs.plugins.kotlinx.serialization.plugin)
     alias(libs.plugins.native.cocoapods)
     alias(libs.plugins.dokka)
+    alias(libs.plugins.kover)
 }
 
 buildscript {
@@ -12,9 +15,16 @@ buildscript {
     }
 }
 
+dependencies {
+    kover(project(":basic-ads"))
+    kover(project(":basic-images"))
+    kover(project(":basic-logging"))
+    kover(project(":basic-sound"))
+}
+
 allprojects {
     group = "app.lexilabs.basic"
-    version = "0.2.3"
+    version = "0.2.4"
 
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "maven-publish")
