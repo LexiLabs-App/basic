@@ -19,17 +19,18 @@ Currently, this library only ingests URLs and local paths. Composable Resources 
 ![badge-windows](http://img.shields.io/badge/windows-no_support-red.svg?style=flat)
 
 ## Supported Filetypes
-| Format    |      Android       |        iOS         | javascript / wasm  | File / Container Types                                                                                                                                            |
-|:----------|:------------------:|:------------------:|:------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AAC LC    | :white_check_mark: | :white_check_mark: |        :x:         | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
-| AMR-NB    | :white_check_mark: |        :x:         |        :x:         | 3GPP (.3gp) AMR (.amr)                                                                                                                                            |
-| FLAC      | :white_check_mark: |        :x:         |        :x:         | FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                                                     |
-| MIDI      | :white_check_mark: |        :x:         |        :x:         | Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                                                               |
-| MP3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                                                                          |
-| Opus      | :white_check_mark: |        :x:         |     :question:     | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
-| PCM/WAVE  | :white_check_mark: |        :x:         | :white_check_mark: | WAVE (.wav)                                                                                                                                                       |
-| Vorbis    | :white_check_mark: |        :x:         |     :question:     | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
+| Format    |      Android       |        iOS         | javascript / wasm  |        JVM*        | File / Container Types                                                                                                                                            |
+|:----------|:------------------:|:------------------:|:------------------:|:------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AAC LC    | :white_check_mark: | :white_check_mark: |        :x:         |     :question:     | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
+| AMR-NB    | :white_check_mark: |        :x:         |        :x:         |     :question:     | 3GPP (.3gp) AMR (.amr)                                                                                                                                            |
+| FLAC      | :white_check_mark: |        :x:         |        :x:         |     :question:     | FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                                                     |
+| MIDI      | :white_check_mark: |        :x:         |        :x:         |     :question:     | Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                                                               |
+| MP3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                                                                          |
+| Opus      | :white_check_mark: |        :x:         |     :question:     |     :question:     | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
+| PCM/WAVE  | :white_check_mark: |        :x:         | :white_check_mark: |     :question:     | WAVE (.wav)                                                                                                                                                       |
+| Vorbis    | :white_check_mark: |        :x:         |     :question:     |     :question:     | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
 
+* __NOTE: JVM file formats are dependent on the underlying operating system the app is run on.__
 ## Installation
 You'll need to add your maven dependency list
 ```toml
