@@ -6,12 +6,14 @@ import androidx.compose.runtime.Composable
  * Loads and displays a Banner Ad using a [Composable].
  * @param adUnitId Your AdMob AdUnitId [String]
  * @param adSize Your AdMob [AdSize]
+ * @param onLoad Lambda expression that executes after the [AdRequest] has fully loaded
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
 @Composable public expect fun BannerAd(
     adUnitId: String = AdUnitId.BANNER_DEFAULT,
-    adSize: AdSize = AdSize.FULL_BANNER
+    adSize: AdSize = AdSize.FULL_BANNER,
+    onLoad: () -> Unit = {}
 )
 
 /**
@@ -23,6 +25,7 @@ import androidx.compose.runtime.Composable
  * @param onImpression Lambda expression that executes after the user has seen the ad
  * @param onClick Lambda expression that executes after the user clicks the ad
  * @param onFailure Lambda expression that executes after the ad fails to load or redirect
+ * @param onLoad Lambda expression that executes after the [AdRequest] has fully loaded
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
@@ -34,6 +37,7 @@ import androidx.compose.runtime.Composable
     onImpression: () -> Unit = {},
     onClick: () -> Unit = {},
     onFailure: () -> Unit = {},
+    onLoad: () -> Unit = {}
 )
 
 /**
@@ -46,6 +50,7 @@ import androidx.compose.runtime.Composable
  * @param onImpression Lambda expression that executes after the user has seen the ad
  * @param onClick Lambda expression that executes after the user clicks the ad
  * @param onFailure Lambda expression that executes after the ad fails to load or redirect
+ * @param onLoad Lambda expression that executes after the [AdRequest] has fully loaded
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
@@ -58,6 +63,7 @@ import androidx.compose.runtime.Composable
     onImpression: () -> Unit = {},
     onClick: () -> Unit = {},
     onFailure: () -> Unit = {},
+    onLoad: () -> Unit = {}
 )
 
 /**
@@ -70,6 +76,7 @@ import androidx.compose.runtime.Composable
  * @param onImpression Lambda expression that executes after the user has seen the ad
  * @param onClick Lambda expression that executes after the user clicks the ad
  * @param onFailure Lambda expression that executes after the ad fails to load or redirect
+ * @param onLoad Lambda expression that executes after the [AdRequest] has fully loaded
  * @see AdUnitId.autoSelect
  */
 @DependsOnGoogleMobileAds
@@ -82,4 +89,5 @@ import androidx.compose.runtime.Composable
     onImpression: () -> Unit = {},
     onClick: () -> Unit = {},
     onFailure: () -> Unit = {},
+    onLoad: () -> Unit = {}
 )

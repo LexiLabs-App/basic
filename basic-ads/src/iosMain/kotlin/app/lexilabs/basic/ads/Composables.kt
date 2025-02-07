@@ -11,7 +11,11 @@ import platform.UIKit.UIApplication
 
 @OptIn(ExperimentalForeignApi::class)
 @Composable
-public actual fun BannerAd(adUnitId: String, adSize: AdSize) {
+public actual fun BannerAd(
+    adUnitId: String,
+    adSize: AdSize,
+    onLoad: () -> Unit
+) {
     UIKitView(
         factory = {
             val viewController = UIApplication.sharedApplication.keyWindow?.rootViewController
@@ -21,6 +25,7 @@ public actual fun BannerAd(adUnitId: String, adSize: AdSize) {
                 adUnitID = adUnitId
                 this.rootViewController = viewController
                 loadRequest(AdLoader().requestAd())
+                if (viewController.viewLoaded) { onLoad() }
             }
             bannerView
         },
@@ -37,12 +42,14 @@ public actual fun InterstitialAd(
     onImpression: () -> Unit,
     onClick: () -> Unit,
     onFailure: () -> Unit,
+    onLoad: () -> Unit
 ) {
     val adLoader = AdLoader()
     adLoader.loadInterstitialAd(
         activity,
         adUnitId,
         onLoaded = {
+            onLoad()
             adLoader.showInterstitialAd(
                 activity = activity,
                 onDismissed = { onDismissed() },
@@ -65,12 +72,14 @@ public actual fun RewardedAd(
     onImpression: () -> Unit,
     onClick: () -> Unit,
     onFailure: () -> Unit,
+    onLoad: () -> Unit
 ) {
     val adLoader = AdLoader()
     adLoader.loadRewardedAd(
         activity = activity,
         adUnitId = adUnitId,
         onLoaded = {
+            onLoad()
             adLoader.showRewardedAd(
                 activity = activity,
                 onDismissed = { onDismissed() },
@@ -94,12 +103,14 @@ public actual fun RewardedInterstitialAd(
     onImpression: () -> Unit,
     onClick: () -> Unit,
     onFailure: () -> Unit,
+    onLoad: () -> Unit
 ) {
     val adLoader = AdLoader()
     adLoader.loadRewardedInterstitialAd(
         activity = activity,
         adUnitId = adUnitId,
         onLoaded = {
+            onLoad()
             adLoader.showRewardedInterstitialAd(
                 activity = activity,
                 onDismissed = { onDismissed() },
