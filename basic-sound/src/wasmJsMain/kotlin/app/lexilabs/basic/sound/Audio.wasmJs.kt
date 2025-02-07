@@ -24,7 +24,13 @@ public actual class Audio public actual constructor() : AudioBuilder {
         load()
     }
 
-    actual override fun load() {
+    public actual constructor(context: Any?, composeResource: String, autoPlay: Boolean) : this() {
+        this.resource = composeResource
+        this.autoPlay = autoPlay
+        load()
+    }
+
+    actual override fun load(context: Any?) {
         try {
         _audioState.value = AudioState.LOADING
             player = Audio(resource)

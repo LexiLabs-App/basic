@@ -26,7 +26,7 @@ public expect class Audio() {
      * Play audio from a url or path ([String]).
      *
      * @param resource provides the link to the audio file online
-     * @param autoPlay [play] after [AudioState.READY] is reached
+     * @param autoPlay [play] after [AudioState.READY] is reached (defaults to "false").
      *
      * Example:
      * ```
@@ -34,7 +34,22 @@ public expect class Audio() {
      * val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
      * ```
      */
-    public constructor(resource: String, autoPlay: Boolean)
+    public constructor(resource: String, autoPlay: Boolean = false)
+
+    /**
+     * Play audio from a url or path ([String]).
+     *
+     * @param context provide the Platform Context (this is mostly to accommodate Android)
+     * @param composeResource provides the link to the audio file online
+     * @param autoPlay [play] after [AudioState.READY] is reached (defaults to "false").
+     *
+     * Example:
+     * ```
+     * val audioUrl = "https://dare.wisc.edu/wp-content/uploads/sites/1051/2008/11/MS072.mp3"
+     * val audio = Audio(audioUrl, true) // AutoPlay is marked "true"
+     * ```
+     */
+    public constructor(context: Any?, composeResource: String, autoPlay: Boolean = false)
 
     /**
      * Provides the state of [Audio] after initialization
@@ -59,7 +74,7 @@ public expect class Audio() {
      * audio.play() // plays the sound immediately
      * ```
      */
-    public fun load()
+    public fun load(context: Any? = null)
 
     /**
      * Used after [Audio] is initialized with [AudioState.READY] to play the sound immediately.

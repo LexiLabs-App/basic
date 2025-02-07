@@ -123,6 +123,15 @@ Button(
     }
 }
 ```
+If you need to load a Compose Resource, you need to use a constructor that includes `Context`.
+Make sure you safely [pass your `Context` without memory leaks.](https://medium.com/hakz/contain-your-apps-memory-please-0c62819f8d7f).
+```kotlin
+val resource = Res.getUri("files/ringtone.wav")
+// You can pass your Context
+val audio = Audio(context, resource) // loads the audio file
+audio.play() // plays the audio immediately upon execution
+```
+
 ## `AudioByte` Usage
 AudioByte allows you to load audio to memory to play multiple times later without reloading -- sort of like a soundboard.
 You could make a callable class that is passed throughout the app so the sounds could be access in any context.

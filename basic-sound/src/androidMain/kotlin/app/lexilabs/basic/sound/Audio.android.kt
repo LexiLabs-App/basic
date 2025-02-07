@@ -2,6 +2,7 @@
 
 package app.lexilabs.basic.sound
 
+import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,6 +38,14 @@ public actual class Audio actual constructor(): AudioBuilder {
         load()
     }
 
+    public actual constructor(context: Any?, composeResource: String, autoPlay: Boolean): this() {
+        this.resource = composeResource
+        this.autoPlay = autoPlay
+        context?.let {
+            load(it)
+        } ?: throw NullPointerException("Context is required for Composable Resource to be used with `Audio()`")
+    }
+
     /**
      * Used to load an [Audio] file when [AudioState.NONE].
      *
@@ -48,11 +57,22 @@ public actual class Audio actual constructor(): AudioBuilder {
      * audio.play() // plays the sound immediately
      * ```
      */
-    public actual override fun load() {
+    public actual override fun load(context: Any?) {
         try {
             _audioState.value = AudioState.LOADING
             mediaPlayer = MediaPlayer().apply {
-                setDataSource(resource)
+                // if there is a context provided
+                (context as Context?)?.let {
+                    setDataSource(
+                        // Convert file to File Descriptor before ingesting
+                        it.assets.openFd(
+                            // Try to remove prefix created by Compose Resources first
+                            resource.removePrefix("file:///android_asset/")
+                        )
+                    )
+                } ?: setDataSource(resource)
+                // reset context after
+
                 prepareAsync()
                 setOnPreparedListener {
                     // Ready to play
@@ -61,7 +81,7 @@ public actual class Audio actual constructor(): AudioBuilder {
                         play()
                     }
                 }
-                setOnErrorListener { _, what, extra ->
+                setOnErrorListener { _, _, _ ->
                     throw Exception("init: MediaPlayer Error: $resource")
                 }
                 setOnCompletionListener {
