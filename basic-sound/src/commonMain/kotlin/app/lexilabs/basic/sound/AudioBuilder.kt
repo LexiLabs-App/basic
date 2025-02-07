@@ -40,7 +40,7 @@ public interface AudioBuilder {
      * audio.play() // plays the sound immediately
      * ```
      */
-    public fun load()
+    public fun load(context: Any?)
 
     /**
      * When overridden, used after [Audio] is initialized with [AudioState.READY] to play the sound immediately.

@@ -14,22 +14,23 @@ Currently, this library only ingests URLs and local paths. Composable Resources 
 ![badge-nodejs](https://img.shields.io/badge/jsNode-full_support-65c663.svg?style=flat)
 ![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-full_support-65c663.svg?style=flat)
 ![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-full_support-65c663.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/jvm-no_support-red.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/jvm-full_support-65c663.svg?style=flat)
 ![badge-linux](http://img.shields.io/badge/linux-no_support-red.svg?style=flat)
 ![badge-windows](http://img.shields.io/badge/windows-no_support-red.svg?style=flat)
 
 ## Supported Filetypes
-| Format    |      Android       |        iOS         | javascript / wasm  | File / Container Types                                                                                                                                            |
-|:----------|:------------------:|:------------------:|:------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AAC LC    | :white_check_mark: | :white_check_mark: |        :x:         | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
-| AMR-NB    | :white_check_mark: |        :x:         |        :x:         | 3GPP (.3gp) AMR (.amr)                                                                                                                                            |
-| FLAC      | :white_check_mark: |        :x:         |        :x:         | FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                                                     |
-| MIDI      | :white_check_mark: |        :x:         |        :x:         | Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                                                               |
-| MP3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                                                                          |
-| Opus      | :white_check_mark: |        :x:         |     :question:     | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
-| PCM/WAVE  | :white_check_mark: |        :x:         | :white_check_mark: | WAVE (.wav)                                                                                                                                                       |
-| Vorbis    | :white_check_mark: |        :x:         |     :question:     | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
+| Format    |      Android       |        iOS         | javascript / wasm  |        JVM*        | File / Container Types                                                                                                                                            |
+|:----------|:------------------:|:------------------:|:------------------:|:------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AAC LC    | :white_check_mark: | :white_check_mark: |        :x:         |     :question:     | 3GPP (.3gp) MPEG-4 (.mp4, .m4a) ADTS raw AAC (.aac, decode in Android 3.1+, encode in Android 4.0+, ADIF not supported) MPEG-TS (.ts, not seekable, Android 3.0+) |
+| AMR-NB    | :white_check_mark: |        :x:         |        :x:         |     :question:     | 3GPP (.3gp) AMR (.amr)                                                                                                                                            |
+| FLAC      | :white_check_mark: |        :x:         |        :x:         |     :question:     | FLAC (.flac) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                                                     |
+| MIDI      | :white_check_mark: |        :x:         |        :x:         |     :question:     | Type 0 and 1 (.mid, .xmf, .mxmf) RTTTL/RTX (.rtttl, .rtx) OTA (.ota) iMelody (.imy)                                                                               |
+| MP3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | MP3 (.mp3) MPEG-4 (.mp4, .m4a, Android 10+) Matroska (.mkv, Android 10+)                                                                                          |
+| Opus      | :white_check_mark: |        :x:         |     :question:     |     :question:     | Ogg (.ogg) Matroska (.mkv)                                                                                                                                        |
+| PCM/WAVE  | :white_check_mark: |        :x:         | :white_check_mark: |     :question:     | WAVE (.wav)                                                                                                                                                       |
+| Vorbis    | :white_check_mark: |        :x:         |     :question:     |     :question:     | Ogg (.ogg) Matroska (.mkv, Android 4.0+) MPEG-4 (.mp4, .m4a, Android 10+)                                                                                         |
 
+* __NOTE: JVM file formats are dependent on the underlying operating system the app is run on.__
 ## Installation
 You'll need to add your maven dependency list
 ```toml
@@ -123,6 +124,15 @@ Button(
     }
 }
 ```
+If you need to load a Compose Resource, you need to use a constructor that includes `Context`.
+Make sure you safely [pass your `Context` without memory leaks.](https://medium.com/hakz/contain-your-apps-memory-please-0c62819f8d7f).
+```kotlin
+val resource = Res.getUri("files/ringtone.wav")
+// You can pass your Context
+val audio = Audio(context, resource) // loads the audio file
+audio.play() // plays the audio immediately upon execution
+```
+
 ## `AudioByte` Usage
 AudioByte allows you to load audio to memory to play multiple times later without reloading -- sort of like a soundboard.
 You could make a callable class that is passed throughout the app so the sounds could be access in any context.
