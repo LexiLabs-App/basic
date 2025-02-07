@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -38,10 +39,13 @@ kotlin {
     wasmJs {
         browser()
         binaries.executable()
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             freeCompilerArgs.add("-Xwasm-attach-js-exception")
         }
     }
+
+    jvm()
 
     listOf(
         iosX64(), // mobile
@@ -78,6 +82,7 @@ kotlin {
         wasmJsMain.dependencies {
             implementation(libs.kotlinx.browser)
         }
+        jvmMain.dependencies {}
     }
 
     //https://kotlinlang.org/docs/native-objc-interop.html#export-of-kdoc-comments-to-generated-objective-c-headers

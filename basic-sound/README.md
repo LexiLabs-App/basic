@@ -14,7 +14,7 @@ Currently, this library only ingests URLs and local paths. Composable Resources 
 ![badge-nodejs](https://img.shields.io/badge/jsNode-full_support-65c663.svg?style=flat)
 ![badge-jsBrowser](https://img.shields.io/badge/jsBrowser-full_support-65c663.svg?style=flat)
 ![badge-wasmJsBrowser](https://img.shields.io/badge/wasmJsBrowser-full_support-65c663.svg?style=flat)
-![badge-jvm](http://img.shields.io/badge/jvm-no_support-red.svg?style=flat)
+![badge-jvm](http://img.shields.io/badge/jvm-full_support-65c663.svg?style=flat)
 ![badge-linux](http://img.shields.io/badge/linux-no_support-red.svg?style=flat)
 ![badge-windows](http://img.shields.io/badge/windows-no_support-red.svg?style=flat)
 
