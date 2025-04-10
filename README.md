@@ -5,7 +5,8 @@
 
 A Kotlin Multiplatform library to rapidly add basic features like pictures, logging, and audio to any project in a small and fast way.
 
-<span style="color:red;">IMPORTANT: As of April 10th 2025, this repository has been archived and all Basic libraries have been migrated to their own separate repositories.</span>
+> [!CAUTION]
+> As of April 10th 2025, this repository has been archived and all Basic libraries have been migrated to their own separate repositories.
 
 ## Documentation
 * [Basic-Ads](https://github.com/LexiLabs-App/basic-ads) [![MavenCentral](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
