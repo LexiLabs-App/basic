@@ -8,7 +8,7 @@ A Kotlin Multiplatform library to rapidly add basic features like pictures, logg
 > [!CAUTION]
 > As of April 10th 2025, this repository has been archived and all Basic libraries have been migrated to their own separate repositories.
 
-## Documentation
+## Repositories
 * [Basic-Ads](https://github.com/LexiLabs-App/basic-ads) [![MavenCentral](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
 * [Basic-Images](https://github.com/LexiLabs-App/basic-images) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
 * [Basic-Logging](https://github.com/LexiLabs-App/basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
