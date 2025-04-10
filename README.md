@@ -1,55 +1,42 @@
 # Basic
-<img src="docs/images/basic_240.png" alt="basic" align="right"/> 
+<img src="images/basic_240.png" alt="basic" align="right"/> 
 
 ![GitHub License](https://img.shields.io/github/license/lexilabs-app/basic)
-![GitHub Release Date](https://img.shields.io/github/release-date/lexilabs-app/basic)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7f52ff.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
 A Kotlin Multiplatform library to rapidly add basic features like pictures, logging, and audio to any project in a small and fast way.
 
-| Platforms     |        Ads         |          Images          |      Logging       |          Sound           |
-|:--------------|:------------------:|:------------------------:|:------------------:|:------------------------:|
-| Android       | :white_check_mark: |    :white_check_mark:    | :white_check_mark: |    :white_check_mark:    |
-| iOS           | :white_check_mark: |    :white_check_mark:    | :white_check_mark: |    :white_check_mark:    |
-| macOS         |  :no_entry_sign:   |    :white_check_mark:    | :white_check_mark: |    :white_check_mark:    |
-| watchOS       |  :no_entry_sign:   |     :no_entry_sign:      | :white_check_mark: |    :white_check_mark:    | 
-| tvOS          |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: |    :white_check_mark:    | 
-| nodeJS        |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: |    :white_check_mark:    | 
-| jsBrowser     |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: |    :white_check_mark:    |
-| wasmJsBrowser |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: |    :white_check_mark:    |
-| JVM           |  :no_entry_sign:   |    :white_check_mark:    | :white_check_mark: | :hourglass_flowing_sand: |
-| Linux         |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: | :hourglass_flowing_sand: |
-| Windows       |  :no_entry_sign:   | :hourglass_flowing_sand: | :white_check_mark: | :hourglass_flowing_sand: |
+<h2 style="color:red;">IMPORTANT: As of April 10th 2025, this repository has been archived and all Basic libraries have been migrated to their own separate repositories.</h2>
 
 ## Documentation
-* [Basic-Ads](basic-ads/README.md) [![MavenCentral](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
-* [Basic-Images](basic-images/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
-* [Basic-Logging](basic-logging/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
-* [Basic-Sound](basic-sound/README.md) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
+* [Basic-Ads](https://github.com/LexiLabs-App/basic-ads) [![MavenCentral](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-ads?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-ads)
+* [Basic-Images](https://github.com/LexiLabs-App/basic-images) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-images?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-images)
+* [Basic-Logging](https://github.com/LexiLabs-App/basic-logging) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-logging?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-logging)
+* [Basic-Sound](https://github.com/LexiLabs-App/basic-sound) [![Maven Central](https://img.shields.io/maven-central/v/app.lexilabs.basic/basic-sound?color=blue)](https://central.sonatype.com/artifact/app.lexilabs.basic/basic-sound)
 
 ## Quick Start
 Add your dependencies from Maven
 ```toml
 # in your 'gradle/libs.versions.toml' file
 [versions]
-kotlin = "2.1.0" # Updated Kotlin version required for Basic-Sound due to hotfix for reading Compose Resources
-lexilabs-basic = "+" # gets the latest version
+kotlin = "+" # gets the latest Kotlin version
+basic = "+" # gets the latest Basic version
 
 [libraries]
-lexilabs-basic-ads = { group = "app.lexilabs.basic", name = "basic-ads", version.ref = "lexilabs-basic" }
-lexilabs-basic-images = { group = "app.lexilabs.basic", name = "basic-images", version.ref = "lexilabs-basic" }
-lexilabs-basic-logging = { group = "app.lexilabs.basic", name = "basic-logging", version.ref = "lexilabs-basic" }
-lexilabs-basic-sound = { group = "app.lexilabs.basic", name = "basic-sound", version.ref = "lexilabs-basic" }
+basic-ads = { group = "app.lexilabs.basic", name = "basic-ads", version.ref = "basic" }
+basic-images = { group = "app.lexilabs.basic", name = "basic-images", version.ref = "basic" }
+basic-logging = { group = "app.lexilabs.basic", name = "basic-logging", version.ref = "basic" }
+basic-sound = { group = "app.lexilabs.basic", name = "basic-sound", version.ref = "basic" }
+
+[bundles]
+# remove items from bundle as desired
+basic = [ "basic-ads", "basic-images", "basic-logging", "basic-sound" ]
 ```
 then include the library in your gradle build
 ```kotlin
 // in your 'shared/build.gradle.kts' or 'composeApp/build.gradle.kts' file
 sourceSets {
     commonMain.dependencies {
-        implementation(libs.lexilabs.basic.images)
-        implementation(libs.lexilabs.basic.logging)
-        implementation(libs.lexilabs.basic.sound)
-        implementation(libs.lexilabs.basic.ads)
+        implementation(libs.bundles.basic)
     }
 }
 ```
