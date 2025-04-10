@@ -1,5 +1,5 @@
 # Basic
-<img src="images/basic_240.png" alt="basic" align="right"/> 
+<img src="basic.png" alt="basic" align="right"/> 
 
 ![GitHub License](https://img.shields.io/github/license/lexilabs-app/basic)
 
